@@ -23,7 +23,7 @@ export class ExampleAppComponent extends path.PathAppComponent {
     }
 
     protected getFrontendVersion():string {
-        return "0.0.7-SNAPSHOT";
+        return "0.0.1";
     }
 
     protected getStartPage():string {
@@ -42,7 +42,7 @@ export class ExampleAppComponent extends path.PathAppComponent {
     }
 
     public getBackendUrl() {
-        return "http://localhost:4567/services";
+        return "http://localhost:8080/services";
     }
     
     protected getBeans() {
