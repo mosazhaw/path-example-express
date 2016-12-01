@@ -4,9 +4,28 @@ import {TranslationService} from "path-framework/app/path-framework/service/tran
 @Injectable()
 export class ExampleTranslationService extends TranslationService {
 
-    protected getTranslations() {
-        console.log("Example Service");
-        return super.getTranslations();
+    protected getTranslation(key:string) : string {
+        let myTranslations = this.createTranslationMap(this.getExampleTranslations());
+        // prefer custom translations
+        if (myTranslations.get(key) == null) {
+            return super.getTranslation(key);
+        }
+        return myTranslations.get(key);
+    }
+
+    private getExampleTranslations() {
+        let languageCode: string = this.getUserLanguage();
+
+        // put additional application translations here
+        if (languageCode == "de") {
+            return {
+                "Friends": "Freunde"
+            }
+        } else {
+            return {
+                "Friends": "Friends",
+            };
+        }
     }
 
 }

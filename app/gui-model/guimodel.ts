@@ -11,7 +11,7 @@ export class GuiModel {
                         {
                             "id": "name",
                             "type": "text",
-                            "name": "Example",
+                            "name": "Person",
                             "width": 2,
                             "required": true
                         },
@@ -37,7 +37,7 @@ export class GuiModel {
                     "elementList": [
                         {
                             "type": "button",
-                            "name": "HelloWorld",
+                            "name": "Friends",
                             "icon": "fa-fast-forward",
                             "color": "alizarin",
                             "form": {
