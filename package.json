@@ -2,26 +2,32 @@
   "name": "path-example",
   "version": "0.0.1",
   "description": "Path Application Framework Example",
-  "keywords": ["GUI", "JSON", "REST", "Rapid Application Development", "Rapid Application Manufacturing"],
+  "keywords": [
+    "GUI",
+    "JSON",
+    "REST",
+    "Rapid Application Development",
+    "Rapid Application Manufacturing"
+  ],
   "homepage": "https://github.com/innovad/path-example/",
   "bugs": {
-    "url" : "https://github.com/innovad/path-example/issues"
+    "url": "https://github.com/innovad/path-example/issues"
   },
   "license": "LGPL-3.0",
   "author": {
     "name": "Adrian Moser"
   },
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/innovad/path-example.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/innovad/path-example.git"
   },
   "engines": {
     "node": "5.4.1",
     "npm": "3.8.5"
   },
   "scripts": {
-    "start": "node server.js",
-    "start-dev": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" ",
+    "start": "nodemon server.js",
+    "start-dev": "tsc && concurrently \"npm run tsc:w\" \"nodemon server.js\" ",
     "heroku-postbuild": "tsc --project tsconfig.json",
     "lite": "lite-server",
     "test": "karma start karma.conf.js",
@@ -64,6 +70,7 @@
     "karma-chrome-launcher": "1.0.1",
     "karma-jasmine": "1.0.2",
     "lite-server": "2.2.0",
+    "nodemon": "^1.11.0",
     "requirejs": "2.2.0",
     "typescript": "2.0.2",
     "typings": "1.0.4",
