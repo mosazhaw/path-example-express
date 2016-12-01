@@ -1,0 +1,8 @@
+app/**/*.js
+tests/**/*.js
+*.js.map
+
+node_modules
+typings
+
+.idea
