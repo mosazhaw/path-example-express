@@ -1,3 +1,4 @@
+import {Database} from "./database";
 let express = require('express');
 let app = express();
 
@@ -9,20 +10,14 @@ let port = process.env.PORT || 8080;
 app.use('/', [express.static(__dirname + './../')]);
 
 // database
-let loki = require('lokijs');
-let db = new loki('PathExample');
-let person = db.addCollection('person');
-person.insert({key: 1, firstName:'Adam', familyName: 'Jones'});
-person.insert({key: 2, firstName:'Betty', familyName: 'Miller'});
-person.insert({key: 3, firstName:'Chris', familyName: 'Connor'});
-person.insert({key: 4, firstName:'Dave', familyName: 'Dean'});
+let database:Database = new Database();
 
 app.get('/services/ping', function(req, res) {
     res.json({ status: 'ok', userId : 'demo', version: '0.0.1' });
 });
 
 app.get('/services/person', function(req, res) {
-    res.json(person.find());
+    res.json(database.getPersons());
 });
 
 // set the home page route
