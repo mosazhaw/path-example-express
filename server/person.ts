@@ -23,7 +23,7 @@ export class Person extends Database {
 
     protected createPathListEntry(entry:PathListEntry, entity:any) {
         entry.name = entity.familyName + ' ' + entity.firstName;
-        entry.details.push('' + entity['$loki']); // must be string
+        entry.details.push('' + entry.key.key); // must be string
     }
 
 }
