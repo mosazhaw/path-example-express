@@ -1,4 +1,4 @@
-import {Database, PathListKey, PathListEntry} from "./database";
+import {Database, PathListEntry} from "./database";
 
 export class HobbyDatabase extends Database {
 

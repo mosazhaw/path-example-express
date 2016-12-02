@@ -24,6 +24,29 @@ export class GuiModel {
                             "required": true
                         },
                         {
+                            "id":   "company",
+                            "type": "autocomplete",
+                            "name": "Company",
+                            "wordSearchEnabled": true,
+                            "defaultKey": "companyKey",
+                            "form": "CompanyForm",
+                            "url": "/company",
+                            "width": 2
+                        },
+                        {
+                            "id": "evtBirth",
+                            "type": "date",
+                            "name": "Birthday",
+                            "width": 2
+                        },
+                        {
+                            "id": "comment",
+                            "type": "text",
+                            "name": "Comments",
+                            "width": 2,
+                            "height": 4
+                        },
+                        {
                             "type": "deleteButton",
                             "name": "Delete"
                         },

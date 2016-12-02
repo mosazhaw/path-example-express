@@ -1,4 +1,4 @@
-import {Database, PathListKey, PathListEntry} from "./database";
+import {Database, PathListEntry} from "./database";
 
 export class PersonDatabase extends Database {
 
@@ -7,10 +7,10 @@ export class PersonDatabase extends Database {
     constructor() {
         super();
         this._person = this.db.addCollection('person');
-        this._person.insert({firstName:'Adam', familyName: 'Jones'});
-        this._person.insert({firstName:'Betty', familyName: 'Miller'});
-        this._person.insert({firstName:'Chris', familyName: 'Connor'});
-        this._person.insert({firstName:'Dave', familyName: 'Dean'});
+        this._person.insert({firstName:'Adam', familyName: 'Jones', evtBirth: '2013-12-14T00:00:00.000Z'});
+        this._person.insert({firstName:'Betty', familyName: 'Miller', evtBirth: '2012-12-14T00:00:00.000Z'});
+        this._person.insert({firstName:'Chris', familyName: 'Connor', evtBirth: '1999-05-14T00:00:00.000Z'});
+        this._person.insert({firstName:'Dave', familyName: 'Dean', evtBirth: '1992-11-14T00:00:00.000Z'});
     }
 
     protected getCollection() : any {
