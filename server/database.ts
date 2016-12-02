@@ -18,7 +18,6 @@ export class Database {
         for (let person of this._person.find()) {
             let entry:PathListEntry = new PathListEntry();
             let key:PathListKey = new PathListKey();
-            console.log(person);
             key.key = person['$loki'];
             key.name = "personKey";
             entry.key = key;
