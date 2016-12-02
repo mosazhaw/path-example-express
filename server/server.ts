@@ -1,6 +1,9 @@
 import {Database} from "./database";
 let express = require('express');
+let bodyParser = require('body-parser');
 let app = express();
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 
 // set the port of our application
 // process.env.PORT lets the port be set by Heroku
@@ -18,6 +21,22 @@ app.get('/services/ping', function(req, res) {
 
 app.get('/services/person', function(req, res) {
     res.json(database.getPersons());
+});
+
+app.get('/services/person/:personKey', function(req, res) {
+    res.json(database.getPerson(parseInt(req.params.personKey)));
+});
+
+app.post('/services/person', function(req, res) {
+    res.json(database.createPerson(req.body));
+});
+
+app.put('/services/person/:personKey', function(req, res) {
+    res.json(database.updatePerson(parseInt(req.params.personKey), req.body));
+});
+
+app.delete('/services/person/:personKey', function(req, res) {
+    res.json(database.deletePerson(parseInt(req.params.personKey)));
 });
 
 // set the home page route

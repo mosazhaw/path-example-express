@@ -22,10 +22,46 @@ export class Database {
             key.name = "personKey";
             entry.key = key;
             entry.name = person.familyName + ' ' + person.firstName;
-            entry.details.push(person.key);
+            entry.details.push('' + person.key); // must be string
             result.push(entry);
         }
         return result;
+    }
+
+    public createPerson(data:any) : boolean {
+        this._person.insert(data);
+        return true;
+    }
+
+    public getPerson(personKey:number) : any {
+        let query:any = {};
+        query["key"] = personKey;
+        let result:any = this._person.findOne(query);
+        result = JSON.parse(JSON.stringify(result)); // clone
+
+        let key:PathListKey = new PathListKey();
+        key.key = result.key;
+        key.name = "personKey";
+        result.key = key;
+        return result;
+    }
+
+    public updatePerson(personKey:number, data:any) : boolean {
+        let query:any = {};
+        query["key"] = personKey;
+        let person:any = this._person.findOne(query);
+        person.firstName = data.firstName;
+        person.familyName = data.familyName;
+        this._person.update(person);
+        return true;
+    }
+
+    public deletePerson(personKey:number) {
+        let query:any = {};
+        query["key"] = personKey;
+        let person:any = this._person.findOne(query);
+        this._person.remove(person);
+        return true;
     }
 
 }

@@ -7,6 +7,7 @@ export class GuiModel {
                 {
                     "id": "PersonForm",
                     "title": "Person",
+                    "url": "/person",
                     "formFieldList": [
                         {
                             "id": "familyName",
