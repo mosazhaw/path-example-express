@@ -17,9 +17,11 @@ export abstract class Database {
 
     protected abstract createPathListEntry(entry:PathListEntry, entity:any);
 
+    protected abstract getSort() : any[];
+
     public list() : PathListEntry[] {
         let result:PathListEntry[] = [];
-        for (let person of this.getCollection().find()) {
+        for (let person of this.getCollection().chain().find().compoundsort(this.getSort()).data()) {
             let entry:PathListEntry = new PathListEntry();
             let key:PathListKey = new PathListKey();
             key.key = person['$loki'];

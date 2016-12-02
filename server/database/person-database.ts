@@ -21,6 +21,10 @@ export class PersonDatabase extends Database {
         return "personKey";
     }
 
+    protected getSort() : any[] {
+        return ['lastName','firstName'];
+    }
+
     protected createPathListEntry(entry:PathListEntry, entity:any) {
         entry.name = entity.familyName + ' ' + entity.firstName;
         entry.details.push('' + entry.key.key); // must be string
