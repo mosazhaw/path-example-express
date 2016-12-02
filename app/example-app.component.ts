@@ -31,7 +31,7 @@ export class ExampleAppComponent extends path.PathAppComponent {
     }
 
     protected getOwnUserForm():string {
-        return "HelloWorldForm";
+        return "UserForm";
     }
 
     protected getGuiModel() {

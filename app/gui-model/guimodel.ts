@@ -5,19 +5,47 @@ export class GuiModel {
             "title": "Path Example",
             "formList": [
                 {
-                    "id": "HelloWorldForm",
-                    "title": "HelloWorld",
+                    "id": "PersonForm",
+                    "title": "Person",
                     "formFieldList": [
                         {
                             "id": "name",
                             "type": "text",
-                            "name": "Person",
-                            "width": 2,
+                            "name": "FamilyName",
+                            "width": 1,
+                            "required": true
+                        },
+                        {
+                            "id": "name",
+                            "type": "text",
+                            "name": "FirstName",
+                            "width": 1,
                             "required": true
                         },
                         {
                             "type": "deleteButton",
                             "name": "Delete"
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
+                    "id": "UserForm",
+                    "title": "Person",
+                    "formFieldList": [
+                        {
+                            "id": "name",
+                            "type": "text",
+                            "name": "User",
+                            "width": 2,
+                            "required": true,
                         },
                         {
                             "type": "cancelButton",
@@ -37,13 +65,57 @@ export class GuiModel {
                     "elementList": [
                         {
                             "type": "button",
-                            "name": "Friends",
-                            "icon": "fa-fast-forward",
-                            "color": "alizarin",
-                            "form": {
-                                "form": "HelloWorldForm"
-                            }
+                            "name": "Contacts",
+                            "icon": "fa-user",
+                            "color": "blue",
+                            "page": "contactspage",
+                        },
+                        {
+                            "type": "button",
+                            "name": "Companies",
+                            "icon": "fa-industry",
+                            "color": "lime",
+                        },
+                        {
+                            "type": "button",
+                            "name": "Hobbies",
+                            "icon": "fa-industry",
+                            "color": "carrot",
+                        },
+                        {
+                            "type": "button",
+                            "name": "Tasks",
+                            "icon": "fa-tasks",
+                            "color": "wisteria",
                         }
+                    ]
+                },
+                {
+                    "id": "contactspage",
+                    "name": "Contacts",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "newButton",
+                            "name": "NewPerson",
+                            "icon": "fa-user",
+                            "color": "green",
+                            "form": {
+                                "form": "PersonForm"
+                            }
+                        },
+                        {
+                            "type": "list",
+                            "name": "PersonList",
+                            "icon": "fa-user",
+                            "color": "blue",
+                            "search": true,
+                            "form": {
+                                "form": "PersonForm"
+                            }
+                        },
                     ]
                 },
             ]

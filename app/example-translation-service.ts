@@ -19,11 +19,17 @@ export class ExampleTranslationService extends TranslationService {
         // put additional application translations here
         if (languageCode == "de") {
             return {
-                "Friends": "Freunde"
+                "Contacts": "Freunde",
+                "Companies": "Freunde",
+                "Hobbies": "Freunde",
+                "Tasks": "Freunde"
             }
         } else {
             return {
-                "Friends": "Friends",
+                "Contacts": "Contacts",
+                "Companies": "Companies",
+                "Hobbies": "Hobbies",
+                "Tasks": "Tasks"
             };
         }
     }
