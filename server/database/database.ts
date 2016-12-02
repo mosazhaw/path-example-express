@@ -44,10 +44,10 @@ export abstract class Database {
         let result:any = this.getCollection().findOne(query);
         result = JSON.parse(JSON.stringify(result)); // clone
 
-        let key:PathListKey = new PathListKey();
-        key.key = result.id;
-        key.name = this.getKeyName();
-        result.key = key;
+        let pathKey:PathListKey = new PathListKey();
+        pathKey.key = result.id;
+        pathKey.name = this.getKeyName();
+        result.key = pathKey;
         return result;
     }
 
