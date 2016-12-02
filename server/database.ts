@@ -1,68 +1,72 @@
-export class Database {
+import {LokiJS} from "./lokijs";
 
-    private _loki = require('lokijs');
-    private _db;
-    private _person;
+export abstract class Database {
+
+    private _db = LokiJS.getDatabase();
 
     constructor() {
-        this._db = new this._loki('PathExample');
-        this._person = this._db.addCollection('person');
-        this._person.insert({firstName:'Adam', familyName: 'Jones'});
-        this._person.insert({firstName:'Betty', familyName: 'Miller'});
-        this._person.insert({firstName:'Chris', familyName: 'Connor'});
-        this._person.insert({firstName:'Dave', familyName: 'Dean'});
     }
 
-    public getPersons() : any {
+    get db(): any {
+        return this._db;
+    }
+
+    protected abstract getCollection() : any;
+
+    protected abstract getKeyName() : string;
+
+    protected abstract createPathListEntry(entry:PathListEntry, entity:any);
+
+    public list() : PathListEntry[] {
         let result:PathListEntry[] = [];
-        for (let person of this._person.find()) {
+        for (let person of this.getCollection().find()) {
             let entry:PathListEntry = new PathListEntry();
             let key:PathListKey = new PathListKey();
             key.key = person['$loki'];
-            key.name = "personKey";
+            key.name = this.getKeyName();
             entry.key = key;
-            entry.name = person.familyName + ' ' + person.firstName;
-            entry.details.push('' + person['$loki']); // must be string
+            this.createPathListEntry(entry, person);
             result.push(entry);
         }
         return result;
     }
 
-    public createPerson(data:any) : boolean {
-        this._person.insert(data);
+    public create(data:any) : boolean {
+        this.getCollection().insert(data);
         return true;
     }
 
-    public getPerson(personKey:number) : any {
+    public read(personKey:number) : any {
         let query:any = {};
         query["$loki"] = personKey;
-        let result:any = this._person.findOne(query);
+        let result:any = this.getCollection().findOne(query);
         result = JSON.parse(JSON.stringify(result)); // clone
 
         let key:PathListKey = new PathListKey();
         key.key = result.id;
-        key.name = "personKey";
+        key.name = this.getKeyName();
         result.key = key;
         return result;
     }
 
-    public updatePerson(personKey:number, data:any) : boolean {
+    public update(personKey:number, data:any) : boolean {
         let query:any = {};
         query["$loki"] = personKey;
-        let person:any = this._person.findOne(query);
+        let person:any = this.getCollection().findOne(query);
         person.firstName = data.firstName;
         person.familyName = data.familyName;
-        this._person.update(person);
+        this.getCollection().update(person);
         return true;
     }
 
-    public deletePerson(personKey:number) {
+    public delete(personKey:number) {
         let query:any = {};
         query["$loki"] = personKey;
-        let person:any = this._person.findOne(query);
-        this._person.remove(person);
+        let person:any = this.getCollection().findOne(query);
+        this.getCollection().remove(person);
         return true;
     }
+
 
 }
 
