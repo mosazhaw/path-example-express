@@ -21,13 +21,13 @@ export abstract class Database {
 
     public list() : PathListEntry[] {
         let result:PathListEntry[] = [];
-        for (let person of this.getCollection().chain().find().compoundsort(this.getSort()).data()) {
+        for (let entity of this.getCollection().chain().find().compoundsort(this.getSort()).data()) {
             let entry:PathListEntry = new PathListEntry();
             let key:PathListKey = new PathListKey();
-            key.key = person['$loki'];
+            key.key = entity['$loki'];
             key.name = this.getKeyName();
             entry.key = key;
-            this.createPathListEntry(entry, person);
+            this.createPathListEntry(entry, entity);
             result.push(entry);
         }
         return result;
@@ -38,9 +38,9 @@ export abstract class Database {
         return true;
     }
 
-    public read(personKey:number) : any {
+    public read(key:number) : any {
         let query:any = {};
-        query["$loki"] = personKey;
+        query["$loki"] = key;
         let result:any = this.getCollection().findOne(query);
         result = JSON.parse(JSON.stringify(result)); // clone
 
@@ -51,21 +51,24 @@ export abstract class Database {
         return result;
     }
 
-    public update(personKey:number, data:any) : boolean {
+    public update(key:number, data:any) : boolean {
         let query:any = {};
-        query["$loki"] = personKey;
-        let person:any = this.getCollection().findOne(query);
-        person.firstName = data.firstName;
-        person.familyName = data.familyName;
-        this.getCollection().update(person);
+        query["$loki"] = key;
+        let entity:any = this.getCollection().findOne(query);
+        for (var element in data) {
+            if (data.hasOwnProperty(element)) {
+                entity[element] = data[element];
+            }
+        }
+        this.getCollection().update(entity);
         return true;
     }
 
-    public delete(personKey:number) {
+    public delete(key:number) {
         let query:any = {};
-        query["$loki"] = personKey;
-        let person:any = this.getCollection().findOne(query);
-        this.getCollection().remove(person);
+        query["$loki"] = key;
+        let entity:any = this.getCollection().findOne(query);
+        this.getCollection().remove(entity);
         return true;
     }
 

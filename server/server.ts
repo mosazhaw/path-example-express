@@ -1,4 +1,6 @@
 import {PersonDatabase} from "./database/person-database";
+import {Database} from "./database/database";
+import {CompanyDatabase} from "./database/company-database";
 
 let express = require('express');
 let bodyParser = require('body-parser');
@@ -13,32 +15,34 @@ let port = process.env.PORT || 8080;
 // make express look in the public directory for assets (css/js/img)
 app.use('/', [express.static(__dirname + './../')]);
 
-// database
-let personDatabase:PersonDatabase = new PersonDatabase();
-
 app.get('/services/ping', function(req, res) {
     res.json({ status: 'ok', userId : 'demo', version: '0.0.1' });
 });
 
-app.get('/services/person', function(req, res) {
-    res.json(personDatabase.list());
-});
+function addCrudServices(entity:string, database:Database) {
+    app.get('/services/' + entity, function(req, res) {
+        res.json(database.list());
+    });
 
-app.get('/services/person/:personKey', function(req, res) {
-    res.json(personDatabase.read(parseInt(req.params.personKey)));
-});
+    app.get('/services/'+entity+'/:key', function(req, res) {
+        res.json(database.read(parseInt(req.params.key)));
+    });
 
-app.post('/services/person', function(req, res) {
-    res.json(personDatabase.create(req.body));
-});
+    app.post('/services/'+entity, function(req, res) {
+        res.json(database.create(req.body));
+    });
 
-app.put('/services/person/:personKey', function(req, res) {
-    res.json(personDatabase.update(parseInt(req.params.personKey), req.body));
-});
+    app.put('/services/'+entity+'/:key', function(req, res) {
+        res.json(database.update(parseInt(req.params.key), req.body));
+    });
 
-app.delete('/services/person/:personKey', function(req, res) {
-    res.json(personDatabase.delete(parseInt(req.params.personKey)));
-});
+    app.delete('/services/'+entity+'/:key', function(req, res) {
+        res.json(database.delete(parseInt(req.params.key)));
+    });
+}
+
+addCrudServices("person", new PersonDatabase());
+addCrudServices("company", new CompanyDatabase());
 
 // set the home page route
 app.get('/', function(req, res) {

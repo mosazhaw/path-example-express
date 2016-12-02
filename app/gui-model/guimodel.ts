@@ -38,6 +38,39 @@ export class GuiModel {
                     ]
                 },
                 {
+                    "id": "CompanyForm",
+                    "title": "Company",
+                    "url": "/company",
+                    "formFieldList": [
+                        {
+                            "id": "name",
+                            "type": "text",
+                            "name": "CompanyName",
+                            "width": 2,
+                            "required": true
+                        },
+                        {
+                            "id": "city",
+                            "type": "text",
+                            "name": "City",
+                            "width": 2,
+                            "required": true
+                        },
+                        {
+                            "type": "deleteButton",
+                            "name": "Delete"
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
                     "id": "UserForm",
                     "title": "Person",
                     "formFieldList": [
@@ -76,6 +109,7 @@ export class GuiModel {
                             "name": "Companies",
                             "icon": "fa-industry",
                             "color": "lime",
+                            "page": "companiespage",
                         },
                         {
                             "type": "button",
@@ -116,6 +150,35 @@ export class GuiModel {
                             "url": "/person",
                             "form": {
                                 "form": "PersonForm"
+                            }
+                        },
+                    ]
+                },
+                {
+                    "id": "companiespage",
+                    "name": "Companies",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "newButton",
+                            "name": "NewCompany",
+                            "icon": "fa-industry",
+                            "color": "green",
+                            "form": {
+                                "form": "CompanyForm"
+                            }
+                        },
+                        {
+                            "type": "list",
+                            "name": "CompanyList",
+                            "icon": "fa-industry",
+                            "color": "lime",
+                            "search": true,
+                            "url": "/company",
+                            "form": {
+                                "form": "CompanyForm"
                             }
                         },
                     ]
