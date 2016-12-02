@@ -1,17 +1,15 @@
 import {Database, PathListEntry} from "./database";
 
-export class HobbyDatabase extends Database {
+export class TaskDatabase extends Database {
 
     private _collection;
 
     constructor() {
         super();
-        this._collection = this.db.addCollection('hobby');
-        this._collection.insert({name:'Golf'});
-        this._collection.insert({name:'Snowboard'});
-        this._collection.insert({name:'Ski'});
-        this._collection.insert({name:'Running'});
-        this._collection.insert({name:'Orienteering'});
+        this._collection = this.db.addCollection('task');
+        this._collection.insert({name:'Prepare dinner'});
+        this._collection.insert({name:'Meeting'});
+        this._collection.insert({name:'Shopping'});
     }
 
     protected getCollection() : any {
@@ -19,7 +17,7 @@ export class HobbyDatabase extends Database {
     }
 
     protected getKeyName() : string {
-        return "hobbyKey";
+        return "taskKey";
     }
 
     protected getSort() : any[] {

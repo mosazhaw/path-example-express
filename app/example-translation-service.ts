@@ -26,7 +26,10 @@ export class ExampleTranslationService extends TranslationService {
                 "Hobby": "Hobby",
                 "HobbyName": "Hobby Name",
                 "NewHobby": "Neues Hobby",
-                "Tasks": "Aufgaben"
+                "NewTask": "Neue Aufgabe",
+                "Tasks": "Aufgaben",
+                "Task": "Aufgabe",
+                "TaskName": "Aufgabe Name",
             }
         } else {
             return {
@@ -37,7 +40,10 @@ export class ExampleTranslationService extends TranslationService {
                 "Hobby": "Hobby",
                 "HobbyName": "Hobby Name",
                 "NewHobby": "New Hobby",
-                "Tasks": "Tasks"
+                "NewTask": "New Task",
+                "Tasks": "Tasks",
+                "Task": "Task",
+                "TaskName": "Task Name",
             };
         }
     }

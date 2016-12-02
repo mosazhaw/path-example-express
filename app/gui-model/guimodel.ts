@@ -120,6 +120,32 @@ export class GuiModel {
                     ]
                 },
                 {
+                    "id": "TaskForm",
+                    "title": "Task",
+                    "url": "/task",
+                    "formFieldList": [
+                        {
+                            "id": "name",
+                            "type": "text",
+                            "name": "TaskName",
+                            "width": 2,
+                            "required": true
+                        },
+                        {
+                            "type": "deleteButton",
+                            "name": "Delete"
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
                     "id": "UserForm",
                     "title": "Person",
                     "formFieldList": [
@@ -172,6 +198,7 @@ export class GuiModel {
                             "name": "Tasks",
                             "icon": "fa-tasks",
                             "color": "wisteria",
+                            "page": "taskspage",
                         }
                     ]
                 },
@@ -258,6 +285,35 @@ export class GuiModel {
                             "url": "/hobby",
                             "form": {
                                 "form": "HobbyForm"
+                            }
+                        },
+                    ]
+                },
+                {
+                    "id": "taskspage",
+                    "name": "Tasks",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "newButton",
+                            "name": "NewTask",
+                            "icon": "fa-tasks",
+                            "color": "green",
+                            "form": {
+                                "form": "TaskForm"
+                            }
+                        },
+                        {
+                            "type": "list",
+                            "name": "TaskList",
+                            "icon": "fa-tasks",
+                            "color": "wisteria",
+                            "search": true,
+                            "url": "/task",
+                            "form": {
+                                "form": "TaskForm"
                             }
                         },
                     ]
