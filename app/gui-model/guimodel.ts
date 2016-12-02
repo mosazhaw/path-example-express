@@ -9,14 +9,14 @@ export class GuiModel {
                     "title": "Person",
                     "formFieldList": [
                         {
-                            "id": "name",
+                            "id": "familyName",
                             "type": "text",
                             "name": "FamilyName",
                             "width": 1,
                             "required": true
                         },
                         {
-                            "id": "name",
+                            "id": "firstName",
                             "type": "text",
                             "name": "FirstName",
                             "width": 1,
@@ -112,6 +112,7 @@ export class GuiModel {
                             "icon": "fa-user",
                             "color": "blue",
                             "search": true,
+                            "url": "/person",
                             "form": {
                                 "form": "PersonForm"
                             }

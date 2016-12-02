@@ -26,8 +26,8 @@
     "npm": "3.8.5"
   },
   "scripts": {
-    "start": "nodemon server.js",
-    "start-dev": "tsc && concurrently \"npm run tsc:w\" \"nodemon server.js\" ",
+    "start": "nodemon server/server.js",
+    "start-dev": "tsc && concurrently \"npm run tsc:w\" \"nodemon server/server.js\" ",
     "heroku-postbuild": "tsc --project tsconfig.json",
     "lite": "lite-server",
     "test": "karma start karma.conf.js",
@@ -37,6 +37,7 @@
     "typings": "typings"
   },
   "dependencies": {
+    "lokijs": "^1.4.1",
     "path-framework": "0.0.4"
   },
   "devDependencies": {
