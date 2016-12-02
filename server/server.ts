@@ -1,6 +1,7 @@
-import {PersonDatabase} from "./database/person-database";
 import {Database} from "./database/database";
+import {PersonDatabase} from "./database/person-database";
 import {CompanyDatabase} from "./database/company-database";
+import {HobbyDatabase} from "./database/hobby-database";
 
 let express = require('express');
 let bodyParser = require('body-parser');
@@ -43,6 +44,7 @@ function addCrudServices(entity:string, database:Database) {
 
 addCrudServices("person", new PersonDatabase());
 addCrudServices("company", new CompanyDatabase());
+addCrudServices("hobby", new HobbyDatabase());
 
 // set the home page route
 app.get('/', function(req, res) {

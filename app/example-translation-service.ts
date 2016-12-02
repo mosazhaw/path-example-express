@@ -20,15 +20,21 @@ export class ExampleTranslationService extends TranslationService {
         if (languageCode == "de") {
             return {
                 "Contacts": "Freunde",
-                "Companies": "Freunde",
-                "Hobbies": "Freunde",
-                "Tasks": "Freunde"
+                "Companies": "Firmen",
+                "Hobbies": "Hobbys",
+                "Hobby": "Hobby",
+                "HobbyName": "Hobby Name",
+                "NewHobby": "Neues Hobby",
+                "Tasks": "Aufgaben"
             }
         } else {
             return {
                 "Contacts": "Contacts",
                 "Companies": "Companies",
                 "Hobbies": "Hobbies",
+                "Hobby": "Hobby",
+                "HobbyName": "Hobby Name",
+                "NewHobby": "New Hobby",
                 "Tasks": "Tasks"
             };
         }

@@ -71,6 +71,32 @@ export class GuiModel {
                     ]
                 },
                 {
+                    "id": "HobbyForm",
+                    "title": "Hobby",
+                    "url": "/hobby",
+                    "formFieldList": [
+                        {
+                            "id": "name",
+                            "type": "text",
+                            "name": "HobbyName",
+                            "width": 2,
+                            "required": true
+                        },
+                        {
+                            "type": "deleteButton",
+                            "name": "Delete"
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
                     "id": "UserForm",
                     "title": "Person",
                     "formFieldList": [
@@ -114,8 +140,9 @@ export class GuiModel {
                         {
                             "type": "button",
                             "name": "Hobbies",
-                            "icon": "fa-industry",
+                            "icon": "fa-bicycle",
                             "color": "carrot",
+                            "page": "hobbiespage",
                         },
                         {
                             "type": "button",
@@ -179,6 +206,35 @@ export class GuiModel {
                             "url": "/company",
                             "form": {
                                 "form": "CompanyForm"
+                            }
+                        },
+                    ]
+                },
+                {
+                    "id": "hobbiespage",
+                    "name": "Hobbies",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "newButton",
+                            "name": "NewHobby",
+                            "icon": "fa-bicycle",
+                            "color": "green",
+                            "form": {
+                                "form": "HobbyForm"
+                            }
+                        },
+                        {
+                            "type": "list",
+                            "name": "HobbyList",
+                            "icon": "fa-bicycle",
+                            "color": "carrot",
+                            "search": true,
+                            "url": "/hobby",
+                            "form": {
+                                "form": "HobbyForm"
                             }
                         },
                     ]
