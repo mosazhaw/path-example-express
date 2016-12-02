@@ -1,6 +1,6 @@
 import {Database, PathListKey, PathListEntry} from "./database";
 
-export class Person extends Database {
+export class PersonDatabase extends Database {
 
     private _person;
 

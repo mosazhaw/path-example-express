@@ -1,4 +1,4 @@
-import {Person} from "./person";
+import {PersonDatabase} from "./database/person-database";
 
 let express = require('express');
 let bodyParser = require('body-parser');
@@ -14,30 +14,30 @@ let port = process.env.PORT || 8080;
 app.use('/', [express.static(__dirname + './../')]);
 
 // database
-let database:Person = new Person();
+let personDatabase:PersonDatabase = new PersonDatabase();
 
 app.get('/services/ping', function(req, res) {
     res.json({ status: 'ok', userId : 'demo', version: '0.0.1' });
 });
 
 app.get('/services/person', function(req, res) {
-    res.json(database.list());
+    res.json(personDatabase.list());
 });
 
 app.get('/services/person/:personKey', function(req, res) {
-    res.json(database.read(parseInt(req.params.personKey)));
+    res.json(personDatabase.read(parseInt(req.params.personKey)));
 });
 
 app.post('/services/person', function(req, res) {
-    res.json(database.create(req.body));
+    res.json(personDatabase.create(req.body));
 });
 
 app.put('/services/person/:personKey', function(req, res) {
-    res.json(database.update(parseInt(req.params.personKey), req.body));
+    res.json(personDatabase.update(parseInt(req.params.personKey), req.body));
 });
 
 app.delete('/services/person/:personKey', function(req, res) {
-    res.json(database.delete(parseInt(req.params.personKey)));
+    res.json(personDatabase.delete(parseInt(req.params.personKey)));
 });
 
 // set the home page route
