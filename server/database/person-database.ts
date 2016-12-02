@@ -22,7 +22,7 @@ export class PersonDatabase extends Database {
     }
 
     protected getSort() : any[] {
-        return ['lastName','firstName'];
+        return ['firstName', 'lastName'];
     }
 
     protected createPathListEntry(entry:PathListEntry, entity:any) {
