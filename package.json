@@ -39,7 +39,7 @@
   "dependencies": {
     "body-parser": "^1.15.2",
     "lokijs": "^1.4.1",
-    "path-framework": "0.0.7"
+    "path-framework": "0.0.10"
   },
   "devDependencies": {
     "browserify": "13.0.1",
