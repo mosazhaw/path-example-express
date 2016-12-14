@@ -14,7 +14,7 @@ export class PersonDatabase extends Database {
     }
 
     protected getSort() : any[] {
-        return ['name'];
+        return ['familyName', 'firstName'];
     }
 
     protected createPathListEntry(entry:PathListEntry, entity:any) {

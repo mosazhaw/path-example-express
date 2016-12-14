@@ -30,7 +30,13 @@ export abstract class Database {
     protected initList()  {
         let service = this;
         this._app.get('/services/'+this.getEntityName()+'', (req, res) => {
-            service._database.allDocs({include_docs: true}).then((docs) => {
+            service._database.query((doc, emit) => {
+                let emitString:string = '';
+                for (let sort of service.getSort()) {
+                    emitString += doc[sort];
+                }
+                emit(emitString);
+            }, {include_docs: true}).then((docs) => {
                 let result:PathListEntry[] = [];
                 for (let item of docs["rows"]) {
                     let entry:PathListEntry = new PathListEntry();
