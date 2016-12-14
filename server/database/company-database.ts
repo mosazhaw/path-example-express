@@ -2,23 +2,15 @@ import {Database, PathListEntry} from "./database";
 
 export class CompanyDatabase extends Database {
 
-    private _collection;
-
-    constructor() {
-        super();
-        this._collection = this.db.addCollection('company');
-        this._collection.insert({name:'Company A', city: 'Winterthur'});
-        this._collection.insert({name:'ZHAW', city: 'Winterthur'});
-        this._collection.insert({name:'Company B', city: 'Zürich'});
-        this._collection.insert({name:'Company C', city: 'Frauenfeld'});
+    protected createTestData(db) {
+        db.post({name:'Company A', city: 'Winterthur'});
+        db.post({name:'ZHAW', city: 'Winterthur'});
+        db.post({name:'Company B', city: 'Zürich'});
+        db.post({name:'Company C', city: 'Frauenfeld'});
     }
 
-    protected getCollection() : any {
-        return this._collection;
-    }
-
-    protected getKeyName() : string {
-        return "companyKey";
+    protected getEntityName() {
+        return "company";
     }
 
     protected getSort() : any[] {

@@ -2,24 +2,16 @@ import {Database, PathListEntry} from "./database";
 
 export class HobbyDatabase extends Database {
 
-    private _collection;
-
-    constructor() {
-        super();
-        this._collection = this.db.addCollection('hobby');
-        this._collection.insert({name:'Golf'});
-        this._collection.insert({name:'Snowboard'});
-        this._collection.insert({name:'Ski'});
-        this._collection.insert({name:'Running'});
-        this._collection.insert({name:'Orienteering'});
+    protected createTestData(db) {
+        db.post({name:'Golf'});
+        db.post({name:'Orienteering'});
+        db.post({name:'Running'});
+        db.post({name:'Ski'});
+        db.post({name:'Snowboard'});
     }
 
-    protected getCollection() : any {
-        return this._collection;
-    }
-
-    protected getKeyName() : string {
-        return "hobbyKey";
+    protected getEntityName() {
+        return "hobby";
     }
 
     protected getSort() : any[] {
@@ -28,7 +20,6 @@ export class HobbyDatabase extends Database {
 
     protected createPathListEntry(entry:PathListEntry, entity:any) {
         entry.name = entity.name;
-        entry.details.push('' + entry.key.key); // must be string
     }
 
 }

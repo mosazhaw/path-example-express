@@ -2,22 +2,14 @@ import {Database, PathListEntry} from "./database";
 
 export class TaskDatabase extends Database {
 
-    private _collection;
-
-    constructor() {
-        super();
-        this._collection = this.db.addCollection('task');
-        this._collection.insert({name:'Prepare dinner'});
-        this._collection.insert({name:'Meeting'});
-        this._collection.insert({name:'Shopping'});
+    protected createTestData(db) {
+        db.post({name:'Meeting'});
+        db.post({name:'Prepare dinner'});
+        db.post({name:'Shopping'});
     }
 
-    protected getCollection() : any {
-        return this._collection;
-    }
-
-    protected getKeyName() : string {
-        return "taskKey";
+    protected getEntityName() {
+        return "task";
     }
 
     protected getSort() : any[] {
@@ -26,7 +18,6 @@ export class TaskDatabase extends Database {
 
     protected createPathListEntry(entry:PathListEntry, entity:any) {
         entry.name = entity.name;
-        entry.details.push('' + entry.key.key); // must be string
     }
 
 }

@@ -1,77 +1,111 @@
-import {LokiJS} from "./lokijs";
-
 export abstract class Database {
 
-    private _db = LokiJS.getDatabase();
+    private _database;
 
-    constructor() {
+    constructor(private _app) {
+        // create entity database
+        var PouchDB = require('pouchdb');
+        PouchDB.plugin(require('pouchdb-adapter-memory'));
+        this._database = new PouchDB(this.getEntityName(), {adapter: 'memory'});
+        this.createTestData(this._database);
     }
 
-    get db(): any {
-        return this._db;
+    public init() {
+        this.initList();
+        this.initCreate();
+        this.initRead();
+        this.initUpdate();
+        this.initDelete();
     }
 
-    protected abstract getCollection() : any;
+    protected createTestData(db) {
+    }
 
-    protected abstract getKeyName() : string;
+    protected abstract getEntityName() : string;
 
     protected abstract createPathListEntry(entry:PathListEntry, entity:any);
 
     protected abstract getSort() : any[];
 
-    public list() : PathListEntry[] {
-        let result:PathListEntry[] = [];
-        for (let entity of this.getCollection().chain().find().compoundsort(this.getSort()).data()) {
-            let entry:PathListEntry = new PathListEntry();
-            let key:PathListKey = new PathListKey();
-            key.key = entity['$loki'];
-            key.name = this.getKeyName();
-            entry.key = key;
-            this.createPathListEntry(entry, entity);
-            result.push(entry);
-        }
-        return result;
+    protected initList()  {
+        let service = this;
+        this._app.get('/services/'+this.getEntityName()+'', (req, res) => {
+            service._database.allDocs({include_docs: true}).then((docs) => {
+                let result:PathListEntry[] = [];
+                for (let item of docs["rows"]) {
+                    let entry:PathListEntry = new PathListEntry();
+                    let key:PathListKey = new PathListKey();
+                    key.key = item.id;
+                    key.name = service.getEntityName() + "Key";
+                    entry.key = key;
+                    service.createPathListEntry(entry, item["doc"]);
+                    result.push(entry);
+                }
+                res.json(result);
+            }).catch(function (err) {
+                console.log(err);
+            });
+        });
     }
 
-    public create(data:any) : boolean {
-        this.getCollection().insert(data);
-        return true;
+    protected initCreate() {
+        let service = this;
+        this._app.post('/services/'+this.getEntityName()+'', (req, res) => {
+            let key:string = req.params.key;
+            service._database.post(req.body).then((newDoc) => {
+                res.json(newDoc);
+            }).catch((err) => {
+                console.log(err);
+            });
+        });
     }
 
-    public read(key:number) : any {
-        let query:any = {};
-        query["$loki"] = key;
-        let result:any = this.getCollection().findOne(query);
-        result = JSON.parse(JSON.stringify(result)); // clone
-
-        let pathKey:PathListKey = new PathListKey();
-        pathKey.key = result.id;
-        pathKey.name = this.getKeyName();
-        result.key = pathKey;
-        return result;
+    protected initRead() {
+        let service = this;
+        this._app.get('/services/'+this.getEntityName()+'/:key', (req, res) => {
+            let key:string = req.params.key;
+            service._database.get(key).then((doc) => {
+                res.json(doc);
+            }).catch((err) => {
+                console.log(err);
+            });
+        });
     }
 
-    public update(key:number, data:any) : boolean {
-        let query:any = {};
-        query["$loki"] = key;
-        let entity:any = this.getCollection().findOne(query);
-        for (var element in data) {
-            if (data.hasOwnProperty(element)) {
-                entity[element] = data[element];
-            }
-        }
-        this.getCollection().update(entity);
-        return true;
+    protected initUpdate() {
+        let service = this;
+        this._app.put('/services/'+this.getEntityName()+'/:key', (req, res) => {
+            let key:string = req.params.key;
+            service._database.get(key).then((doc) => {
+                let updatedDoc = req.body;
+                updatedDoc._rev = doc._rev;
+                updatedDoc._id = doc._id;
+                service._database.put(req.body).then((result) => {
+                    res.json(result);
+                }).catch((err) => {
+                    console.log(err);
+                });
+            }).catch((err) => {
+                console.log(err);
+            });
+        });
     }
 
-    public delete(key:number) {
-        let query:any = {};
-        query["$loki"] = key;
-        let entity:any = this.getCollection().findOne(query);
-        this.getCollection().remove(entity);
-        return true;
+    protected initDelete() {
+        let service = this;
+        this._app.delete('/services/'+this.getEntityName()+'/:key', (req, res) => {
+            let key:string = req.params.key;
+            service._database.get(key).then(function(doc) {
+                service._database.remove(doc).then((response) => {
+                    res.json({message: 'deleted'});
+                }).catch((err) => {
+                    console.log(err);
+                });
+            }).catch((err) => {
+                console.log(err);
+            });
+        });
     }
-
 
 }
 

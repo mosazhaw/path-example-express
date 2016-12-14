@@ -1,8 +1,7 @@
-import {Database} from "./database/database";
 import {PersonDatabase} from "./database/person-database";
 import {CompanyDatabase} from "./database/company-database";
-import {HobbyDatabase} from "./database/hobby-database";
 import {TaskDatabase} from "./database/task-database";
+import {HobbyDatabase} from "./database/hobby-database";
 
 let express = require('express');
 let bodyParser = require('body-parser');
@@ -21,32 +20,11 @@ app.get('/services/ping', function(req, res) {
     res.json({ status: 'ok', userId : 'demo', version: '0.0.1' });
 });
 
-function addCrudServices(entity:string, database:Database) {
-    app.get('/services/' + entity, function(req, res) {
-        res.json(database.list());
-    });
-
-    app.get('/services/'+entity+'/:key', function(req, res) {
-        res.json(database.read(parseInt(req.params.key)));
-    });
-
-    app.post('/services/'+entity, function(req, res) {
-        res.json(database.create(req.body));
-    });
-
-    app.put('/services/'+entity+'/:key', function(req, res) {
-        res.json(database.update(parseInt(req.params.key), req.body));
-    });
-
-    app.delete('/services/'+entity+'/:key', function(req, res) {
-        res.json(database.delete(parseInt(req.params.key)));
-    });
-}
-
-addCrudServices("person", new PersonDatabase());
-addCrudServices("company", new CompanyDatabase());
-addCrudServices("hobby", new HobbyDatabase());
-addCrudServices("task", new TaskDatabase());
+// entities
+new PersonDatabase(app).init();
+new CompanyDatabase(app).init();
+new TaskDatabase(app).init();
+new HobbyDatabase(app).init();
 
 // set the home page route
 app.get('/', function(req, res) {

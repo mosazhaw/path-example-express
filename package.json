@@ -38,8 +38,9 @@
   },
   "dependencies": {
     "body-parser": "^1.15.2",
-    "lokijs": "^1.4.1",
-    "path-framework": "0.0.10"
+    "path-framework": "0.0.12",
+    "pouchdb": "^6.0.7",
+    "pouchdb-adapter-memory": "^6.1.0"
   },
   "devDependencies": {
     "browserify": "13.0.1",
