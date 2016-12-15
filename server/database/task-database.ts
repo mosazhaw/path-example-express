@@ -2,12 +2,6 @@ import {Database, PathListEntry} from "./database";
 
 export class TaskDatabase extends Database {
 
-    protected createTestData() {
-        this.create({name:'Meeting'});
-        this.create({name:'Prepare dinner'});
-        this.create({name:'Shopping'});
-    }
-
     protected getEntityName() {
         return "task";
     }

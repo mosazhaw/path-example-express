@@ -3,6 +3,7 @@ import {CompanyDatabase} from "./database/company-database";
 import {TaskDatabase} from "./database/task-database";
 import {HobbyDatabase} from "./database/hobby-database";
 import {Database} from "./database/database";
+import {TestData} from "./database/test-data";
 
 let express = require('express');
 let bodyParser = require('body-parser');
@@ -27,6 +28,7 @@ new PersonDatabase(app).init();
 new CompanyDatabase(app).init();
 new TaskDatabase(app).init();
 new HobbyDatabase(app).init();
+TestData.init();
 
 // set the home page route
 app.get('/', function(req, res) {

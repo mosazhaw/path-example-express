@@ -2,13 +2,6 @@ import {Database, PathListEntry} from "./database";
 
 export class PersonDatabase extends Database {
 
-    protected createTestData() {
-        this.create({firstName:'Adam', familyName: 'Jones'});
-        this.create({firstName:'Betty', familyName: 'Miller'});
-        this.create({firstName:'Chris', familyName: 'Connor'});
-        this.create({firstName:'Dave', familyName: 'Dean'});
-    }
-
     protected getEntityName() {
         return "person";
     }

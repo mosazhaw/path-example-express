@@ -3,7 +3,6 @@ export abstract class Database {
     protected static _database;
 
     constructor(private _app) {
-        this.createTestData();
     }
 
     public static initDatabase() {
@@ -18,9 +17,6 @@ export abstract class Database {
         this.initRead();
         this.initUpdate();
         this.initDelete();
-    }
-
-    protected createTestData() {
     }
 
     protected abstract getEntityName(): string;
@@ -82,16 +78,16 @@ export abstract class Database {
         });
     }
 
-    protected create(data: any): Promise<any> {
+    public create(data: any): Promise<any> {
         data._id = this.getEntityName() + '_' + this.generateUUID();
         return Database._database.post(data);
     }
 
-    protected read(key: any): Promise<any> {
+    public read(key: any): Promise<any> {
         return Database._database.get(key);
     }
 
-    protected update(key: any, data: string): Promise<any> {
+    public update(key: any, data: string): Promise<any> {
         return Database._database.get(key).then((doc) => {
             let updatedDoc: any = data;
             updatedDoc._rev = doc._rev;
@@ -100,7 +96,7 @@ export abstract class Database {
         });
     }
 
-    protected delete(key: any): Promise<any> {
+    public delete(key: any): Promise<any> {
         return Database._database.get(key).then(function (doc) {
             return Database._database.remove(doc);
         })
