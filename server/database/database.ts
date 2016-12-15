@@ -82,27 +82,44 @@ export abstract class Database {
         });
     }
 
-    protected initCreate() {
-        this._app.post('/services/' + this.getEntityName() + '', (req, res) => {
-            this.create(req.body, res);
-        });
-    }
-
-    protected create(data: any, response) {
+    protected create(data: any): Promise<any> {
         data._id = this.getEntityName() + '_' + this.generateUUID();
-        Database._database.post(data).then((newDoc) => {
-            if (response != null && response["json"] != null) {
-                response.json(newDoc);
-            }
-        }).catch((err) => {
-            console.log(err);
+        return Database._database.post(data);
+    }
+
+    protected read(key: any): Promise<any> {
+        return Database._database.get(key);
+    }
+
+    protected update(key: any, data: string): Promise<any> {
+        return Database._database.get(key).then((doc) => {
+            let updatedDoc: any = data;
+            updatedDoc._rev = doc._rev;
+            updatedDoc._id = doc._id;
+            return Database._database.put(updatedDoc);
         });
     }
 
-    protected initRead() {
+    protected delete(key: any): Promise<any> {
+        return Database._database.get(key).then(function (doc) {
+            return Database._database.remove(doc);
+        })
+    }
+
+    private initCreate() {
+        this._app.post('/services/' + this.getEntityName() + '', (req, res) => {
+            this.create(req.body).then((newDoc) => {
+                res.json(newDoc);
+            }).catch((err) => {
+                console.log(err);
+            });
+        });
+    }
+
+    private initRead() {
         this._app.get('/services/' + this.getEntityName() + '/:key', (req, res) => {
             let key: string = req.params.key;
-            Database._database.get(key).then((doc) => {
+            this.read(key).then((doc) => {
                 res.json(doc);
             }).catch((err) => {
                 console.log(err);
@@ -110,40 +127,29 @@ export abstract class Database {
         });
     }
 
-    protected initUpdate() {
+    private initUpdate() {
         this._app.put('/services/' + this.getEntityName() + '/:key', (req, res) => {
             let key: string = req.params.key;
-            Database._database.get(key).then((doc) => {
-                let updatedDoc = req.body;
-                updatedDoc._rev = doc._rev;
-                updatedDoc._id = doc._id;
-                Database._database.put(req.body).then((result) => {
-                    res.json(result);
-                }).catch((err) => {
-                    console.log(err);
-                });
+            this.update(key, req.body).then((doc) => {
+                res.json(doc);
             }).catch((err) => {
                 console.log(err);
             });
         });
     }
 
-    protected initDelete() {
+    private initDelete() {
         this._app.delete('/services/' + this.getEntityName() + '/:key', (req, res) => {
             let key: string = req.params.key;
-            Database._database.get(key).then(function (doc) {
-                Database._database.remove(doc).then((response) => {
-                    res.json({message: 'deleted'});
-                }).catch((err) => {
-                    console.log(err);
-                });
+            this.delete(key).then((doc) => {
+                res.json({message: 'deleted'});
             }).catch((err) => {
                 console.log(err);
             });
         });
     }
 
-    protected generateUUID() {
+    private generateUUID() {
         return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
             var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
             return v.toString(16);

@@ -3,11 +3,11 @@ import {Database, PathListEntry} from "./database";
 export class HobbyDatabase extends Database {
 
     protected createTestData() {
-        this.create({name:'Golf'}, null);
-        this.create({name:'Orienteering'}, null);
-        this.create({name:'Running'}, null);
-        this.create({name:'Ski'}, null);
-        this.create({name:'Snowboard'}, null);
+        this.create({name:'Golf'});
+        this.create({name:'Orienteering'});
+        this.create({name:'Running'});
+        this.create({name:'Ski'});
+        this.create({name:'Snowboard'});
     }
 
     protected getEntityName() {

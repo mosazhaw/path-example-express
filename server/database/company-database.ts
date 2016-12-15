@@ -3,10 +3,10 @@ import {Database, PathListEntry} from "./database";
 export class CompanyDatabase extends Database {
 
     protected createTestData() {
-        this.create({name: 'Company A', city: 'Winterthur'}, null);
-        this.create({name: 'ZHAW', city: 'Winterthur'}, null);
-        this.create({name: 'Company B', city: 'Zürich'}, null);
-        this.create({name: 'Company C', city: 'Frauenfeld'}, null);
+        this.create({name: 'Company A', city: 'Winterthur'});
+        this.create({name: 'ZHAW', city: 'Winterthur'});
+        this.create({name: 'Company B', city: 'Zürich'});
+        this.create({name: 'Company C', city: 'Frauenfeld'});
     }
 
     protected getEntityName() {

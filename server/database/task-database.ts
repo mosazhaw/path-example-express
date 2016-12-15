@@ -3,9 +3,9 @@ import {Database, PathListEntry} from "./database";
 export class TaskDatabase extends Database {
 
     protected createTestData() {
-        this.create({name:'Meeting'}, null);
-        this.create({name:'Prepare dinner'}, null);
-        this.create({name:'Shopping'}, null);
+        this.create({name:'Meeting'});
+        this.create({name:'Prepare dinner'});
+        this.create({name:'Shopping'});
     }
 
     protected getEntityName() {

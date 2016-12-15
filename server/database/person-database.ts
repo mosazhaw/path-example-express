@@ -3,10 +3,10 @@ import {Database, PathListEntry} from "./database";
 export class PersonDatabase extends Database {
 
     protected createTestData() {
-        this.create({firstName:'Adam', familyName: 'Jones'}, null);
-        this.create({firstName:'Betty', familyName: 'Miller'}, null);
-        this.create({firstName:'Chris', familyName: 'Connor'}, null);
-        this.create({firstName:'Dave', familyName: 'Dean'}, null);
+        this.create({firstName:'Adam', familyName: 'Jones'});
+        this.create({firstName:'Betty', familyName: 'Miller'});
+        this.create({firstName:'Chris', familyName: 'Connor'});
+        this.create({firstName:'Dave', familyName: 'Dean'});
     }
 
     protected getEntityName() {
