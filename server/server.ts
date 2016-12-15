@@ -2,6 +2,7 @@ import {PersonDatabase} from "./database/person-database";
 import {CompanyDatabase} from "./database/company-database";
 import {TaskDatabase} from "./database/task-database";
 import {HobbyDatabase} from "./database/hobby-database";
+import {Database} from "./database/database";
 
 let express = require('express');
 let bodyParser = require('body-parser');
@@ -21,6 +22,7 @@ app.get('/services/ping', function(req, res) {
 });
 
 // entities
+Database.initDatabase();
 new PersonDatabase(app).init();
 new CompanyDatabase(app).init();
 new TaskDatabase(app).init();

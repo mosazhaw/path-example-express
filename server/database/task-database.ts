@@ -2,10 +2,10 @@ import {Database, PathListEntry} from "./database";
 
 export class TaskDatabase extends Database {
 
-    protected createTestData(db) {
-        db.post({name:'Meeting'});
-        db.post({name:'Prepare dinner'});
-        db.post({name:'Shopping'});
+    protected createTestData() {
+        this.create({name:'Meeting'}, null);
+        this.create({name:'Prepare dinner'}, null);
+        this.create({name:'Shopping'}, null);
     }
 
     protected getEntityName() {
@@ -18,6 +18,7 @@ export class TaskDatabase extends Database {
 
     protected createPathListEntry(entry:PathListEntry, entity:any) {
         entry.name = entity.name;
+        return super.createPathListEntry(entry, entity);
     }
 
 }

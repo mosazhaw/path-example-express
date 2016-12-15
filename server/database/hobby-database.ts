@@ -2,12 +2,12 @@ import {Database, PathListEntry} from "./database";
 
 export class HobbyDatabase extends Database {
 
-    protected createTestData(db) {
-        db.post({name:'Golf'});
-        db.post({name:'Orienteering'});
-        db.post({name:'Running'});
-        db.post({name:'Ski'});
-        db.post({name:'Snowboard'});
+    protected createTestData() {
+        this.create({name:'Golf'}, null);
+        this.create({name:'Orienteering'}, null);
+        this.create({name:'Running'}, null);
+        this.create({name:'Ski'}, null);
+        this.create({name:'Snowboard'}, null);
     }
 
     protected getEntityName() {
@@ -20,6 +20,7 @@ export class HobbyDatabase extends Database {
 
     protected createPathListEntry(entry:PathListEntry, entity:any) {
         entry.name = entity.name;
+        return super.createPathListEntry(entry, entity);
     }
 
 }

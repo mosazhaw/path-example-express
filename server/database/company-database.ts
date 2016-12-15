@@ -2,24 +2,25 @@ import {Database, PathListEntry} from "./database";
 
 export class CompanyDatabase extends Database {
 
-    protected createTestData(db) {
-        db.post({name:'Company A', city: 'Winterthur'});
-        db.post({name:'ZHAW', city: 'Winterthur'});
-        db.post({name:'Company B', city: 'Zürich'});
-        db.post({name:'Company C', city: 'Frauenfeld'});
+    protected createTestData() {
+        this.create({name: 'Company A', city: 'Winterthur'}, null);
+        this.create({name: 'ZHAW', city: 'Winterthur'}, null);
+        this.create({name: 'Company B', city: 'Zürich'}, null);
+        this.create({name: 'Company C', city: 'Frauenfeld'}, null);
     }
 
     protected getEntityName() {
         return "company";
     }
 
-    protected getSort() : any[] {
+    protected getSort(): any[] {
         return ['name'];
     }
 
-    protected createPathListEntry(entry:PathListEntry, entity:any) {
+    protected createPathListEntry(entry: PathListEntry, entity: any): Promise<PathListEntry> {
         entry.name = entity.name;
         entry.details.push(entity.city);
+        return super.createPathListEntry(entry, entity);
     }
 
 }
