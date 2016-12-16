@@ -11,9 +11,4 @@ export class TaskDatabase extends Database {
         return ['name'];
     }
 
-    protected createPathListEntry(entry:PathListEntry, entity:any) {
-        entry.name = entity.name;
-        return super.createPathListEntry(entry, entity);
-    }
-
 }

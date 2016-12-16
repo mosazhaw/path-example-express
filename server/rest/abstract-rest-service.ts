@@ -2,7 +2,7 @@ import {Database} from "./../database/database";
 
 export abstract class AbstractRestService {
 
-    constructor(protected _app, protected _database:Database) {
+    constructor(protected _app, protected _database: Database) {
     }
 
     public init() {
@@ -13,14 +13,35 @@ export abstract class AbstractRestService {
         this.initDelete();
     }
 
-    protected initList() {
+    private initList() {
         let service = this;
-        this._app.get('/services/' + this._database.getEntityName() + '', (req, res) => {
-            this._database.list().then((result) => {
-                res.json(result);
+        this._app.get('/services/' + service._database.getEntityName() + '', (req, res) => {
+            service._database.list().then((rows) => {
+                // create path list
+                var promises = [];
+                for (let item of rows) {
+                    let entry: PathListEntry = new PathListEntry();
+                    let key: PathListKey = new PathListKey();
+                    key.key = item.id;
+                    key.name = service._database.getEntityName() + "Key";
+                    entry.key = key;
+                    promises.push(service.createPathListEntry(entry, item["doc"]));
+                }
+                return Promise.all(promises).then((result) => {
+                        res.json(result);
+                    }
+                ).catch((err) => {
+                    console.log(err);
+                });
             }).catch((err) => {
                 console.log(err);
             })
+        });
+    }
+
+    protected createPathListEntry(entry: PathListEntry, entity: any): Promise<PathListEntry> {
+        return new Promise((resolve, reject) => {
+            resolve(entry);
         });
     }
 

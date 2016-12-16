@@ -11,10 +11,4 @@ export class CompanyDatabase extends Database {
         return ['name'];
     }
 
-    protected createPathListEntry(entry: PathListEntry, entity: any): Promise<PathListEntry> {
-        entry.name = entity.name;
-        entry.details.push(entity.city);
-        return super.createPathListEntry(entry, entity);
-    }
-
 }

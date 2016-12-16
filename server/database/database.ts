@@ -12,12 +12,6 @@ export abstract class Database {
 
     public abstract getEntityName(): string;
 
-    protected createPathListEntry(entry: PathListEntry, entity: any): Promise<PathListEntry> {
-        return new Promise((resolve, reject) => {
-            resolve(entry);
-        });
-    }
-
     protected abstract getSort(): any[];
 
     public list() : Promise<any> {
@@ -43,18 +37,7 @@ export abstract class Database {
                 return 0;
             }
             rows.sort(compare);
-
-            // create path list
-            var promises = [];
-            for (let item of rows) {
-                let entry: PathListEntry = new PathListEntry();
-                let key: PathListKey = new PathListKey();
-                key.key = item.id;
-                key.name = service.getEntityName() + "Key";
-                entry.key = key;
-                promises.push(service.createPathListEntry(entry, item["doc"]));
-            }
-            return Promise.all(promises);
+            return rows;
         })
     }
 
