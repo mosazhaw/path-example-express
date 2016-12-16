@@ -29,53 +29,42 @@ export abstract class Database {
 
     protected abstract getSort(): any[];
 
-    protected initList() {
+    public list() : Promise<any> {
         let service = this;
-        this._app.get('/services/' + this.getEntityName() + '', (req, res) => {
-            Database._database.allDocs({
-                include_docs: true,
-                startkey: service.getEntityName(),
-                endkey: service.getEntityName() + '\uffff'
-            }).then((docs) => {
-                let result: PathListEntry[] = [];
-                let rows = docs["rows"];
+        return Database._database.allDocs({
+            include_docs: true,
+            startkey: service.getEntityName(),
+            endkey: service.getEntityName() + '\uffff'
+        }).then((docs) => {
+            let result: PathListEntry[] = [];
+            let rows = docs["rows"];
 
-                // sort
-                let compare = (a, b) => {
-                    for (let sort of service.getSort()) {
-                        if (a['doc'][sort] < b['doc'][sort]) {
-                            return -1;
-                        }
-                        else if (a['doc'][sort] > b['doc'][sort]) {
-                            return 1;
-                        }
+            // sort
+            let compare = (a, b) => {
+                for (let sort of service.getSort()) {
+                    if (a['doc'][sort] < b['doc'][sort]) {
+                        return -1;
                     }
-                    return 0;
+                    else if (a['doc'][sort] > b['doc'][sort]) {
+                        return 1;
+                    }
                 }
-                rows.sort(compare);
+                return 0;
+            }
+            rows.sort(compare);
 
-                // create path list
-                var promises = [];
-                for (let item of rows) {
-                    let entry: PathListEntry = new PathListEntry();
-                    let key: PathListKey = new PathListKey();
-                    key.key = item.id;
-                    key.name = service.getEntityName() + "Key";
-                    entry.key = key;
-                    promises.push(service.createPathListEntry(entry, item["doc"]));
-                }
-                Promise.all(promises).then(function (values) {
-                    for (let entry of values) {
-                        result.push(entry);
-                    }
-                    res.json(result);
-                }).catch(function (err) {
-                    console.log(err);
-                });
-            }).catch(function (err) {
-                console.log(err);
-            });
-        });
+            // create path list
+            var promises = [];
+            for (let item of rows) {
+                let entry: PathListEntry = new PathListEntry();
+                let key: PathListKey = new PathListKey();
+                key.key = item.id;
+                key.name = service.getEntityName() + "Key";
+                entry.key = key;
+                promises.push(service.createPathListEntry(entry, item["doc"]));
+            }
+            return Promise.all(promises);
+        })
     }
 
     public create(data: any): Promise<any> {
@@ -100,6 +89,17 @@ export abstract class Database {
         return Database._database.get(key).then(function (doc) {
             return Database._database.remove(doc);
         })
+    }
+
+    protected initList() {
+        let service = this;
+        this._app.get('/services/' + this.getEntityName() + '', (req, res) => {
+            this.list().then((result) => {
+                res.json(result);
+            }).catch((err) => {
+                console.log(err);
+            })
+        });
     }
 
     private initCreate() {
