@@ -1,7 +1,7 @@
 import {AbstractRestService} from "./abstract-rest-service";
-import {Database} from "./database";
+import {Database} from "./../database/database";
 
-export class PersonRestService extends AbstractRestService {
+export class HobbyRestService extends AbstractRestService {
 
     constructor(app, database: Database) {
         super(app, database);

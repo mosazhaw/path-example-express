@@ -1,5 +1,5 @@
 import {Database} from "./database";
-import {PathListEntry} from "./abstract-rest-service";
+import {PathListEntry} from "./../rest/abstract-rest-service";
 
 export class PersonDatabase extends Database {
 

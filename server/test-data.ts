@@ -1,7 +1,7 @@
-import {PersonDatabase} from "./person-database";
-import {CompanyDatabase} from "./company-database";
-import {TaskDatabase} from "./task-database";
-import {HobbyDatabase} from "./hobby-database";
+import {PersonDatabase} from "./database/person-database";
+import {CompanyDatabase} from "./database/company-database";
+import {TaskDatabase} from "./database/task-database";
+import {HobbyDatabase} from "./database/hobby-database";
 
 export class TestData {
 

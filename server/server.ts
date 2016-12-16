@@ -3,11 +3,11 @@ import {CompanyDatabase} from "./database/company-database";
 import {TaskDatabase} from "./database/task-database";
 import {HobbyDatabase} from "./database/hobby-database";
 import {Database} from "./database/database";
-import {TestData} from "./database/test-data";
-import {PersonRestService} from "./database/person-rest-service";
-import {TaskRestService} from "./database/task-rest-service";
-import {HobbyRestService} from "./database/hobby-rest-service";
-import {CompanyRestService} from "./database/company-rest-service";
+import {TestData} from "./test-data";
+import {PersonRestService} from "./rest/person-rest-service";
+import {TaskRestService} from "./rest/task-rest-service";
+import {HobbyRestService} from "./rest/hobby-rest-service";
+import {CompanyRestService} from "./rest/company-rest-service";
 
 let express = require('express');
 let bodyParser = require('body-parser');

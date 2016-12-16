@@ -1,4 +1,4 @@
-import {PathListEntry, PathListKey} from "./abstract-rest-service";
+import {PathListEntry, PathListKey} from "./../rest/abstract-rest-service";
 
 export abstract class Database {
 
