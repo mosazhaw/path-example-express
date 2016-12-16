@@ -1,8 +1,8 @@
-import {Database} from "./../database/database";
+import {AbstractDatabase} from "../database/abstract-database";
 
 export abstract class AbstractRestService {
 
-    constructor(protected _app, protected _database: Database) {
+    constructor(protected _app, protected _database: AbstractDatabase) {
     }
 
     public init() {

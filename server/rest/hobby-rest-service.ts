@@ -1,9 +1,9 @@
 import {AbstractRestService, PathListEntry} from "./abstract-rest-service";
-import {Database} from "./../database/database";
+import {AbstractDatabase} from "../database/abstract-database";
 
 export class HobbyRestService extends AbstractRestService {
 
-    constructor(app, database: Database) {
+    constructor(app, database: AbstractDatabase) {
         super(app, database);
     }
 

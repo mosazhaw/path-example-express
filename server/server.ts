@@ -2,7 +2,7 @@ import {PersonDatabase} from "./database/person-database";
 import {CompanyDatabase} from "./database/company-database";
 import {TaskDatabase} from "./database/task-database";
 import {HobbyDatabase} from "./database/hobby-database";
-import {Database} from "./database/database";
+import {AbstractDatabase} from "./database/abstract-database";
 import {TestData} from "./test-data";
 import {PersonRestService} from "./rest/person-rest-service";
 import {TaskRestService} from "./rest/task-rest-service";
@@ -27,7 +27,7 @@ app.get('/services/ping', function(req, res) {
 });
 
 // entities
-Database.initDatabase();
+AbstractDatabase.initDatabase();
 let personDatabase = new PersonDatabase();
 let companyDatabase = new CompanyDatabase();
 let hobbyDatabase = new HobbyDatabase();

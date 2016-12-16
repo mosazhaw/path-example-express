@@ -1,7 +1,7 @@
-import {Database} from "./database";
+import {AbstractDatabase} from "./abstract-database";
 import {PathListEntry} from "./../rest/abstract-rest-service";
 
-export class TaskDatabase extends Database {
+export class TaskDatabase extends AbstractDatabase {
 
     public getEntityName() {
         return "task";
