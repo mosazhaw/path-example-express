@@ -281,7 +281,7 @@ export class GuiModel {
                             "icon": "fa-user",
                             "color": "blue",
                             "search": true,
-                            "url": "/person",
+                            "url": "/company/:companyKey/person",
                             "form": {
                                 "form": "PersonForm"
                             }
