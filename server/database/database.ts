@@ -1,9 +1,8 @@
+import {PathListEntry, PathListKey} from "./abstract-rest-service";
+
 export abstract class Database {
 
     protected static _database;
-
-    constructor(private _app) {
-    }
 
     public static initDatabase() {
         var PouchDB = require('pouchdb');
@@ -11,15 +10,7 @@ export abstract class Database {
         this._database = new PouchDB("path-example", {adapter: 'memory'});
     }
 
-    public init() {
-        this.initList();
-        this.initCreate();
-        this.initRead();
-        this.initUpdate();
-        this.initDelete();
-    }
-
-    protected abstract getEntityName(): string;
+    public abstract getEntityName(): string;
 
     protected createPathListEntry(entry: PathListEntry, entity: any): Promise<PathListEntry> {
         return new Promise((resolve, reject) => {
@@ -91,60 +82,6 @@ export abstract class Database {
         })
     }
 
-    protected initList() {
-        let service = this;
-        this._app.get('/services/' + this.getEntityName() + '', (req, res) => {
-            this.list().then((result) => {
-                res.json(result);
-            }).catch((err) => {
-                console.log(err);
-            })
-        });
-    }
-
-    private initCreate() {
-        this._app.post('/services/' + this.getEntityName() + '', (req, res) => {
-            this.create(req.body).then((newDoc) => {
-                res.json(newDoc);
-            }).catch((err) => {
-                console.log(err);
-            });
-        });
-    }
-
-    private initRead() {
-        this._app.get('/services/' + this.getEntityName() + '/:key', (req, res) => {
-            let key: string = req.params.key;
-            this.read(key).then((doc) => {
-                res.json(doc);
-            }).catch((err) => {
-                console.log(err);
-            });
-        });
-    }
-
-    private initUpdate() {
-        this._app.put('/services/' + this.getEntityName() + '/:key', (req, res) => {
-            let key: string = req.params.key;
-            this.update(key, req.body).then((doc) => {
-                res.json(doc);
-            }).catch((err) => {
-                console.log(err);
-            });
-        });
-    }
-
-    private initDelete() {
-        this._app.delete('/services/' + this.getEntityName() + '/:key', (req, res) => {
-            let key: string = req.params.key;
-            this.delete(key).then((doc) => {
-                res.json({message: 'deleted'});
-            }).catch((err) => {
-                console.log(err);
-            });
-        });
-    }
-
     private generateUUID() {
         return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
             var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
@@ -152,19 +89,4 @@ export abstract class Database {
         });
     }
 
-}
-
-export class PathListEntry {
-    public key: PathListKey;
-    public name: string;
-    public color: string;
-    public icon: string;
-    public url: string;
-    public active: boolean = true;
-    public details: string[] = [];
-}
-
-export class PathListKey {
-    public name: string;
-    public key: number;
 }

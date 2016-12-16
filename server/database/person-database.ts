@@ -1,8 +1,9 @@
-import {Database, PathListEntry} from "./database";
+import {Database} from "./database";
+import {PathListEntry} from "./abstract-rest-service";
 
 export class PersonDatabase extends Database {
 
-    protected getEntityName() {
+    public getEntityName() {
         return "person";
     }
 

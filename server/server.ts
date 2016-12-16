@@ -4,6 +4,10 @@ import {TaskDatabase} from "./database/task-database";
 import {HobbyDatabase} from "./database/hobby-database";
 import {Database} from "./database/database";
 import {TestData} from "./database/test-data";
+import {PersonRestService} from "./database/person-rest-service";
+import {TaskRestService} from "./database/task-rest-service";
+import {HobbyRestService} from "./database/hobby-rest-service";
+import {CompanyRestService} from "./database/company-rest-service";
 
 let express = require('express');
 let bodyParser = require('body-parser');
@@ -24,10 +28,14 @@ app.get('/services/ping', function(req, res) {
 
 // entities
 Database.initDatabase();
-new PersonDatabase(app).init();
-new CompanyDatabase(app).init();
-new TaskDatabase(app).init();
-new HobbyDatabase(app).init();
+let personDatabase = new PersonDatabase();
+let companyDatabase = new CompanyDatabase();
+let hobbyDatabase = new HobbyDatabase();
+let taskDatabase = new TaskDatabase();
+new PersonRestService(app, personDatabase).init();
+new CompanyRestService(app, companyDatabase).init();
+new HobbyRestService(app, hobbyDatabase).init();
+new TaskRestService(app, taskDatabase).init();
 TestData.init();
 
 // set the home page route

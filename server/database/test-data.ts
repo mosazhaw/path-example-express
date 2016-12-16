@@ -6,10 +6,10 @@ import {HobbyDatabase} from "./hobby-database";
 export class TestData {
 
     public static init() {
-        let personDatabase = new PersonDatabase(null);
-        let companyDatabase = new CompanyDatabase(null);
-        let taskDatabase = new TaskDatabase(null);
-        let hobbyDatabase = new HobbyDatabase(null);
+        let personDatabase = new PersonDatabase();
+        let companyDatabase = new CompanyDatabase();
+        let taskDatabase = new TaskDatabase();
+        let hobbyDatabase = new HobbyDatabase();
 
         let promises = [];
         promises.push(companyDatabase.create({name: 'Company A', city: 'Winterthur'}));
