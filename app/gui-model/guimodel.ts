@@ -255,8 +255,35 @@ export class GuiModel {
                             "color": "lime",
                             "search": true,
                             "url": "/company",
+                            "page": "companypage"
+                        },
+                    ]
+                },
+                {
+                    "id": "companypage",
+                    "name": "Company",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "button",
+                            "name": "EditCompany",
+                            "icon": "fa-industry",
+                            "color": "green",
                             "form": {
                                 "form": "CompanyForm"
+                            }
+                        },
+                        {
+                            "type": "list",
+                            "name": "PersonList",
+                            "icon": "fa-user",
+                            "color": "blue",
+                            "search": true,
+                            "url": "/person",
+                            "form": {
+                                "form": "PersonForm"
                             }
                         },
                     ]
