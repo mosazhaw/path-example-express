@@ -26,6 +26,13 @@ app.get('/services/ping', function(req, res) {
     res.json({ status: 'ok', userId : 'demo', version: '0.0.1' });
 });
 
+app.get('/*',function(req,res,next) {
+    res.header("cache-control", "no-cache, no-store, must-revalidate"); // HTTP 1.1
+    res.header("pragma", "no-cache"); // HTTP 1.0
+    res.header("expires", "0"); // HTTP 1.0 proxies
+    next();
+});
+
 // entities
 AbstractDatabase.initDatabase();
 let personDatabase = new PersonDatabase();
