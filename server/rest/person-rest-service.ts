@@ -1,9 +1,10 @@
-import {AbstractRestService, PathListEntry, PathListKey} from "./abstract-rest-service";
+import {AbstractRestService} from "./abstract-rest-service";
 import {AbstractDatabase} from "../database/abstract-database";
+import {HobbyDatabase} from "../database/hobby-database";
 
 export class PersonRestService extends AbstractRestService {
 
-    constructor(app, database: AbstractDatabase) {
+    constructor(app, database: AbstractDatabase, private hobbyDatabase: HobbyDatabase) {
         super(app, database);
     }
 
@@ -20,26 +21,20 @@ export class PersonRestService extends AbstractRestService {
                         filteredRows.push(row);
                     }
                 }
-                service.createPathList(filteredRows, res);
+                service._database.createPathList(filteredRows, res);
             }).catch((err) => {
                 console.log(err);
             })
         });
-    }
 
-
-    protected createPathListEntry(entry:PathListEntry, entity:any) : Promise<PathListEntry> {
-        entry.name = entity.firstName + ' ' + entity.familyName;
-        if (entity.company != null) {
-            return this._database.read(entity.company).then((doc) => {
-                entry.details.push(doc.name);
-                return entry;
+        this._app.get('/services/person/:personKey/hobby', (req, res) => {
+            service.hobbyDatabase.list().then((rows) => {
+                rows.pop();
+                service.hobbyDatabase.createPathList(rows, res);
             }).catch((err) => {
-                return entry;
+                console.log(err);
             })
-        } else {
-            return super.createPathListEntry(entry, entity);
-        }
+        });
     }
 
 }

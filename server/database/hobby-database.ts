@@ -1,4 +1,5 @@
 import {AbstractDatabase} from "./abstract-database";
+import {PathListEntry} from "../data/path-list-entry";
 
 export class HobbyDatabase extends AbstractDatabase {
 
@@ -8,6 +9,11 @@ export class HobbyDatabase extends AbstractDatabase {
 
     protected getSort() : any[] {
         return ['name'];
+    }
+
+    public createPathListEntry(entry:PathListEntry, entity:any) {
+        entry.name = entity.name;
+        return super.createPathListEntry(entry, entity);
     }
 
 }

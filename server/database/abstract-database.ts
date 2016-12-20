@@ -1,4 +1,5 @@
-import {PathListEntry, PathListKey} from "./../rest/abstract-rest-service";
+import {PathListEntry} from "../data/path-list-entry";
+import {PathListKey} from "../data/path-list-key";
 
 export abstract class AbstractDatabase {
 
@@ -63,6 +64,31 @@ export abstract class AbstractDatabase {
         return AbstractDatabase._database.get(key).then(function (doc) {
             return AbstractDatabase._database.remove(doc);
         })
+    }
+
+    public createPathList(rows, res) {
+        let service = this;
+        var promises = [];
+        for (let item of rows) {
+            let entry: PathListEntry = new PathListEntry();
+            let key: PathListKey = new PathListKey();
+            key.key = item.id;
+            key.name = service.getEntityName() + "Key";
+            entry.key = key;
+            promises.push(service.createPathListEntry(entry, item["doc"]));
+        }
+        return Promise.all(promises).then((result) => {
+                res.json(result);
+            }
+        ).catch((err) => {
+            console.log(err);
+        });
+    }
+
+    public createPathListEntry(entry: PathListEntry, entity: any): Promise<PathListEntry> {
+        return new Promise((resolve, reject) => {
+            resolve(entry);
+        });
     }
 
     private generateUUID() {

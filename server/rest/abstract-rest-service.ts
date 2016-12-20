@@ -17,35 +17,10 @@ export abstract class AbstractRestService {
         let service = this;
         this._app.get('/services/' + service._database.getEntityName() + '', (req, res) => {
             service._database.list().then((rows) => {
-                this.createPathList(rows, res);
+                this._database.createPathList(rows, res);
             }).catch((err) => {
                 console.log(err);
             })
-        });
-    }
-
-    protected createPathList(rows, res) {
-        let service = this;
-        var promises = [];
-        for (let item of rows) {
-            let entry: PathListEntry = new PathListEntry();
-            let key: PathListKey = new PathListKey();
-            key.key = item.id;
-            key.name = service._database.getEntityName() + "Key";
-            entry.key = key;
-            promises.push(service.createPathListEntry(entry, item["doc"]));
-        }
-        return Promise.all(promises).then((result) => {
-                res.json(result);
-            }
-        ).catch((err) => {
-            console.log(err);
-        });
-    }
-
-    protected createPathListEntry(entry: PathListEntry, entity: any): Promise<PathListEntry> {
-        return new Promise((resolve, reject) => {
-            resolve(entry);
         });
     }
 
@@ -91,19 +66,4 @@ export abstract class AbstractRestService {
             });
         });
     }
-}
-
-export class PathListEntry {
-    public key: PathListKey;
-    public name: string;
-    public color: string;
-    public icon: string;
-    public url: string;
-    public active: boolean = true;
-    public details: string[] = [];
-}
-
-export class PathListKey {
-    public name: string;
-    public key: number;
 }

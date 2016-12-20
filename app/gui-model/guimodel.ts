@@ -226,9 +226,49 @@ export class GuiModel {
                             "color": "blue",
                             "search": true,
                             "url": "/person",
+                            "page": "personpage",
+                        },
+                    ]
+                },
+                {
+                    "id": "personpage",
+                    "name": "Person",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "button",
+                            "name": "EditPerson",
+                            "icon": "fa-user",
+                            "color": "green",
                             "form": {
                                 "form": "PersonForm"
                             }
+                        },
+                        {
+                            "type": "button",
+                            "name": "Hobbies",
+                            "icon": "fa-bicycle",
+                            "color": "carrot",
+                            "page": "personhobbiespage",
+                        }
+                    ]
+                },
+                {
+                    "id": "personhobbiespage",
+                    "name": "Hobbies",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "list",
+                            "name": "HobbyList",
+                            "icon": "fa-bicycle",
+                            "color": "carrot",
+                            "search": true,
+                            "url": "/person/:personKey/hobby"
                         },
                     ]
                 },
