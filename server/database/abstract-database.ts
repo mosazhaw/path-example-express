@@ -86,12 +86,4 @@ export abstract class AbstractDatabase {
         return complexKey;
     }
 
-    public createRevision(id:string, rev: string) : any {
-        let doc:any = {};
-        doc._rev = rev;
-        doc._id = id;
-        return doc;
-    }
-
-
 }
