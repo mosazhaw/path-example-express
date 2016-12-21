@@ -38,7 +38,11 @@ export abstract class AbstractDatabase {
 
     public create(data: any): Promise<any> {
         let service = this;
-        return AbstractDatabase._database.create(service.getEntityName(), data);
+        return AbstractDatabase._database.create(service.getEntityName(), data).then((doc) => {
+            doc.key = doc.id;
+            delete doc.id;
+            return doc;
+        });
     }
 
     public read(key: any): Promise<any> {

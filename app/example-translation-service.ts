@@ -42,6 +42,7 @@ export class ExampleTranslationService extends TranslationService {
                 "Tasks": "Aufgaben",
                 "Task": "Aufgabe",
                 "TaskName": "Aufgabe Name",
+                "User": "Benutzer"
             }
         } else {
             return {
@@ -68,6 +69,7 @@ export class ExampleTranslationService extends TranslationService {
                 "Tasks": "Tasks",
                 "Task": "Task",
                 "TaskName": "Task Name",
+                "User": "User"
             };
         }
     }
