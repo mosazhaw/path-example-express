@@ -22,8 +22,8 @@
     "url": "https://github.com/innovad/path-example.git"
   },
   "engines": {
-    "node": "5.4.1",
-    "npm": "3.8.5"
+    "node": "7.3.0",
+    "npm": "4.0.5"
   },
   "scripts": {
     "start": "nodemon server/server.js",
@@ -53,7 +53,7 @@
     "lite-server": "2.2.0",
     "nodemon": "^1.11.0",
     "requirejs": "2.2.0",
-    "typescript": "2.0.2",
+    "typescript": "2.1.4",
     "typings": "1.0.4",
     "watchify": "3.7.0"
   }
