@@ -17,10 +17,10 @@ export class TestData {
         promises.push(companyDatabase.create({name: 'Company B', city: 'Zürich'}));
         promises.push(companyDatabase.create({name: 'Company C', city: 'Frauenfeld'}));
         Promise.all(promises).then((companies) => {
-                personDatabase.create({firstName: 'Adam', familyName: 'Jones', company: companies[0]._id});
-                personDatabase.create({firstName: 'Betty', familyName: 'Miller', company: companies[2]._id});
-                personDatabase.create({firstName: 'Chris', familyName: 'Connor', company: companies[3]._id});
-                personDatabase.create({firstName: 'Dave', familyName: 'Dean', company: companies[3]._id});
+                personDatabase.create({firstName: 'Adam', familyName: 'Jones', company: companies[0].id});
+                personDatabase.create({firstName: 'Betty', familyName: 'Miller', company: companies[2].id});
+                personDatabase.create({firstName: 'Chris', familyName: 'Connor', company: companies[3].id});
+                personDatabase.create({firstName: 'Dave', familyName: 'Dean', company: companies[3].id});
             }
         ).catch((err) => {
                 console.log(err);
