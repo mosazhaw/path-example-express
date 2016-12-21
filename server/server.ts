@@ -39,7 +39,7 @@ let personDatabase = new PersonDatabase();
 let companyDatabase = new CompanyDatabase();
 let hobbyDatabase = new HobbyDatabase();
 let taskDatabase = new TaskDatabase();
-new PersonRestService(app, personDatabase, hobbyDatabase).init();
+new PersonRestService(app, personDatabase).init();
 new CompanyRestService(app, companyDatabase).init();
 new HobbyRestService(app, hobbyDatabase).init();
 new TaskRestService(app, taskDatabase).init();

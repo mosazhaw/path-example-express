@@ -6,7 +6,7 @@ import {PathListKey} from "../data/path-list-key";
 
 export class PersonRestService extends AbstractRestService {
 
-    constructor(app, database: AbstractDatabase, private hobbyDatabase: HobbyDatabase) {
+    constructor(app, database: AbstractDatabase) {
         super(app, database);
     }
 
@@ -24,29 +24,6 @@ export class PersonRestService extends AbstractRestService {
                     }
                 }
                 service._database.createPathList(filteredRows, res);
-            }).catch((err) => {
-                console.log(err);
-            })
-        });
-
-        this._app.get('/services/person/:personKey/hobby', (req, res) => {
-            service.hobbyDatabase.list().then((rows) => {
-                rows.pop();
-                var promises = [];
-                for (let hobby of rows) {
-                    // TODO create generic method
-                    let entry = new PathListEntry();
-                    let key: PathListKey = new PathListKey();
-                    key.key = hobby.id;
-                    key.name = service.hobbyDatabase.getEntityName() + "Key";
-                    entry.key = key;
-                    promises.push(service.hobbyDatabase.createPathListEntry(entry, hobby["doc"]));
-                }
-                Promise.all(promises).then((result) => {
-                    res.json(result);
-                }).catch((err) => {
-                    console.log(err);
-                })
             }).catch((err) => {
                 console.log(err);
             })

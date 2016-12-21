@@ -44,7 +44,7 @@ export abstract class AbstractDatabase {
 
     public create(data: any): Promise<any> {
         data._id = this.getEntityName() + '_' + this.generateUUID();
-        return AbstractDatabase._database.post(data);
+        return AbstractDatabase._database.put(data);
     }
 
     public read(key: any): Promise<any> {
@@ -89,6 +89,21 @@ export abstract class AbstractDatabase {
         return new Promise((resolve, reject) => {
             resolve(entry);
         });
+    }
+
+    public toComplexKey(...keys: any[]) : any {
+        let complexKey:string = 'complex_';
+        for (let key of keys) {
+            complexKey += '_' + key;
+        }
+        return complexKey;
+    }
+
+    public createRevision(id:string, rev: string) : any {
+        let doc:any = {};
+        doc._rev = rev;
+        doc._id = id;
+        return doc;
     }
 
     private generateUUID() {
