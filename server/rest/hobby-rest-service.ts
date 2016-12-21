@@ -15,15 +15,14 @@ export class HobbyRestService extends AbstractRestService {
         let service = this;
         this._app.get('/services/person/:personKey/hobby', async (req, res) => {
             let rows = await service.database.list();
-            rows.pop();
             var promises = [];
             for (let hobby of rows) {
                 // TODO create generic method
                 let entry = new PathListEntry();
                 let key: PathListKey = new PathListKey();
-                key.key = hobby.id;
+                key.key = hobby._id;
                 key.name = service.database.getEntityName() + "Key";
-                let hobbyExists = await service.database.hobbyExists(req.params.personKey, hobby.id);
+                let hobbyExists = await service.database.hobbyExists(req.params.personKey, hobby._id);
                 if (hobbyExists) {
                     entry.color = 'carrot';
                 } else {
@@ -31,7 +30,7 @@ export class HobbyRestService extends AbstractRestService {
                 }
                 entry.key = key;
                 entry.url = '/person/:personKey/hobby/:hobbyKey';
-                promises.push(service.database.createPathListEntry(entry, hobby["doc"]));
+                promises.push(service.database.createPathListEntry(entry, hobby));
             }
             let result = await Promise.all(promises);
             res.json(result);

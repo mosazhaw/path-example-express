@@ -19,7 +19,7 @@ export class PersonRestService extends AbstractRestService {
                 // filter relations
                 let filteredRows = [];
                 for (let row of rows) {
-                    if (row["doc"].company == req.params.companyKey) {
+                    if (row.company == req.params.companyKey) {
                         filteredRows.push(row);
                     }
                 }

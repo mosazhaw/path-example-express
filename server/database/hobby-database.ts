@@ -18,24 +18,18 @@ export class HobbyDatabase extends AbstractDatabase {
 
     public async addHobby(personKey, hobbyKey): Promise<any> {
         let key: any = this.toComplexKey(personKey, hobbyKey);
-        let rev = this.createRevision(key, null);
-        if (await this.hobbyExists(personKey, hobbyKey)) {
-            let doc = await AbstractDatabase._database.get(key);
-            rev._rev = doc._rev;
-        }
-        return AbstractDatabase._database.put(rev);
+        return AbstractDatabase._database.update(key, {});
     }
 
     public async removeHobby(personKey, hobbyKey): Promise<any> {
         let key = this.toComplexKey(personKey, hobbyKey);
-        let doc = await AbstractDatabase._database.get(key);
-        return AbstractDatabase._database.remove(this.createRevision(key, doc._rev));
+        return AbstractDatabase._database.delete(key);
     }
 
     public async hobbyExists(personKey, hobbyKey): Promise<any> {
         let key = this.toComplexKey(personKey, hobbyKey);
         try {
-            let exists = await AbstractDatabase._database.get(key);
+            let exists = await AbstractDatabase._database.read(key);
             return Promise.resolve(true);
         } catch (err) {
             return Promise.resolve(false);
