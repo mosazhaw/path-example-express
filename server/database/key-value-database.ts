@@ -18,7 +18,6 @@ export class KeyValueDatabase {
         for (let row of data["rows"]) {
             result.push(row["doc"]);
         }
-        console.log(result);
         return result;
     }
 

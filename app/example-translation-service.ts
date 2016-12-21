@@ -19,6 +19,7 @@ export class ExampleTranslationService extends TranslationService {
         // put additional application translations here
         if (languageCode == "de") {
             return {
+                "AddTask": "Task hinzufügen",
                 "Birthday": "Geburtstag",
                 "City": "Ort",
                 "Contacts": "Freunde",
@@ -44,6 +45,7 @@ export class ExampleTranslationService extends TranslationService {
             }
         } else {
             return {
+                "AddTask": "Add Task",
                 "Birthday": "Birthday",
                 "City": "City",
                 "Contacts": "Contacts",

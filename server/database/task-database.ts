@@ -16,4 +16,27 @@ export class TaskDatabase extends AbstractDatabase {
         return super.createPathListEntry(entry, entity);
     }
 
+    public async getTasks(personKey): Promise<any> {
+        let key = this.toComplexKey(personKey);
+        let tasks = await AbstractDatabase._database.allDocs(key);
+        let result:any[] = [];
+        for (let task of tasks) {
+            let item:any = {};
+            item.personKey = personKey;
+            item.taskKey = task.taskKey;
+            result.push(item);
+        }
+        return result;
+    }
+
+    public async addPerson(personKey, taskKey): Promise<any> {
+        let key: any = this.toComplexKey(personKey, taskKey);
+        return AbstractDatabase._database.update(key, { personKey: personKey, taskKey: taskKey });
+    }
+
+    public async removePerson(personKey, taskKey): Promise<any> {
+        let key = this.toComplexKey(personKey, taskKey);
+        return AbstractDatabase._database.delete(key);
+    }
+
 }

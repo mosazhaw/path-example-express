@@ -147,6 +147,47 @@ export class GuiModel {
                     ]
                 },
                 {
+                    "id": "AddTaskForm",
+                    "title": "AddTask",
+                    "url": "/person/:personKey/task",
+                    "formFieldList": [
+                        {
+                            "id": "taskKey",
+                            "type": "autocomplete",
+                            "name": "Task",
+                            "wordSearchEnabled": true,
+                            "url": "/task",
+                            "width": 2,
+                            "form": "TaskForm",
+                            "required": true,
+                            "readonly": true,
+                        },
+                        {
+                            "id": "personKey",
+                            "type": "autocomplete",
+                            "name": "Person",
+                            "wordSearchEnabled": true,
+                            "url": "/person",
+                            "width": 2,
+                            "required": true,
+                            "readonly": true,
+                            "defaultKey": "personKey"
+                        },
+                        {
+                            "type": "deleteButton",
+                            "name": "Delete"
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
                     "id": "UserForm",
                     "title": "Person",
                     "formFieldList": [
@@ -252,6 +293,13 @@ export class GuiModel {
                             "icon": "fa-bicycle",
                             "color": "carrot",
                             "page": "personhobbiespage",
+                        },
+                        {
+                            "type": "button",
+                            "name": "Tasks",
+                            "icon": "fa-tasks",
+                            "color": "wisteria",
+                            "page": "persontaskspage",
                         }
                     ]
                 },
@@ -269,6 +317,35 @@ export class GuiModel {
                             "color": "carrot",
                             "search": true,
                             "url": "/person/:personKey/hobby"
+                        },
+                    ]
+                },
+                {
+                    "id": "persontaskspage",
+                    "name": "Tasks",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "button",
+                            "name": "AddTask",
+                            "icon": "fa-tasks",
+                            "color": "green",
+                            "form": {
+                                "form": "AddTaskForm"
+                            }
+                        },
+                        {
+                            "type": "list",
+                            "name": "Tasks",
+                            "icon": "fa-tasks",
+                            "color": "wisteria",
+                            "search": true,
+                            "url": "/person/:personKey/task",
+                            "form": {
+                                "form": "AddTaskForm"
+                            }
                         },
                     ]
                 },
