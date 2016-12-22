@@ -33,9 +33,9 @@ export class TestData {
         hobbyDatabase.create({name: 'Ski'});
         hobbyDatabase.create({name: 'Snowboard'});
 
-        taskDatabase.create({name: 'Meeting'});
-        taskDatabase.create({name: 'Prepare dinner'});
-        taskDatabase.create({name: 'Shopping'});
+        taskDatabase.create({name:[[{key:"de"},"Besprechung"],[{key:"en"},"Meeting"]]});
+        taskDatabase.create({name:[[{key:"de"},"Nachtessen kochen"],[{key:"en"},"Prepare dinner"]]});
+        taskDatabase.create({name:[[{key:"de"},"Einkaufen"],[{key:"en"},"Shopping"]]});
     }
 
 }

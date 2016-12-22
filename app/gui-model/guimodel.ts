@@ -127,7 +127,7 @@ export class GuiModel {
                     "formFieldList": [
                         {
                             "id": "name",
-                            "type": "text",
+                            "type": "translation",
                             "name": "TaskName",
                             "width": 2,
                             "required": true

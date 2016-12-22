@@ -12,7 +12,12 @@ export class TaskDatabase extends AbstractDatabase {
     }
 
     public createPathListEntry(entry:PathListEntry, entity:any) {
-        entry.name = entity.name;
+        for (let item of entity.name) {
+            if (item[0]["key"] == "en") {
+                entry.name = item[1];
+                break;
+            }
+        }
         return super.createPathListEntry(entry, entity);
     }
 
