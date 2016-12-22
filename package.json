@@ -38,7 +38,7 @@
   },
   "dependencies": {
     "body-parser": "^1.15.2",
-    "path-framework": "latest",
+    "path-framework": "0.1.0",
     "pouchdb": "^6.0.7",
     "pouchdb-adapter-memory": "^6.1.0"
   },
