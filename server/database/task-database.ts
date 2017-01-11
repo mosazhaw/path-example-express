@@ -13,7 +13,24 @@ export class TaskDatabase extends AbstractDatabase {
 
     public createPathListEntry(entry: PathListEntry, entity: any) {
         entry.name = entity.name;
-        return super.createPathListEntry(entry, entity);
+        if (entity.project != null) {
+            return this.read(entity.project).then((doc) => {
+                entry.details.push(doc.name);
+                if (entity.person != null) {
+                    return this.read(entity.person).then((doc) => {
+                        entry.details.push(doc.firstName + ' ' + doc.familyName);
+                        return entry;
+                    }).catch((err) => {
+                        return entry;
+                    })
+                }
+                return entry;
+            }).catch((err) => {
+                return entry;
+            })
+        } else {
+            return super.createPathListEntry(entry, entity);
+        }
     }
 
     public async getTasks(personKey): Promise<any> {

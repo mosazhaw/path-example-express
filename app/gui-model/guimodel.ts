@@ -212,6 +212,18 @@ export class GuiModel {
                             "required": true
                         },
                         {
+                            "id": "evtStart",
+                            "type": "date",
+                            "name": "StartDate",
+                            "width": 1
+                        },
+                        {
+                            "id": "evtEnd",
+                            "type": "date",
+                            "name": "EndDate",
+                            "width": 1
+                        },
+                        {
                             "id": "comment",
                             "type": "text",
                             "name": "Comments",
