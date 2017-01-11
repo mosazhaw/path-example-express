@@ -11,8 +11,13 @@ export class HobbyDatabase extends AbstractDatabase {
         return ['name'];
     }
 
-    public createPathListEntry(entry: PathListEntry, entity: any) {
-        entry.name = entity.name;
+    public createPathListEntry(entry:PathListEntry, entity:any) {
+        for (let item of entity.name) {
+            if (item[0]["key"] == "en") {
+                entry.name = item[1];
+                break;
+            }
+        }
         return super.createPathListEntry(entry, entity);
     }
 

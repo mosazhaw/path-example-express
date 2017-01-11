@@ -27,15 +27,15 @@ export class TestData {
             }
         );
 
-        hobbyDatabase.create({name: 'Golf'});
-        hobbyDatabase.create({name: 'Orienteering'});
-        hobbyDatabase.create({name: 'Running'});
-        hobbyDatabase.create({name: 'Ski'});
-        hobbyDatabase.create({name: 'Snowboard'});
+        hobbyDatabase.create({name:[[{key:"de"},"Golf"],[{key:"en"},"Golf"]]});
+        hobbyDatabase.create({name:[[{key:"de"},"Orientierungslauf"],[{key:"en"},"Orienteering"]]});
+        hobbyDatabase.create({name:[[{key:"de"},"Laufen"],[{key:"en"},"Running"]]});
+        hobbyDatabase.create({name:[[{key:"de"},"Ski"],[{key:"en"},"Ski"]]});
+        hobbyDatabase.create({name:[[{key:"de"},"Snowboard"],[{key:"en"},"Snowboard"]]});
 
-        taskDatabase.create({name:[[{key:"de"},"Besprechung"],[{key:"en"},"Meeting"]]});
-        taskDatabase.create({name:[[{key:"de"},"Nachtessen kochen"],[{key:"en"},"Prepare dinner"]]});
-        taskDatabase.create({name:[[{key:"de"},"Einkaufen"],[{key:"en"},"Shopping"]]});
+        taskDatabase.create({name: "Meeting"});
+        taskDatabase.create({name: "Prepare dinner"});
+        taskDatabase.create({name: "Shopping"});
     }
 
 }

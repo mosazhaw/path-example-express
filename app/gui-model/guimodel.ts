@@ -95,13 +95,70 @@ export class GuiModel {
                     ]
                 },
                 {
+                    "id": "ProjectForm",
+                    "title": "Project",
+                    "url": "/project",
+                    "formFieldList": [
+                        {
+                            "id": "name",
+                            "type": "text",
+                            "name": "ProjectName",
+                            "width": 2,
+                            "required": true
+                        },
+                        {
+                            "id":   "company",
+                            "type": "autocomplete",
+                            "name": "Company",
+                            "wordSearchEnabled": true,
+                            "defaultKey": "companyKey",
+                            "form": "CompanyForm",
+                            "url": "/company",
+                            "width": 2,
+                            "required": true
+                        },
+                        {
+                            "id": "evtStart",
+                            "type": "date",
+                            "name": "StartDate",
+                            "width": 1
+                        },
+                        {
+                            "id": "evtEnd",
+                            "type": "date",
+                            "name": "EndDate",
+                            "width": 1
+                        },
+                        {
+                            "id": "comment",
+                            "type": "text",
+                            "name": "Comments",
+                            "width": 2,
+                            "height": 4,
+                            "maxLength": 5000,
+                        },
+                        {
+                            "type": "deleteButton",
+                            "name": "Delete"
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
                     "id": "HobbyForm",
                     "title": "Hobby",
                     "url": "/hobby",
                     "formFieldList": [
                         {
                             "id": "name",
-                            "type": "text",
+                            "type": "translation",
                             "name": "HobbyName",
                             "width": 2,
                             "required": true
@@ -127,10 +184,40 @@ export class GuiModel {
                     "formFieldList": [
                         {
                             "id": "name",
-                            "type": "translation",
+                            "type": "text",
                             "name": "TaskName",
                             "width": 2,
                             "required": true
+                        },
+                        {
+                            "id":   "project",
+                            "type": "autocomplete",
+                            "name": "Project",
+                            "wordSearchEnabled": true,
+                            "defaultKey": "projectKey",
+                            "form": "ProjectForm",
+                            "url": "/project",
+                            "width": 2,
+                            "required": true
+                        },
+                        {
+                            "id":   "person",
+                            "type": "autocomplete",
+                            "name": "Person",
+                            "wordSearchEnabled": true,
+                            "defaultKey": "personKey",
+                            "form": "PersonForm",
+                            "url": "/person",
+                            "width": 2,
+                            "required": true
+                        },
+                        {
+                            "id": "comment",
+                            "type": "text",
+                            "name": "Comments",
+                            "width": 2,
+                            "height": 4,
+                            "maxLength": 5000,
                         },
                         {
                             "type": "deleteButton",
@@ -227,6 +314,13 @@ export class GuiModel {
                             "icon": "fa-industry",
                             "color": "lime",
                             "page": "companiespage",
+                        },
+                        {
+                            "type": "button",
+                            "name": "Projects",
+                            "icon": "fa-cubes",
+                            "color": "yellow",
+                            "page": "projectspage",
                         },
                         {
                             "type": "button",
@@ -401,6 +495,35 @@ export class GuiModel {
                             "url": "/company/:companyKey/person",
                             "form": {
                                 "form": "PersonForm"
+                            }
+                        },
+                    ]
+                },
+                {
+                    "id": "projectspage",
+                    "name": "Projects",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "newButton",
+                            "name": "NewProject",
+                            "icon": "fa-cubes",
+                            "color": "green",
+                            "form": {
+                                "form": "ProjectForm"
+                            }
+                        },
+                        {
+                            "type": "list",
+                            "name": "ProjectList",
+                            "icon": "fa-cubes",
+                            "color": "carrot",
+                            "search": true,
+                            "url": "/project",
+                            "form": {
+                                "form": "ProjectForm"
                             }
                         },
                     ]
