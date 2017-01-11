@@ -19,32 +19,31 @@ export class TestData {
         promises.push(companyDatabase.create({name: 'Company B', city: 'Zürich'}));
         promises.push(companyDatabase.create({name: 'Company C', city: 'Frauenfeld'}));
         Promise.all(promises).then((companies) => {
+                personDatabase.create({firstName: 'Adam', familyName: 'Jones', company: companies[0].key});
+                personDatabase.create({firstName: 'Betty', familyName: 'Miller', company: companies[2].key});
+                personDatabase.create({firstName: 'Chris', familyName: 'Connor', company: companies[3].key});
+                personDatabase.create({firstName: 'Dave', familyName: 'Dean', company: companies[3].key});
+            }
+        ).catch((err) => {
+                console.log(err);
+            }
+        );
+
+        Promise.all(promises).then((persons) => {
                 promises = [];
-                promises.push(personDatabase.create({firstName: 'Adam', familyName: 'Jones', company: companies[0].key}));
-                promises.push(personDatabase.create({firstName: 'Betty', familyName: 'Miller', company: companies[2].key}));
-                promises.push(personDatabase.create({firstName: 'Chris', familyName: 'Connor', company: companies[3].key}));
-                promises.push(personDatabase.create({firstName: 'Dave', familyName: 'Dean', company: companies[3].key}));
-
-                Promise.all(promises).then((persons) => {
-                    promises = [];
-                    promises.push(projectDatabase.create({name: "Project A"}));
-                    promises.push(projectDatabase.create({name: "Project B"}));
-                    promises.push(projectDatabase.create({name: "Project C"}));
-                    Promise.all(promises).then((projects) => {
-                            taskDatabase.create({name: "Meeting", project: projects[0].key, person: persons[0].key});
-                            taskDatabase.create({name: "Prepare dinner", project: projects[1].key, person: persons[0].key});
-                            taskDatabase.create({name: "Shopping", project: projects[1].key, person: persons[0].key});
-                        }
-                    ).catch((err) => {
-                            console.log(err);
-                        }
-                    );
-
+                promises.push(projectDatabase.create({name: "Project A"}));
+                promises.push(projectDatabase.create({name: "Project B"}));
+                promises.push(projectDatabase.create({name: "Project C"}));
+                Promise.all(promises).then((projects) => {
+                        taskDatabase.create({name: "Meeting", project: projects[0].key});
+                        taskDatabase.create({name: "Prepare dinner", project: projects[1].key});
+                        taskDatabase.create({name: "Shopping", project: projects[1].key});
                     }
                 ).catch((err) => {
                         console.log(err);
                     }
                 );
+
             }
         ).catch((err) => {
                 console.log(err);

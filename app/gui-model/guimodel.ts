@@ -201,17 +201,6 @@ export class GuiModel {
                             "required": true
                         },
                         {
-                            "id":   "person",
-                            "type": "autocomplete",
-                            "name": "Person",
-                            "wordSearchEnabled": true,
-                            "defaultKey": "personKey",
-                            "form": "PersonForm",
-                            "url": "/person",
-                            "width": 2,
-                            "required": true
-                        },
-                        {
                             "id": "evtStart",
                             "type": "date",
                             "name": "StartDate",
@@ -260,6 +249,7 @@ export class GuiModel {
                             "form": "TaskForm",
                             "required": true,
                             "readonly": true,
+                            "defaultKey": "taskKey"
                         },
                         {
                             "id": "personKey",
@@ -592,8 +582,35 @@ export class GuiModel {
                             "color": "wisteria",
                             "search": true,
                             "url": "/task",
+                            "page": "taskpage"
+                        },
+                    ]
+                },
+                {
+                    "id": "taskpage",
+                    "name": "Task",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "button",
+                            "name": "EditTask",
+                            "icon": "fa-tasks",
+                            "color": "green",
                             "form": {
                                 "form": "TaskForm"
+                            }
+                        },
+                        {
+                            "type": "list",
+                            "name": "PersonList",
+                            "icon": "fa-user",
+                            "color": "blue",
+                            "search": true,
+                            "url": "/task/:taskKey/person",
+                            "form": {
+                                "form": "PersonForm"
                             }
                         },
                     ]

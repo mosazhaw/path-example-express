@@ -16,14 +16,6 @@ export class TaskDatabase extends AbstractDatabase {
         if (entity.project != null) {
             return this.read(entity.project).then((doc) => {
                 entry.details.push(doc.name);
-                if (entity.person != null) {
-                    return this.read(entity.person).then((doc) => {
-                        entry.details.push(doc.firstName + ' ' + doc.familyName);
-                        return entry;
-                    }).catch((err) => {
-                        return entry;
-                    })
-                }
                 return entry;
             }).catch((err) => {
                 return entry;

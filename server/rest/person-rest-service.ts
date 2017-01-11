@@ -1,12 +1,10 @@
 import {AbstractRestService} from "./abstract-rest-service";
-import {AbstractDatabase} from "../database/abstract-database";
-import {HobbyDatabase} from "../database/hobby-database";
-import {PathListEntry} from "../data/path-list-entry";
-import {PathListKey} from "../data/path-list-key";
+import {PersonDatabase} from "../database/person-database";
+import {TaskDatabase} from "../database/task-database";
 
 export class PersonRestService extends AbstractRestService {
 
-    constructor(app, database: AbstractDatabase) {
+    constructor(app, private database: PersonDatabase) {
         super(app, database);
     }
 
@@ -24,6 +22,15 @@ export class PersonRestService extends AbstractRestService {
                     }
                 }
                 service._database.createPathList(filteredRows, res);
+            }).catch((err) => {
+                console.log(err);
+            })
+        });
+
+        this._app.get('/services/task/:taskKey/person', (req, res) => {
+            let taskKey = req.params.taskKey;
+            service.database.getPersons(taskKey).then((rows) => {
+                service._database.createPathList(rows, res);
             }).catch((err) => {
                 console.log(err);
             })

@@ -13,7 +13,16 @@ export class ProjectDatabase extends AbstractDatabase {
 
     public createPathListEntry(entry: PathListEntry, entity: any) {
         entry.name = entity.name;
-        return super.createPathListEntry(entry, entity);
+        if (entity.company != null) {
+            return this.read(entity.company).then((doc) => {
+                entry.details.push(doc.name);
+                return entry;
+            }).catch((err) => {
+                return entry;
+            })
+        } else {
+            return super.createPathListEntry(entry, entity);
+        }
     }
 
 }

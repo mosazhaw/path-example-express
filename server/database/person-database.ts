@@ -25,4 +25,20 @@ export class PersonDatabase extends AbstractDatabase {
         }
     }
 
+    public async getPersons(taskKey): Promise<any> {
+        let persons = await this.list();
+        let result:any[] = [];
+        for (let person of persons) {
+            let key:any = this.toComplexKey(person._id, taskKey);
+            console.log(key);
+            try {
+                let doc = await AbstractDatabase._database.read(key);
+                result.push(person);
+            } catch (err) {
+                console.log('error')
+            }
+        }
+        return result;
+    }
+
 }
