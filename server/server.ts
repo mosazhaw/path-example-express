@@ -10,8 +10,8 @@ import {HobbyRestService} from "./rest/hobby-rest-service";
 import {CompanyRestService} from "./rest/company-rest-service";
 import {ProjectDatabase} from "./database/project-database";
 import {ProjectRestService} from "./rest/project-rest-service";
+import express = require('express');
 
-let express = require('express');
 let bodyParser = require('body-parser');
 let app = express();
 app.use(bodyParser.urlencoded({extended: true}));
