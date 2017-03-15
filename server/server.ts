@@ -24,6 +24,23 @@ let port = process.env.PORT || 8080;
 // make express look in the public directory for assets (css/js/img)
 app.use('/', [express.static(__dirname + './../')]);
 
+// CORS
+app.get('/*',function(req,res,next){
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Request-Method", "*");
+    res.header("Access-Control-Allow-Headers", req.header["Access-Control-Request-Headers"]);
+    res.header("Access-Control-Expose-Headers", "Authorization");
+    res.type("application/json");
+    next();
+});
+
+app.options("/*", function(req, res, next){
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
+    res.send(200);
+});
+
 app.get('/services/ping', function(req, res) {
     res.json({ status: 'ok', userId : 'demo', version: '0.0.1' });
 });

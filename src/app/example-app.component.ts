@@ -11,7 +11,7 @@ import {ExampleTranslationService} from "./example-translation-service";
 
 @Component({
     selector: 'path-application',
-    templateUrl: './../node_modules/path-framework/app/path-framework/path-app.component.html',
+    templateUrl: './../../node_modules/path-framework/app/path-framework/path-app.component.html',
     providers: [path.PathService, { provide: TranslationService, useClass: ExampleTranslationService }]
 })
 export class ExampleAppComponent extends path.PathAppComponent {
