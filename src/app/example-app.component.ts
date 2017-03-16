@@ -11,7 +11,7 @@ import {ExampleTranslationService} from "./example-translation-service";
 
 @Component({
     selector: 'path-application',
-    templateUrl: './../node_modules/path-framework/app/path-framework/path-app.component.html',
+    templateUrl: './../../node_modules/path-framework/app/path-framework/path-app.component.html',
     providers: [path.PathService, { provide: TranslationService, useClass: ExampleTranslationService }]
 })
 export class ExampleAppComponent extends path.PathAppComponent {
@@ -23,7 +23,7 @@ export class ExampleAppComponent extends path.PathAppComponent {
     }
 
     protected getFrontendVersion():string {
-        return "0.0.1";
+        return "0.2.2";
     }
 
     protected getStartPage():string {
@@ -42,7 +42,10 @@ export class ExampleAppComponent extends path.PathAppComponent {
     }
 
     public getBackendUrl() {
-        if (window.location.hostname.indexOf("herokuapp") != -1) {
+        if (window.location.hostname.indexOf("angular-cli") != -1) {
+            return location.protocol + "//path-example-angular-cli.herokuapp.com/services";
+        }
+        else if (window.location.hostname.indexOf("herokuapp") != -1) {
             return location.protocol + "//path-example.herokuapp.com/services";
         }
         return "http://localhost:8080/services";
