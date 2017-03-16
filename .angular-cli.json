@@ -21,8 +21,7 @@
       "styles": [
         "./../node_modules/metro-bootstrap/dist/css/metro-bootstrap.min.css",
         "./../node_modules/font-awesome/css/font-awesome.min.css",
-        "./../node_modules/path-framework/styles.css",
-        "./styles.css"
+        "./../node_modules/path-framework/styles.css"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
