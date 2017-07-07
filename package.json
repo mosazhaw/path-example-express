@@ -1,6 +1,6 @@
 {
   "name": "path-example",
-  "version": "0.2.3",
+  "version": "0.2.5",
   "description": "Path Application Framework Example",
   "keywords": [
     "GUI",
@@ -36,14 +36,14 @@
   },
   "dependencies": {
     "body-parser": "^1.15.2",
-    "path-framework": "0.2.2",
+    "path-framework": "0.2.4",
     "pouchdb": "^6.0.7",
     "pouchdb-adapter-memory": "^6.1.0",
     "express": "4.15.0"
   },
   "devDependencies": {
-    "@angular/cli": "1.0.0-rc.0",
-    "@angular/compiler-cli": "^2.4.0",
+    "@angular/cli": "1.2.0",
+    "@angular/compiler-cli": "4.2.5",
     "@types/jasmine": "2.5.38",
     "@types/node": "~6.0.60",
     "codelyzer": "~2.0.0",
@@ -60,6 +60,6 @@
     "protractor": "~5.1.0",
     "ts-node": "~2.0.0",
     "tslint": "~4.4.2",
-    "typescript": "2.1.4"
+    "typescript": "2.1.5"
   }
 }
