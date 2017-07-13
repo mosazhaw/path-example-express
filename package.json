@@ -1,6 +1,6 @@
 {
   "name": "path-example",
-  "version": "0.2.5",
+  "version": "0.0.1",
   "description": "Path Application Framework Example",
   "keywords": [
     "GUI",
@@ -26,40 +26,35 @@
     "npm": "4.0.5"
   },
   "scripts": {
-    "ng": "ng",
-    "start": "tsc --project server/tsconfig.json && concurrently \"ng serve\" \"nodemon server/server.js\"",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e",
-    "heroku-postbuild": "tsc --project server/tsconfig.json && ng build"
+    "start": "nodemon server/server.js",
+    "start-dev": "tsc && concurrently \"npm run tsc:w\" \"nodemon server/server.js\" ",
+    "heroku-postbuild": "tsc --project tsconfig.json",
+    "lite": "lite-server",
+    "test": "karma start karma.conf.js",
+    "postinstall": "typings install",
+    "tsc": "tsc",
+    "tsc:w": "tsc -w",
+    "typings": "typings"
   },
   "dependencies": {
     "body-parser": "^1.15.2",
-    "path-framework": "0.2.4",
+    "path-framework": "0.1.1",
     "pouchdb": "^6.0.7",
-    "pouchdb-adapter-memory": "^6.1.0",
-    "express": "4.15.0"
+    "pouchdb-adapter-memory": "^6.1.0"
   },
   "devDependencies": {
-    "@angular/cli": "1.2.0",
-    "@angular/compiler-cli": "4.2.5",
-    "@types/jasmine": "2.5.38",
-    "@types/node": "~6.0.60",
-    "codelyzer": "~2.0.0",
+    "browserify": "13.0.1",
     "concurrently": "2.2.0",
-    "jasmine-core": "~2.5.2",
-    "jasmine-spec-reporter": "~3.2.0",
-    "karma": "~1.4.1",
-    "karma-chrome-launcher": "~2.0.0",
-    "karma-cli": "~1.0.1",
-    "karma-jasmine": "~1.1.0",
-    "karma-jasmine-html-reporter": "^0.2.2",
-    "karma-coverage-istanbul-reporter": "^0.2.0",
+    "jasmine-core": "2.4.1",
+    "karma": "0.13.22",
+    "karma-browserify": "5.0.5",
+    "karma-chrome-launcher": "1.0.1",
+    "karma-jasmine": "1.0.2",
+    "lite-server": "2.2.0",
     "nodemon": "^1.11.0",
-    "protractor": "~5.1.0",
-    "ts-node": "~2.0.0",
-    "tslint": "~4.4.2",
-    "typescript": "2.1.5"
+    "requirejs": "2.2.0",
+    "typescript": "2.1.4",
+    "typings": "1.0.4",
+    "watchify": "3.7.0"
   }
 }

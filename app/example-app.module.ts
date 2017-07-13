@@ -3,7 +3,7 @@ import {ExampleAppComponent} from './example-app.component';
 import {AppModule} from 'path-framework/app/app.module';
 
 @NgModule({
-    imports:      [AppModule.forRoot()],
+    imports:      [AppModule],
     declarations: [ExampleAppComponent],
     bootstrap:    [ExampleAppComponent],
 })
