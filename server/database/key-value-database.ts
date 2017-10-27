@@ -3,7 +3,7 @@ export class KeyValueDatabase {
     private _database;
 
     constructor() {
-        var PouchDB = require('pouchdb');
+        var PouchDB = require('pouchdb-core');
         PouchDB.plugin(require('pouchdb-adapter-memory'));
         this._database = new PouchDB("path-example", {adapter: 'memory'});
     }
