@@ -42,7 +42,7 @@
     "express": "4.15.0"
   },
   "devDependencies": {
-    "@angular/cli": "1.2.0",
+    "@angular/cli": "1.5.2",
     "@angular/compiler-cli": "4.2.5",
     "@types/jasmine": "2.5.38",
     "@types/node": "6.0.60",
