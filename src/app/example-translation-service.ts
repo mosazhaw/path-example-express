@@ -30,6 +30,7 @@ export class ExampleTranslationService extends TranslationService {
                 "EditCompany": "Firma bearbeiten",
                 "EditPerson": "Person bearbeiten",
                 "EditTask": "Aufgabe bearbeiten",
+                "ElementTest": "Element-Test",
                 "EndDate": "Enddatum",
                 "FamilyName": "Nachname",
                 "FirstName": "Vorname",
@@ -49,7 +50,8 @@ export class ExampleTranslationService extends TranslationService {
                 "Tasks": "Aufgaben",
                 "Task": "Aufgabe",
                 "TaskName": "Aufgabe Name",
-                "User": "Benutzer"
+                "User": "Benutzer",
+                "www.google.com": "www.google.com"
             }
         } else {
             return {
@@ -64,6 +66,7 @@ export class ExampleTranslationService extends TranslationService {
                 "EditCompany": "Edit Company",
                 "EditPerson": "Edit Person",
                 "EditTask": "Edit Task",
+                "ElementTest": "Element Test",
                 "EndDate": "End date",
                 "FamilyName": "Family name",
                 "FirstName": "First name",
@@ -83,7 +86,8 @@ export class ExampleTranslationService extends TranslationService {
                 "Tasks": "Tasks",
                 "Task": "Task",
                 "TaskName": "Task Name",
-                "User": "User"
+                "User": "User",
+                "www.google.com": "www.google.com"
             };
         }
     }

@@ -337,6 +337,14 @@ export class GuiModel {
                             "icon": "fa-tasks",
                             "color": "wisteria",
                             "page": "taskspage",
+                        },
+                        {
+                            "type": "button",
+                            "name": "ElementTest",
+                            "icon": "fa-globe",
+                            "width": 2,
+                            "color": "asbestos",
+                            "page": "elementspage",
                         }
                     ]
                 },
@@ -455,6 +463,7 @@ export class GuiModel {
                         {
                             "type": "newButton",
                             "name": "NewCompany",
+                            "width": 2,
                             "icon": "fa-industry",
                             "color": "green",
                             "form": {
@@ -612,6 +621,37 @@ export class GuiModel {
                             "form": {
                                 "form": "PersonForm"
                             }
+                        },
+                    ]
+                },
+                {
+                    "id": "elementspage",
+                    "name": "Elements",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "linkButton",
+                            "name": "www.google.com",
+                            "width": 2,
+                            "icon": "fa-google",
+                            "color": "amethyst",
+                            "url": "http://www.google.com"
+                        },
+                        {
+                            "type": "deleteButton",
+                            "name": "Delete",
+                            "icon": "fa-user",
+                            "color": "red"
+                        },
+                        {
+                            "type": "list",
+                            "name": "LinkList",
+                            "icon": "fa-link",
+                            "color": "teal",
+                            "search": false,
+                            "url": "/company/link"
                         },
                     ]
                 },
