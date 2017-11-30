@@ -530,7 +530,7 @@ export class GuiModel {
                             "type": "list",
                             "name": "ProjectList",
                             "icon": "fa-cubes",
-                            "color": "carrot",
+                            "color": "yellow",
                             "search": true,
                             "url": "/project",
                             "form": {
