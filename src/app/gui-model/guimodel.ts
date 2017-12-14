@@ -95,6 +95,34 @@ export class GuiModel {
                     ]
                 },
                 {
+                    "id": "InlineTestForm",
+                    "title": "Company",
+                    "url": "/company",
+                    "borderStyle": "None",
+                    "headerVisible": false,
+                    "footerVisible": false,
+                    "formFieldList": [
+                        {
+                            "id": "name",
+                            "type": "text",
+                            "name": "CompanyName",
+                            "width": 2,
+                            "required": true
+                        },
+                        {
+                            "id": "city",
+                            "type": "text",
+                            "name": "City",
+                            "width": 2,
+                            "required": true
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
                     "id": "ProjectForm",
                     "title": "Project",
                     "url": "/project",
@@ -632,6 +660,14 @@ export class GuiModel {
                             "type": "backbutton",
                         },
                         {
+                            "type": "button",
+                            "name": "InlineForm",
+                            "width": 2,
+                            "icon": "fa-forward",
+                            "color": "blue",
+                            "page": "inlineFormPage",
+                        },
+                        {
                             "type": "linkButton",
                             "name": "www.google.com",
                             "width": 2,
@@ -644,6 +680,41 @@ export class GuiModel {
                             "name": "Delete",
                             "icon": "fa-user",
                             "color": "red"
+                        },
+                        {
+                            "type": "list",
+                            "name": "LinkList",
+                            "icon": "fa-link",
+                            "color": "teal",
+                            "search": false,
+                            "url": "/company/link"
+                        },
+                    ]
+                },
+                {
+                    "id": "inlineFormPage",
+                    "name": "Elements",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "inlineForm",
+                            "form": "InlineTestForm",
+                            "url": "/company"
+                        },
+                        {
+                            "type": "list",
+                            "name": "LinkList",
+                            "icon": "fa-link",
+                            "color": "teal",
+                            "search": false,
+                            "url": "/company/link"
+                        },
+                        {
+                            "type": "inlineForm",
+                            "form": "CompanyForm",
+                            "url": "/company"
                         },
                         {
                             "type": "list",
