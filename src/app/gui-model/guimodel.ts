@@ -371,6 +371,7 @@ export class GuiModel {
                             "name": "ElementTest",
                             "icon": "fa-globe",
                             "width": 2,
+                            "newRow": true,
                             "color": "asbestos",
                             "page": "elementspage",
                         }
@@ -386,6 +387,7 @@ export class GuiModel {
                         {
                             "type": "newButton",
                             "name": "NewPerson",
+                            "width": 2,
                             "icon": "fa-user",
                             "color": "green",
                             "form": {
@@ -548,6 +550,7 @@ export class GuiModel {
                         {
                             "type": "newButton",
                             "name": "NewProject",
+                            "width": 2,
                             "icon": "fa-cubes",
                             "color": "green",
                             "form": {
@@ -577,6 +580,7 @@ export class GuiModel {
                         {
                             "type": "newButton",
                             "name": "NewHobby",
+                            "width": 2,
                             "icon": "fa-bicycle",
                             "color": "green",
                             "form": {
@@ -606,6 +610,7 @@ export class GuiModel {
                         {
                             "type": "newButton",
                             "name": "NewTask",
+                            "width": 2,
                             "icon": "fa-tasks",
                             "color": "green",
                             "form": {
