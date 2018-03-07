@@ -662,7 +662,12 @@ export class GuiModel {
                     "name": "Elements",
                     "elementList": [
                         {
+                            "type": "pageLabel",
+                            "value": "Several <b>example</b> Path GUI Elements.",
+                        },
+                        {
                             "type": "backbutton",
+                            "newRow": true,
                         },
                         {
                             "type": "button",
