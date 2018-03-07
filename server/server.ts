@@ -50,7 +50,7 @@ app.get('/*',function(req,res,next) {
 
 // Path ping request
 app.get('/services/ping', function(req, res) {
-    res.json({ status: 'ok', userId : 'demo', version: '0.2.16' });
+    res.json({ status: 'ok', userId : 'demo', version: '0.2.17' });
 });
 
 // Path example entities
