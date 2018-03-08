@@ -623,6 +623,7 @@ export class GuiModel {
                             "icon": "fa-tasks",
                             "color": "wisteria",
                             "search": true,
+                            "width": 2,
                             "url": "/task",
                             "page": "taskpage"
                         },
