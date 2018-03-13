@@ -7,6 +7,10 @@ export class PersonDatabase extends AbstractDatabase {
         return "person";
     }
 
+    public getSearchAttributes(): any[] {
+        return ['familyName', 'firstName'];
+    }
+
     protected getSort() : any[] {
         return ['familyName', 'firstName'];
     }

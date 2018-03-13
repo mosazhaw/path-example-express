@@ -7,6 +7,10 @@ export class TaskDatabase extends AbstractDatabase {
         return "task";
     }
 
+    public getSearchAttributes(): any[] {
+        return ['name'];
+    }
+
     protected getSort() : any[] {
         return ['name'];
     }

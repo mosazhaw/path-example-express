@@ -7,6 +7,10 @@ export class ProjectDatabase extends AbstractDatabase {
         return "project";
     }
 
+    public getSearchAttributes(): any[] {
+        return ['name'];
+    }
+
     protected getSort() : any[] {
         return ['name'];
     }

@@ -12,6 +12,8 @@ export abstract class AbstractDatabase {
 
     public abstract getEntityName(): string;
 
+    public abstract getSearchAttributes(): string[];
+
     protected abstract getSort(): any[];
 
     public list() : Promise<any> {

@@ -17,8 +17,27 @@ export abstract class AbstractRestService {
         let service = this;
         this._app.get('/services/' + service._database.getEntityName() + '', async (req, res) => {
             let rows = await service._database.list();
+            if (req.query.search) {
+                rows = this.filter(rows, req.query.search, service._database.getSearchAttributes());
+            }
             this._database.createPathList(rows, res);
         });
+    }
+
+    protected filter(list, searchText: string, searchAttributes: string[]) {
+        searchText = searchText.toLowerCase();
+        let matches = [], i, key;
+        for (let element of list) {
+            for (let key of searchAttributes) {
+                if (element[key]) {
+                    let value = element[key].toLowerCase();
+                    if (value.indexOf(searchText) > -1) {
+                        matches.push(element);
+                    }
+                }
+            }
+        }
+        return matches;
     }
 
     protected initCreate() {

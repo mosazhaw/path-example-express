@@ -7,6 +7,10 @@ export class HobbyDatabase extends AbstractDatabase {
         return "hobby";
     }
 
+    public getSearchAttributes(): any[] {
+        return ['hobby'];
+    }
+
     protected getSort(): any[] {
         return ['name'];
     }

@@ -625,6 +625,7 @@ export class GuiModel {
                             "search": true,
                             "width": 2,
                             "url": "/task",
+                            "limit" : 100,
                             "page": "taskpage"
                         },
                     ]

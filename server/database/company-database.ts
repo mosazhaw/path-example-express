@@ -7,6 +7,10 @@ export class CompanyDatabase extends AbstractDatabase {
         return "company";
     }
 
+    public getSearchAttributes(): any[] {
+        return ['name'];
+    }
+
     protected getSort(): any[] {
         return ['name'];
     }
