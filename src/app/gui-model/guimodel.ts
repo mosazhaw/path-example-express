@@ -677,6 +677,7 @@ export class GuiModel {
                             "width": 2,
                             "icon": "fa-download",
                             "color": "green",
+                            "tooltip": "CustomComponentTooltip",
                             "page": "customComponentsPage",
                         },
                         {

@@ -8,5 +8,6 @@ export class PathListEntry {
     public url: string;
     public type:string;
     public active: boolean = true;
+    public tooltip:string;
     public details: string[] = [];
 }

@@ -19,6 +19,7 @@ export class HobbyDatabase extends AbstractDatabase {
         for (let item of entity.name) {
             if (item[0]["key"] == "en") {
                 entry.name = item[1];
+                entry.tooltip = "Hobby " + item[1];
                 break;
             }
         }
