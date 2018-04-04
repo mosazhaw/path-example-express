@@ -1,5 +1,5 @@
 /* angular/path imports */
-import {Component} from '@angular/core';
+import {Component, Type} from '@angular/core';
 import * as path from "path-framework/app/path-framework/path";
 
 /* model imports */
@@ -8,6 +8,8 @@ import * as handler from './gui-model/form/handlers'
 import * as beans from './gui-model/generated/forms'
 import {TranslationService} from "path-framework/app/path-framework/service/translation.service";
 import {ExampleTranslationService} from "./example-translation-service";
+import {ExampleComponent} from "./custom/example.component";
+import {CustomPageElement} from "path-framework/app/path-framework/page/element/custom/custom-container.component";
 
 @Component({
     selector: 'path-application',
@@ -57,6 +59,14 @@ export class ExampleAppComponent extends path.PathAppComponent {
     
     protected getHandlers() {
         return handler;
+    }
+
+    protected getCustomComponentClass(componentType: string): Type<CustomPageElement> {
+        if (componentType == "ExampleComponent") {
+            console.log("Path Example: " + componentType);
+            return ExampleComponent;
+        }
+        return super.getCustomComponentClass(componentType);
     }
 
 }

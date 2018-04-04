@@ -673,6 +673,14 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
+                            "name": "CustomComponents",
+                            "width": 2,
+                            "icon": "fa-download",
+                            "color": "green",
+                            "page": "customComponentsPage",
+                        },
+                        {
+                            "type": "button",
                             "name": "InlineForm",
                             "width": 2,
                             "icon": "fa-forward",
@@ -735,6 +743,19 @@ export class GuiModel {
                             "color": "teal",
                             "search": false,
                             "url": "/company/link"
+                        },
+                    ]
+                },
+                {
+                    "id": "customComponentsPage",
+                    "name": "Custom Components",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "ExampleComponent",
+                            "newRow": true,
                         },
                     ]
                 },
