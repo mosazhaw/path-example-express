@@ -2,7 +2,7 @@ export class GuiModel {
 
     private _guiModel = {
         "application": {
-            "title": "Path Example",
+            "title": "Path Example App",
             "formList": [
                 {
                     "id": "PersonForm",
