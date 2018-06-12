@@ -506,6 +506,7 @@ export class GuiModel {
                             "icon": "fa-industry",
                             "color": "lime",
                             "search": true,
+                            "width": 3,
                             "url": "/company",
                             "page": "companypage"
                         },
@@ -522,6 +523,7 @@ export class GuiModel {
                             "type": "button",
                             "name": "EditCompany",
                             "icon": "fa-industry",
+                            "width": 2,
                             "color": "green",
                             "form": {
                                 "form": "CompanyForm"
