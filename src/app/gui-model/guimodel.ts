@@ -689,6 +689,14 @@ export class GuiModel {
                             "page": "inlineFormPage",
                         },
                         {
+                            "type": "button",
+                            "name": "ButtonWidth",
+                            "width": 1,
+                            "icon": "fa-text-width",
+                            "color": "lime",
+                            "page": "buttonWidthPage",
+                        },
+                        {
                             "type": "linkButton",
                             "name": "www.google.com",
                             "width": 2,
@@ -758,6 +766,43 @@ export class GuiModel {
                             "type": "ExampleComponent",
                             "newRow": true,
                         },
+                    ]
+                },
+                {
+                    "id": "buttonWidthPage",
+                    "name": "Elements",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "button",
+                            "name": "ButtonWidth",
+                            "width": 1,
+                            "icon": "fa-text-width",
+                            "color": "lime",
+                        },
+                        {
+                            "type": "button",
+                            "name": "ButtonWidth",
+                            "width": 2,
+                            "icon": "fa-text-width",
+                            "color": "lime",
+                        },
+                        {
+                            "type": "button",
+                            "name": "ButtonWidth",
+                            "width": 3,
+                            "icon": "fa-text-width",
+                            "color": "lime",
+                        },
+                        {
+                            "type": "button",
+                            "name": "ButtonWidth",
+                            "width": 4,
+                            "icon": "fa-text-width",
+                            "color": "lime",
+                        }
                     ]
                 },
             ]

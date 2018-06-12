@@ -21,6 +21,7 @@ export class ExampleTranslationService extends TranslationService {
             return {
                 "AddTask": "Task hinzufügen",
                 "Birthday": "Geburtstag",
+                "ButtonWidth": "Button Breite",
                 "City": "Ort",
                 "Contacts": "Freunde",
                 "Company": "Firma",
@@ -60,6 +61,7 @@ export class ExampleTranslationService extends TranslationService {
             return {
                 "AddTask": "Add Task",
                 "Birthday": "Birthday",
+                "ButtonWidth": "Button Width",
                 "City": "City",
                 "Contacts": "Contacts",
                 "Company": "Company",
