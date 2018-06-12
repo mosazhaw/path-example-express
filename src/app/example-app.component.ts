@@ -25,7 +25,7 @@ export class ExampleAppComponent extends path.PathAppComponent {
     }
 
     protected getFrontendVersion():string {
-        return "0.2.21";
+        return "0.2.23";
     }
 
     protected getStartPage():string {
