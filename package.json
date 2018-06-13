@@ -1,6 +1,6 @@
 {
   "name": "path-example",
-  "version": "0.3.1",
+  "version": "0.3.3",
   "description": "Path Application Framework Example",
   "keywords": [
     "GUI",
@@ -36,14 +36,14 @@
   },
   "dependencies": {
     "body-parser": "1.15.2",
-    "path-framework": "0.3.1",
+    "path-framework": "0.3.3",
     "pouchdb-core": "6.3.4",
     "pouchdb-adapter-memory": "6.3.4",
     "express": "4.15.0"
   },
   "devDependencies": {
     "@angular/cli": "1.6.5",
-    "@angular/compiler-cli": "4.2.5",
+    "@angular/compiler-cli": "4.4.7",
     "@types/jasmine": "2.5.38",
     "@types/node": "6.0.60",
     "codelyzer": "2.0.0",
