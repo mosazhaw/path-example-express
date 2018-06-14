@@ -47,13 +47,16 @@ export class ExampleTranslationService extends TranslationService {
                 "NewProject": "Neues Projekt",
                 "NewTask": "Neue Aufgabe",
                 "Person": "Person",
+                "Priority": "Priorität",
                 "Project": "Projekt",
                 "Projects": "Projekte",
                 "ProjectName": "Projekt Name",
+                "Rating": "Rating",
                 "StartDate": "Startdatum",
                 "Tasks": "Aufgaben",
                 "Task": "Aufgabe",
                 "TaskName": "Aufgabe Name",
+                "Type": "Typ",
                 "User": "Benutzer",
                 "www.google.com": "www.google.com"
             }
@@ -87,13 +90,16 @@ export class ExampleTranslationService extends TranslationService {
                 "NewProject": "New Project",
                 "NewTask": "New Task",
                 "Person": "Person",
+                "Priority": "Priority",
                 "Project": "Project",
                 "Projects": "Projects",
                 "ProjectName": "Project Name",
+                "Rating": "Rating",
                 "StartDate": "Start date",
                 "Tasks": "Tasks",
                 "Task": "Task",
                 "TaskName": "Task Name",
+                "Type": "Type",
                 "User": "User",
                 "www.google.com": "www.google.com"
             };

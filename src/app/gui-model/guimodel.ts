@@ -81,6 +81,31 @@ export class GuiModel {
                             "required": true
                         },
                         {
+                            "id": "companyRating",
+                            "type": "RadioGroupField",
+                            "name": "Rating",
+                            "alignment": "horizontal",
+                            "width": 2,
+                            "radios": [{
+                                type: "radio",
+                                name: "A-Rating",
+                                key: 0
+                            }, {
+                                type: "radio",
+                                name: "B-Rating",
+                                key: 1
+                            }, {
+                                type: "radio",
+                                name: "C-Rating",
+                                key: 2
+                            }, {
+                                type: "radio",
+                                name: "D-Rating",
+                                key: 3
+                            }
+                            ]
+                        },
+                        {
                             "type": "deleteButton",
                             "name": "Delete"
                         },
@@ -156,6 +181,41 @@ export class GuiModel {
                             "type": "date",
                             "name": "EndDate",
                             "width": 1
+                        },
+                        {
+                            "id": "projectPriority",
+                            "type": "RadioGroupField",
+                            "name": "Priority",
+                            "alignment": "vertical",
+                            "width": 2,
+                            "radios": [{
+                                type: "radio",
+                                name: "Low",
+                                key: 0
+                            }, {
+                                type: "radio",
+                                name: "Medium",
+                                key: 1
+                            }, {
+                                type: "radio",
+                                name: "High",
+                                key: 2
+                            }
+                            ]
+                        },
+                        {
+                            "id": "projectType",
+                            "type": "CheckboxGroupField",
+                            "name": "Type",
+                            "width": 2,
+                            "data": [{
+                                name: "Product",
+                                key: 'Product'
+                            }, {
+                                name: "Service",
+                                key: 'Service'
+                            }
+                            ]
                         },
                         {
                             "id": "comment",
@@ -644,6 +704,7 @@ export class GuiModel {
                             "name": "EditTask",
                             "icon": "fa-tasks",
                             "color": "green",
+                            "width": 2,
                             "form": {
                                 "form": "TaskForm"
                             }
