@@ -11,6 +11,7 @@ import {CompanyRestService} from "./rest/company-rest-service";
 import {ProjectDatabase} from "./database/project-database";
 import {ProjectRestService} from "./rest/project-rest-service";
 import express = require('express');
+import {DynamicComponentsRestService} from "./rest/dynamic-components-rest-service";
 
 let bodyParser = require('body-parser');
 let app = express();
@@ -65,6 +66,7 @@ new CompanyRestService(app, companyDatabase).init();
 new HobbyRestService(app, hobbyDatabase).init();
 new TaskRestService(app, taskDatabase).init();
 new ProjectRestService(app, projectDatabase).init();
+new DynamicComponentsRestService(app).init();
 TestData.init();
 
 // set the home page route

@@ -745,6 +745,15 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
+                            "name": "DynamicComponents",
+                            "width": 2,
+                            "icon": "fa-recycle",
+                            "color": "purple",
+                            "tooltip": "DynamicComponentTooltip",
+                            "page": "dynamicComponentsPage",
+                        },
+                        {
+                            "type": "button",
                             "name": "InlineForm",
                             "width": 2,
                             "icon": "fa-forward",
@@ -827,6 +836,34 @@ export class GuiModel {
                         },
                         {
                             "type": "ExampleComponent",
+                            "newRow": true,
+                        },
+                    ]
+                },
+                {
+                    "id": "dynamicComponentsPage",
+                    "name": "Dynamic Components",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "elementList",
+                            "url": "/dynamicComponentsPage",
+                            "newRow": true,
+                        },
+                    ]
+                },
+                {
+                    "id": "dynamicComponentsChildPage",
+                    "name": "Dynamic Components",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "elementList",
+                            "url": "/dynamicComponentsPage/:buttonKey",
                             "newRow": true,
                         },
                     ]
