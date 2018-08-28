@@ -148,6 +148,22 @@ export class GuiModel {
                     ]
                 },
                 {
+                    "id": "FieldListTestForm",
+                    "title": "Company",
+                    "formFieldList": [
+                        {
+                            "id": "fieldList",
+                            "type": "fieldList",
+                            "name": "FieldList",
+                            "url": "/dynamicComponentsForm/field",
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        }
+                    ]
+                },
+                {
                     "id": "ProjectForm",
                     "title": "Project",
                     "url": "/project",
@@ -846,6 +862,16 @@ export class GuiModel {
                     "elementList": [
                         {
                             "type": "backbutton",
+                        },
+                        {
+                            "type": "button",
+                            "name": "DynamicComponents",
+                            "width": 3,
+                            "icon": "fa-recycle",
+                            "color": "lime",
+                            "form": {
+                                "form": "FieldListTestForm"
+                            }
                         },
                         {
                             "type": "elementList",

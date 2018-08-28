@@ -61,6 +61,22 @@ export class DynamicComponentsRestService {
             res.json(result);
         });
 
+        this._app.get('/services/dynamicComponentsForm/field', async (req, res) => {
+            let result = [];
+            let types = ["text", "number", "date", "label"];
+            let k = 0;
+
+            for (let type of types) {
+                k++;
+                let field = {};
+                field["type"] = type;
+                field["name"] = 'Name' + k + " (" + type + ")";
+                field["width"] = 2;
+                result.push(field);
+            }
+            res.json(result);
+        });
+
     }
 
 }
