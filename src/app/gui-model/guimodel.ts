@@ -806,6 +806,22 @@ export class GuiModel {
                             "search": false,
                             "url": "/company/link"
                         },
+                        {
+                            "type": "button",
+                            "name": "InfoTiles",
+                            "width": 2,
+                            "icon": "fa-info",
+                            "color": "lime",
+                            "page": "infoTilesPage",
+                        },
+                        {
+                            "type": "button",
+                            "name": "Color",
+                            "width": 1,
+                            "icon": "fa-pencil",
+                            "color": "yellow",
+                            "page": "colorsPage",
+                        },
                     ]
                 },
                 {
@@ -928,6 +944,102 @@ export class GuiModel {
                             "width": 4,
                             "icon": "fa-text-width",
                             "color": "lime",
+                        }
+                    ]
+                },
+                {
+                    "id": "infoTilesPage",
+                    "name": "Elements",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "button",
+                            "name": "InfoTile",
+                            "width": 1,
+                            "icon": "fa-info",
+                            "color": "lime",
+                        },
+                        {
+                            "type": "button",
+                            "name": "InfoTile",
+                            "width": 2,
+                            "icon": "fa-info",
+                            "color": "lime",
+                            "page": "",
+                        },
+                        {
+                            "type": "button",
+                            "name": "InfoTile",
+                            "width": 3,
+                            "icon": "fa-info",
+                            "color": "lime",
+                            "form": {
+                                "form": "",
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "name": "InfoTile",
+                            "width": 4,
+                            "icon": "fa-info",
+                            "color": "lime",
+                            "page": "",
+                            "form": {
+                                "form": "",
+                            }
+                        },
+                        {
+                            "type": "list",
+                            "name": "InfoTile",
+                            "icon": "fa-info",
+                            "color": "lime",
+                            "url": "/company"
+                        }
+                    ]
+                },
+                {
+                    "id": "colorsPage",
+                    "name": "Elements",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "button",
+                            "name": "Color",
+                            "width": 2,
+                            "icon": "fa-pencil",
+                            "color": "#a94d39"
+                        },
+                        {
+                            "type": "button",
+                            "name": "Color",
+                            "width": 2,
+                            "icon": "fa-pencil",
+                            "color": "silver"
+                        },
+                        {
+                            "type": "button",
+                            "name": "Color",
+                            "width": 2,
+                            "icon": "fa-pencil",
+                            "color": "clouds"
+                        },
+                        {
+                            "type": "button",
+                            "name": "Color",
+                            "width": 2,
+                            "icon": "fa-pencil",
+                            "color": "#eeeeee"
+                        },
+                        {
+                            "type": "button",
+                            "name": "Color",
+                            "width": 2,
+                            "icon": "fa-pencil",
+                            "color": "var(--color-custom-green)"
                         }
                     ]
                 },
