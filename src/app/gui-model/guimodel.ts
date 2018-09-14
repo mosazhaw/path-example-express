@@ -1011,7 +1011,7 @@ export class GuiModel {
                             "name": "Color",
                             "width": 2,
                             "icon": "fa-pencil",
-                            "color": "#a94d39"
+                            "color": { "background-color": "#a94d39" }
                         },
                         {
                             "type": "button",
@@ -1032,14 +1032,14 @@ export class GuiModel {
                             "name": "Color",
                             "width": 2,
                             "icon": "fa-pencil",
-                            "color": "#eeeeee"
+                            "color": { "background-color": "#eeeeee", "color": "black" }
                         },
                         {
                             "type": "button",
                             "name": "Color",
                             "width": 2,
                             "icon": "fa-pencil",
-                            "color": "var(--color-custom-green)"
+                            "color": "custom-green"
                         }
                     ]
                 },
