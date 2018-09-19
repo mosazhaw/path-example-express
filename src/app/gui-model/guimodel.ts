@@ -785,26 +785,18 @@ export class GuiModel {
                             "page": "buttonWidthPage",
                         },
                         {
-                            "type": "linkButton",
-                            "name": "www.google.com",
-                            "width": 2,
-                            "icon": "fa-google",
-                            "color": "amethyst",
-                            "url": "http://www.google.com"
-                        },
-                        {
                             "type": "deleteButton",
                             "name": "Delete",
                             "icon": "fa-user",
                             "color": "red"
                         },
                         {
-                            "type": "list",
-                            "name": "LinkList",
+                            "type": "button",
+                            "name": "Links",
+                            "width": 1,
                             "icon": "fa-link",
-                            "color": "teal",
-                            "search": false,
-                            "url": "/company/link"
+                            "color": "wet-asphalt",
+                            "page": "linksPage",
                         },
                         {
                             "type": "button",
@@ -1041,6 +1033,38 @@ export class GuiModel {
                             "icon": "fa-pencil",
                             "color": "custom-green"
                         }
+                    ]
+                },
+                {
+                    "id": "linksPage",
+                    "elementList": [
+                        {
+                            "type": "pageLabel",
+                            "value": "<h3>Single Link Button</h3>",
+                        },
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "linkButton",
+                            "name": "www.google.com",
+                            "width": 2,
+                            "icon": "fa-google",
+                            "color": "amethyst",
+                            "url": "http://www.google.com"
+                        },
+                        {
+                            "type": "pageLabel",
+                            "value": "<h3>Link Button List loaded from Server</h3>",
+                        },
+                        {
+                            "type": "list",
+                            "name": "LinkList",
+                            "icon": "fa-link",
+                            "color": "teal",
+                            "search": false,
+                            "url": "/company/link"
+                        },
                     ]
                 },
             ]
