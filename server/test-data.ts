@@ -18,6 +18,9 @@ export class TestData {
         promises.push(companyDatabase.create({name: 'ZHAW', city: 'Winterthur'}));
         promises.push(companyDatabase.create({name: 'Company B', city: 'Zürich'}));
         promises.push(companyDatabase.create({name: 'Company C', city: 'Frauenfeld'}));
+        promises.push(companyDatabase.create({name: 'Company D', city: 'Zermatt'}));
+        promises.push(companyDatabase.create({name: 'Company E', city: 'St. Moritz'}));
+        promises.push(companyDatabase.create({name: 'Company F', city: 'Luzern'}));
         Promise.all(promises).then((companies) => {
                 personDatabase.create({firstName: 'Adam', familyName: 'Jones', company: companies[0].key});
                 personDatabase.create({firstName: 'Betty', familyName: 'Miller', company: companies[2].key});

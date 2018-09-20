@@ -800,6 +800,14 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
+                            "name": "Search",
+                            "width": 1,
+                            "icon": "fa-search",
+                            "color": "amethyst",
+                            "page": "searchPage",
+                        },
+                        {
+                            "type": "button",
                             "name": "InfoTiles",
                             "width": 2,
                             "icon": "fa-info",
@@ -1064,6 +1072,99 @@ export class GuiModel {
                             "color": "teal",
                             "search": false,
                             "url": "/company/link"
+                        },
+                    ]
+                },
+                {
+                    "id": "searchPage",
+                    "elementList": [
+                        {
+                            "type": "pageLabel",
+                            "value": "<h3>Initial search required</h3>",
+                        },
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "list",
+                            "icon": "fa-industry",
+                            "color": "lime",
+                            "search": true,
+                            "searchRequired": true,
+                            "searchRequest": true,
+                            "limit": 3,
+                            "url": "/company",
+                            "form": {
+                                "form": "CompanyForm"
+                            }
+                        },
+                        {
+                            "type": "pageLabel",
+                            "value": "<h3>Initial search not required</h3>",
+                        },
+                        {
+                            "type": "list",
+                            "icon": "fa-industry",
+                            "color": "lime",
+                            "search": true,
+                            "searchRequired": false,
+                            "searchRequest": false,
+                            "limit": 3,
+                            "url": "/company",
+                            "form": {
+                                "form": "CompanyForm"
+                            }
+                        },
+                        {
+                            "type": "pageLabel",
+                            "value": "<h3>Search not visible</h3>",
+                        },
+                        {
+                            "type": "list",
+                            "icon": "fa-industry",
+                            "color": "lime",
+                            "search": false,
+                            "searchRequired": false,
+                            "searchRequest": false,
+                            "limit": 3,
+                            "url": "/company",
+                            "form": {
+                                "form": "CompanyForm"
+                            }
+                        },
+                        {
+                            "type": "pageLabel",
+                            "value": "<h3>Search always with request</h3>",
+                        },
+                        {
+                            "type": "list",
+                            "icon": "fa-industry",
+                            "color": "lime",
+                            "search": true,
+                            "searchRequired": false,
+                            "searchRequest": true,
+                            "limit": 3,
+                            "url": "/company",
+                            "form": {
+                                "form": "CompanyForm"
+                            }
+                        },
+                        {
+                            "type": "pageLabel",
+                            "value": "<h3>Search on client only</h3>",
+                        },
+                        {
+                            "type": "list",
+                            "icon": "fa-industry",
+                            "color": "lime",
+                            "search": true,
+                            "searchRequired": false,
+                            "searchRequest": false,
+                            "limit": 3,
+                            "url": "/company",
+                            "form": {
+                                "form": "CompanyForm"
+                            }
                         },
                     ]
                 },
