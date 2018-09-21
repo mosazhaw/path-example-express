@@ -129,6 +129,12 @@ export class GuiModel {
                     "formFieldList": [
                         {
                             "id": "name",
+                            "type": "ProgressBarField",
+                            "value": 70,
+                            "width": 2,
+                        },
+                        {
+                            "id": "name",
                             "type": "text",
                             "name": "CompanyName",
                             "width": 2,
