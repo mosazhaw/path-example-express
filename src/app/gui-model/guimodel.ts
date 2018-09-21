@@ -1100,6 +1100,7 @@ export class GuiModel {
                         },
                         {
                             "type": "pageLabel",
+                            "newRow": true,
                             "value": "<h3>Initial search not required</h3><small>search: true, searchRequired: false, searchRequest: false</small>",
                         },
                         {
@@ -1117,6 +1118,7 @@ export class GuiModel {
                         },
                         {
                             "type": "pageLabel",
+                            "newRow": true,
                             "value": "<h3>Search not visible</h3><small>search: false, searchRequired: false, searchRequest: false</small>",
                         },
                         {
@@ -1134,6 +1136,7 @@ export class GuiModel {
                         },
                         {
                             "type": "pageLabel",
+                            "newRow": true,
                             "value": "<h3>Search always with request</h3><small>search: true, searchRequired: false, searchRequest: true</small>",
                         },
                         {
@@ -1151,6 +1154,7 @@ export class GuiModel {
                         },
                         {
                             "type": "pageLabel",
+                            "newRow": true,
                             "value": "<h3>Search on client only</h3><small>search: true, searchRequired: false, searchRequest: false</small>",
                         },
                         {
