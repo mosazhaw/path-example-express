@@ -1080,7 +1080,7 @@ export class GuiModel {
                     "elementList": [
                         {
                             "type": "pageLabel",
-                            "value": "<h3>Initial search required</h3>",
+                            "value": "<h3>Initial search required</h3><small>search: true, searchRequired: true, searchRequest: true</small>",
                         },
                         {
                             "type": "backbutton",
@@ -1100,7 +1100,7 @@ export class GuiModel {
                         },
                         {
                             "type": "pageLabel",
-                            "value": "<h3>Initial search not required</h3>",
+                            "value": "<h3>Initial search not required</h3><small>search: true, searchRequired: false, searchRequest: false</small>",
                         },
                         {
                             "type": "list",
@@ -1117,7 +1117,7 @@ export class GuiModel {
                         },
                         {
                             "type": "pageLabel",
-                            "value": "<h3>Search not visible</h3>",
+                            "value": "<h3>Search not visible</h3><small>search: false, searchRequired: false, searchRequest: false</small>",
                         },
                         {
                             "type": "list",
@@ -1134,7 +1134,7 @@ export class GuiModel {
                         },
                         {
                             "type": "pageLabel",
-                            "value": "<h3>Search always with request</h3>",
+                            "value": "<h3>Search always with request</h3><small>search: true, searchRequired: false, searchRequest: true</small>",
                         },
                         {
                             "type": "list",
@@ -1151,7 +1151,7 @@ export class GuiModel {
                         },
                         {
                             "type": "pageLabel",
-                            "value": "<h3>Search on client only</h3>",
+                            "value": "<h3>Search on client only</h3><small>search: true, searchRequired: false, searchRequest: false</small>",
                         },
                         {
                             "type": "list",
