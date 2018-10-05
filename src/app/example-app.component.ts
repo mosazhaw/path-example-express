@@ -64,7 +64,7 @@ export class ExampleAppComponent extends path.PathAppComponent {
     protected getCustomComponentClass(componentType: string): Type<CustomPageElement> {
         if (componentType == "ExampleComponent") {
             console.log("Path Example: " + componentType);
-            return ExampleComponent;
+            return <any>ExampleComponent;
         }
         return super.getCustomComponentClass(componentType);
     }
