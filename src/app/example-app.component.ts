@@ -25,7 +25,7 @@ export class ExampleAppComponent extends path.PathAppComponent {
     }
 
     protected getFrontendVersion():string {
-        return "0.3.17";
+        return "0.4.0";
     }
 
     protected getStartPage():string {
@@ -64,7 +64,7 @@ export class ExampleAppComponent extends path.PathAppComponent {
     protected getCustomComponentClass(componentType: string): Type<CustomPageElement> {
         if (componentType == "ExampleComponent") {
             console.log("Path Example: " + componentType);
-            return ExampleComponent;
+            return <any>ExampleComponent;
         }
         return super.getCustomComponentClass(componentType);
     }
