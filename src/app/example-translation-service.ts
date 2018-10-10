@@ -4,13 +4,14 @@ import {TranslationService} from "path-framework/app/path-framework/service/tran
 @Injectable()
 export class ExampleTranslationService extends TranslationService {
 
+    private myTranslations = this.createTranslationMap(this.getExampleTranslations());
+
     protected getTranslation(key:string) : string {
-        let myTranslations = this.createTranslationMap(this.getExampleTranslations());
         // prefer custom translations
-        if (myTranslations.get(key) == null) {
+        if (this.myTranslations.get(key) == null) {
             return super.getTranslation(key);
         }
-        return myTranslations.get(key);
+        return this.myTranslations.get(key);
     }
 
     private getExampleTranslations() {
