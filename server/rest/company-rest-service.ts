@@ -13,15 +13,15 @@ export class CompanyRestService extends AbstractRestService {
     protected initList() {
         super.initList();
 
-        let service = this;
-        this._app.get('/services/company/link', async (req, res) => {
-            let rows = await service.database.list();
+        const service = this;
+        this._app.get("/services/company/link", async (req, res) => {
+            const rows = await service.database.list();
 
-            let entries:any[] = [];
-            let promises = [];
-            for (let company of rows) {
-                let entry = new PathListEntry();
-                let key: PathListKey = new PathListKey();
+            const entries: any[] = [];
+            const promises = [];
+            for (const company of rows) {
+                const entry = new PathListEntry();
+                const key: PathListKey = new PathListKey();
                 key.key = company._id;
                 key.name = service.database.getEntityName() + "Key";
                 entry.key = key;
@@ -32,12 +32,12 @@ export class CompanyRestService extends AbstractRestService {
                 entries.push(entry);
                 promises.push(service.database.createPathListEntry(entry, company));
             }
-            let result = await Promise.all(promises);
+            const result = await Promise.all(promises);
             res.json(result);
         });
     }
 
-    private getRandomElement(array:string[]) : string {
+    private getRandomElement(array: string[]): string {
         return array[Math.floor(Math.random() * array.length)];
     }
 

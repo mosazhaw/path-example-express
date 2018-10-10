@@ -11,29 +11,29 @@ export class PersonRestService extends AbstractRestService {
     protected initList() {
         super.initList();
 
-        let service = this;
-        this._app.get('/services/company/:companyKey/person', (req, res) => {
+        const service = this;
+        this._app.get("/services/company/:companyKey/person", (req, res) => {
             service._database.list().then((rows) => {
                 // filter relations
-                let filteredRows = [];
-                for (let row of rows) {
-                    if (row.company == req.params.companyKey) {
+                const filteredRows = [];
+                for (const row of rows) {
+                    if (row.company === req.params.companyKey) {
                         filteredRows.push(row);
                     }
                 }
                 service._database.createPathList(filteredRows, res);
             }).catch((err) => {
                 console.log(err);
-            })
+            });
         });
 
-        this._app.get('/services/task/:taskKey/person', (req, res) => {
-            let taskKey = req.params.taskKey;
+        this._app.get("/services/task/:taskKey/person", (req, res) => {
+            const taskKey = req.params.taskKey;
             service.database.getPersons(taskKey).then((rows) => {
                 service._database.createPathList(rows, res);
             }).catch((err) => {
                 console.log(err);
-            })
+            });
         });
     }
 

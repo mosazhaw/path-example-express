@@ -8,11 +8,11 @@ export class CompanyDatabase extends AbstractDatabase {
     }
 
     public getSearchAttributes(): any[] {
-        return ['name'];
+        return ["name"];
     }
 
     protected getSort(): any[] {
-        return ['name'];
+        return ["name"];
     }
 
     public createPathListEntry(entry: PathListEntry, entity: any): Promise<PathListEntry> {

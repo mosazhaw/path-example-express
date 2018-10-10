@@ -1,20 +1,20 @@
 /* angular/path imports */
-import {Component, Type} from '@angular/core';
+import {Component, Type} from "@angular/core";
 import * as path from "path-framework/app/path-framework/path";
 
 /* model imports */
-import {GuiModel} from './gui-model/guimodel';
-import * as handler from './gui-model/form/handlers'
-import * as beans from './gui-model/generated/forms'
+import {GuiModel} from "./gui-model/guimodel";
+import * as handler from "./gui-model/form/handlers";
+import * as beans from "./gui-model/generated/forms";
 import {TranslationService} from "path-framework/app/path-framework/service/translation.service";
 import {ExampleTranslationService} from "./example-translation-service";
 import {ExampleComponent} from "./custom/example.component";
 import {CustomPageElement} from "path-framework/app/path-framework/page/element/custom/custom-container.component";
 
 @Component({
-    selector: 'path-application',
-    templateUrl: './../../node_modules/path-framework/app/path-framework/path-app.component.html',
-    providers: [path.PathService, { provide: TranslationService, useClass: ExampleTranslationService }]
+    selector: "path-application",
+    templateUrl: "./../../node_modules/path-framework/app/path-framework/path-app.component.html",
+    providers: [path.PathService, {provide: TranslationService, useClass: ExampleTranslationService}]
 })
 export class ExampleAppComponent extends path.PathAppComponent {
 
@@ -24,15 +24,15 @@ export class ExampleAppComponent extends path.PathAppComponent {
         super(pathService, translationService);
     }
 
-    protected getFrontendVersion():string {
+    protected getFrontendVersion(): string {
         return "0.4.1";
     }
 
-    protected getStartPage():string {
+    protected getStartPage(): string {
         return "mainmenu";
     }
 
-    protected getOwnUserForm():string {
+    protected getOwnUserForm(): string {
         return "UserForm";
     }
 
@@ -44,25 +44,22 @@ export class ExampleAppComponent extends path.PathAppComponent {
     }
 
     public getBackendUrl() {
-        if (window.location.hostname.indexOf("angular-cli") != -1) {
-            return location.protocol + "//path-example-angular-cli.herokuapp.com/services";
-        }
-        else if (window.location.hostname.indexOf("herokuapp") != -1) {
+        if (window.location.hostname.indexOf("herokuapp") !== -1) {
             return location.protocol + "//path-example.herokuapp.com/services";
         }
         return "http://localhost:8080/services";
     }
-    
+
     protected getBeans() {
         return beans;
     }
-    
+
     protected getHandlers() {
         return handler;
     }
 
     protected getCustomComponentClass(componentType: string): Type<CustomPageElement> {
-        if (componentType == "ExampleComponent") {
+        if (componentType === "ExampleComponent") {
             console.log("Path Example: " + componentType);
             return <any>ExampleComponent;
         }

@@ -8,38 +8,38 @@ export class PersonDatabase extends AbstractDatabase {
     }
 
     public getSearchAttributes(): any[] {
-        return ['familyName', 'firstName'];
+        return ["familyName", "firstName"];
     }
 
-    protected getSort() : any[] {
-        return ['familyName', 'firstName'];
+    protected getSort(): any[] {
+        return ["familyName", "firstName"];
     }
 
-    public createPathListEntry(entry:PathListEntry, entity:any) : Promise<PathListEntry> {
-        entry.name = entity.firstName + ' ' + entity.familyName;
+    public createPathListEntry(entry: PathListEntry, entity: any): Promise<PathListEntry> {
+        entry.name = entity.firstName + " " + entity.familyName;
         if (entity.company != null) {
             return this.read(entity.company).then((doc) => {
                 entry.details.push(doc.name);
                 return entry;
             }).catch((err) => {
                 return entry;
-            })
+            });
         } else {
             return super.createPathListEntry(entry, entity);
         }
     }
 
     public async getPersons(taskKey): Promise<any> {
-        let persons = await this.list();
-        let result:any[] = [];
-        for (let person of persons) {
-            let key:any = this.toComplexKey(person._id, taskKey);
+        const persons = await this.list();
+        const result: any[] = [];
+        for (const person of persons) {
+            const key: any = this.toComplexKey(person._id, taskKey);
             console.log(key);
             try {
-                let doc = await AbstractDatabase._database.read(key);
+                const doc = await AbstractDatabase._database.read(key);
                 result.push(person);
             } catch (err) {
-                console.log('error')
+                console.log("error");
             }
         }
         return result;

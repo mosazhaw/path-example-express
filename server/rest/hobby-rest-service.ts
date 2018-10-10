@@ -12,27 +12,27 @@ export class HobbyRestService extends AbstractRestService {
     protected initList() {
         super.initList();
 
-        let service = this;
-        this._app.get('/services/person/:personKey/hobby', async (req, res) => {
-            let rows = await service.database.list();
-            var promises = [];
-            for (let hobby of rows) {
+        const service = this;
+        this._app.get("/services/person/:personKey/hobby", async (req, res) => {
+            const rows = await service.database.list();
+            const promises = [];
+            for (const hobby of rows) {
                 // TODO create generic method
-                let entry = new PathListEntry();
-                let key: PathListKey = new PathListKey();
+                const entry = new PathListEntry();
+                const key: PathListKey = new PathListKey();
                 key.key = hobby._id;
                 key.name = service.database.getEntityName() + "Key";
-                let hobbyExists = await service.database.hobbyExists(req.params.personKey, hobby._id);
+                const hobbyExists = await service.database.hobbyExists(req.params.personKey, hobby._id);
                 if (hobbyExists) {
-                    entry.color = 'carrot';
+                    entry.color = "carrot";
                 } else {
-                    entry.color = 'concrete';
+                    entry.color = "concrete";
                 }
                 entry.key = key;
-                entry.url = '/person/:personKey/hobby/:hobbyKey';
+                entry.url = "/person/:personKey/hobby/:hobbyKey";
                 promises.push(service.database.createPathListEntry(entry, hobby));
             }
-            let result = await Promise.all(promises);
+            const result = await Promise.all(promises);
             res.json(result);
         });
     }
@@ -40,9 +40,9 @@ export class HobbyRestService extends AbstractRestService {
     protected initRead() {
         super.initRead();
 
-        let service = this;
-        this._app.get('/services/person/:personKey/hobby/:hobbyKey', async (req, res) => {
-            let hobbyExists:boolean = await service.database.hobbyExists(req.params.personKey, req.params.hobbyKey);
+        const service = this;
+        this._app.get("/services/person/:personKey/hobby/:hobbyKey", async (req, res) => {
+            const hobbyExists: boolean = await service.database.hobbyExists(req.params.personKey, req.params.hobbyKey);
             if (hobbyExists) {
                 await service.database.removeHobby(req.params.personKey, req.params.hobbyKey);
             } else {

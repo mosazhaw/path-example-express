@@ -8,11 +8,11 @@ export class ProjectDatabase extends AbstractDatabase {
     }
 
     public getSearchAttributes(): any[] {
-        return ['name'];
+        return ["name"];
     }
 
-    protected getSort() : any[] {
-        return ['name'];
+    protected getSort(): any[] {
+        return ["name"];
     }
 
     public createPathListEntry(entry: PathListEntry, entity: any) {
@@ -23,7 +23,7 @@ export class ProjectDatabase extends AbstractDatabase {
                 return entry;
             }).catch((err) => {
                 return entry;
-            })
+            });
         } else {
             return super.createPathListEntry(entry, entity);
         }

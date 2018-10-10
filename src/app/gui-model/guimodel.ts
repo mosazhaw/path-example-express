@@ -1,3 +1,4 @@
+/* tslint:disable:max-line-length */
 export class GuiModel {
 
     private _guiModel = {
@@ -232,10 +233,10 @@ export class GuiModel {
                             "width": 2,
                             "data": [{
                                 name: "Product",
-                                key: 'Product'
+                                key: "Product"
                             }, {
                                 name: "Service",
-                                key: 'Service'
+                                key: "Service"
                             }
                             ]
                         },

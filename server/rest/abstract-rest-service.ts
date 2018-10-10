@@ -14,8 +14,8 @@ export abstract class AbstractRestService {
     }
 
     protected initList() {
-        let service = this;
-        this._app.get('/services/' + service._database.getEntityName() + '', async (req, res) => {
+        const service = this;
+        this._app.get("/services/" + service._database.getEntityName() + "", async (req, res) => {
             let rows = await service._database.list();
             if (req.query.search) {
                 rows = this.filter(rows, req.query.search, service._database.getSearchAttributes());
@@ -26,11 +26,11 @@ export abstract class AbstractRestService {
 
     protected filter(list, searchText: string, searchAttributes: string[]) {
         searchText = searchText.toLowerCase();
-        let matches = [], i, key;
-        for (let element of list) {
-            for (let key of searchAttributes) {
+        const matches = [];
+        for (const element of list) {
+            for (const key of searchAttributes) {
                 if (element[key]) {
-                    let value = element[key].toLowerCase();
+                    const value = element[key].toLowerCase();
                     if (value.indexOf(searchText) > -1) {
                         matches.push(element);
                     }
@@ -41,33 +41,33 @@ export abstract class AbstractRestService {
     }
 
     protected initCreate() {
-        this._app.post('/services/' + this._database.getEntityName() + '', async (req, res) => {
-            let newDoc = await this._database.create(req.body);
+        this._app.post("/services/" + this._database.getEntityName() + "", async (req, res) => {
+            const newDoc = await this._database.create(req.body);
             res.json(newDoc);
         });
     }
 
     protected initRead() {
-        this._app.get('/services/' + this._database.getEntityName() + '/:key', async (req, res) => {
-            let key: string = req.params.key;
-            let doc = await this._database.read(key);
+        this._app.get("/services/" + this._database.getEntityName() + "/:key", async (req, res) => {
+            const key: string = req.params.key;
+            const doc = await this._database.read(key);
             res.json(doc);
         });
     }
 
     protected initUpdate() {
-        this._app.put('/services/' + this._database.getEntityName() + '/:key', async (req, res) => {
-            let key: string = req.params.key;
-            let doc = await this._database.update(key, req.body);
+        this._app.put("/services/" + this._database.getEntityName() + "/:key", async (req, res) => {
+            const key: string = req.params.key;
+            const doc = await this._database.update(key, req.body);
             res.json(doc);
         });
     }
 
     protected initDelete() {
-        this._app.delete('/services/' + this._database.getEntityName() + '/:key', async (req, res) => {
-            let key: string = req.params.key;
-            let doc = await this._database.delete(key);
-            res.json({message: 'deleted'});
+        this._app.delete("/services/" + this._database.getEntityName() + "/:key", async (req, res) => {
+            const key: string = req.params.key;
+            const doc = await this._database.delete(key);
+            res.json({message: "deleted"});
         });
     }
 }

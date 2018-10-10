@@ -8,16 +8,16 @@ export class HobbyDatabase extends AbstractDatabase {
     }
 
     public getSearchAttributes(): any[] {
-        return ['hobby'];
+        return ["hobby"];
     }
 
     protected getSort(): any[] {
-        return ['name'];
+        return ["name"];
     }
 
-    public createPathListEntry(entry:PathListEntry, entity:any) {
-        for (let item of entity.name) {
-            if (item[0]["key"] == "en") {
+    public createPathListEntry(entry: PathListEntry, entity: any) {
+        for (const item of entity.name) {
+            if (item[0]["key"] === "en") {
                 entry.name = item[1];
                 entry.tooltip = "Hobby " + item[1];
                 break;
@@ -27,23 +27,23 @@ export class HobbyDatabase extends AbstractDatabase {
     }
 
     public async addHobby(personKey, hobbyKey): Promise<any> {
-        let key: any = this.toComplexKey(personKey, hobbyKey);
+        const key: any = this.toComplexKey(personKey, hobbyKey);
         return AbstractDatabase._database.update(key, {});
     }
 
     public async removeHobby(personKey, hobbyKey): Promise<any> {
-        let key = this.toComplexKey(personKey, hobbyKey);
+        const key = this.toComplexKey(personKey, hobbyKey);
         return AbstractDatabase._database.delete(key);
     }
 
     public async hobbyExists(personKey, hobbyKey): Promise<any> {
-        let key = this.toComplexKey(personKey, hobbyKey);
+        const key = this.toComplexKey(personKey, hobbyKey);
         try {
-            let exists = await AbstractDatabase._database.read(key);
+            const exists = await AbstractDatabase._database.read(key);
             return Promise.resolve(true);
         } catch (err) {
             return Promise.resolve(false);
-        };
+        }
     }
 
 }

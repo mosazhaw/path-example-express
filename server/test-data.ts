@@ -7,25 +7,25 @@ import {ProjectDatabase} from "./database/project-database";
 export class TestData {
 
     public static init() {
-        let personDatabase = new PersonDatabase();
-        let companyDatabase = new CompanyDatabase();
-        let taskDatabase = new TaskDatabase();
-        let hobbyDatabase = new HobbyDatabase();
-        let projectDatabase = new ProjectDatabase();
+        const personDatabase = new PersonDatabase();
+        const companyDatabase = new CompanyDatabase();
+        const taskDatabase = new TaskDatabase();
+        const hobbyDatabase = new HobbyDatabase();
+        const projectDatabase = new ProjectDatabase();
 
         let promises = [];
-        promises.push(companyDatabase.create({name: 'Company A', city: 'Winterthur'}));
-        promises.push(companyDatabase.create({name: 'ZHAW', city: 'Winterthur'}));
-        promises.push(companyDatabase.create({name: 'Company B', city: 'Zürich'}));
-        promises.push(companyDatabase.create({name: 'Company C', city: 'Frauenfeld'}));
-        promises.push(companyDatabase.create({name: 'Company D', city: 'Zermatt'}));
-        promises.push(companyDatabase.create({name: 'Company E', city: 'St. Moritz'}));
-        promises.push(companyDatabase.create({name: 'Company F', city: 'Luzern'}));
+        promises.push(companyDatabase.create({name: "Company A", city: "Winterthur"}));
+        promises.push(companyDatabase.create({name: "ZHAW", city: "Winterthur"}));
+        promises.push(companyDatabase.create({name: "Company B", city: "Zürich"}));
+        promises.push(companyDatabase.create({name: "Company C", city: "Frauenfeld"}));
+        promises.push(companyDatabase.create({name: "Company D", city: "Zermatt"}));
+        promises.push(companyDatabase.create({name: "Company E", city: "St. Moritz"}));
+        promises.push(companyDatabase.create({name: "Company F", city: "Luzern"}));
         Promise.all(promises).then((companies) => {
-                personDatabase.create({firstName: 'Adam', familyName: 'Jones', company: companies[0].key});
-                personDatabase.create({firstName: 'Betty', familyName: 'Miller', company: companies[2].key});
-                personDatabase.create({firstName: 'Chris', familyName: 'Connor', company: companies[3].key});
-                personDatabase.create({firstName: 'Dave', familyName: 'Dean', company: companies[3].key});
+                personDatabase.create({firstName: "Adam", familyName: "Jones", company: companies[0].key});
+                personDatabase.create({firstName: "Betty", familyName: "Miller", company: companies[2].key});
+                personDatabase.create({firstName: "Chris", familyName: "Connor", company: companies[3].key});
+                personDatabase.create({firstName: "Dave", familyName: "Dean", company: companies[3].key});
             }
         ).catch((err) => {
                 console.log(err);

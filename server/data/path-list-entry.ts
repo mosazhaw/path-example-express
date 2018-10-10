@@ -6,8 +6,8 @@ export class PathListEntry {
     public color: string;
     public icon: string;
     public url: string;
-    public type:string;
-    public active: boolean = true;
-    public tooltip:string;
+    public type: string;
+    public active = true;
+    public tooltip: string;
     public details: string[] = [];
 }
