@@ -829,6 +829,14 @@ export class GuiModel {
                             "color": "yellow",
                             "page": "colorsPage",
                         },
+                        {
+                            "type": "button",
+                            "name": "ButtonGroups",
+                            "width": 2,
+                            "icon": "fa-users",
+                            "color": "blue",
+                            "page": "buttonGroupsPage",
+                        },
                     ]
                 },
                 {
@@ -1176,6 +1184,198 @@ export class GuiModel {
                             "form": {
                                 "form": "CompanyForm"
                             }
+                        },
+                    ]
+                },
+                {
+                    "id": "buttonGroupsPage",
+                    "elementList": [
+                        {
+                            "type": "pageLabel",
+                            "value": "<h3>Lists</h3>",
+                        },
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "list",
+                            "name": "PersonList",
+                            "icon": "fa-user",
+                            "color": "blue",
+                            "search": true,
+                            "url": "/person",
+                            "page": "personpage",
+                        },
+                        {
+                            "type": "pageLabel",
+                            "value": "<h3>Tile Placement</h3>",
+                            "newRow": true
+                        },
+                        {
+                            "type": "buttonGroup",
+                            "buttons": [
+                                {
+                                    "type": "button",
+                                    "name": {default: 10},
+                                    "width": 1,
+                                    "icon": "fa-users",
+                                    "color": "amethyst",
+                                },
+                            ]
+                        },
+                        {
+                            "type": "buttonGroup",
+                            "buttons": [
+                                {
+                                    "type": "button",
+                                    "name": {default: 20},
+                                    "width": 1,
+                                    "icon": "fa-users",
+                                    "color": "amethyst",
+                                },
+                                {
+                                    "type": "button",
+                                    "name": {default: 21},
+                                    "width": 1,
+                                    "icon": "fa-users",
+                                    "color": "amethyst",
+                                },
+                                {
+                                    "type": "button",
+                                    "name": {default: 22},
+                                    "width": 1,
+                                    "icon": "fa-users",
+                                    "color": "amethyst",
+                                },
+                            ]
+                        },
+                        {
+                            "type": "buttonGroup",
+                            "buttons": [
+                                {
+                                    "type": "button",
+                                    "name": {default: 30},
+                                    "width": 1,
+                                    "icon": "fa-users",
+                                    "color": "amethyst",
+                                },
+                                {
+                                    "type": "button",
+                                    "name": {default: 31},
+                                    "width": 1,
+                                    "icon": "fa-users",
+                                    "color": "amethyst",
+                                },
+                            ]
+                        },
+                        {
+                            "type": "buttonGroup",
+                            "buttons": [
+                                {
+                                    "type": "button",
+                                    "name": {default: 40},
+                                    "width": 1,
+                                    "icon": "fa-users",
+                                    "color": "amethyst",
+                                },
+                                {
+                                    "type": "button",
+                                    "name": {default: 41},
+                                    "width": 1,
+                                    "icon": "fa-users",
+                                    "color": "amethyst",
+                                },
+                            ]
+                        },
+                        {
+                            "type": "buttonGroup",
+                            "buttons": [
+                                {
+                                    "type": "button",
+                                    "name": {default: 50},
+                                    "width": 1,
+                                    "icon": "fa-users",
+                                    "color": "amethyst",
+                                },
+                            ]
+                        },
+                        {
+                            "type": "buttonGroup",
+                            "buttons": [
+                                {
+                                    "type": "button",
+                                    "name": {default: 60},
+                                    "width": 1,
+                                    "icon": "fa-users",
+                                    "color": "amethyst",
+                                },
+                            ]
+                        },
+                        {
+                            "type": "button",
+                            "name": {default: 70},
+                            "width": 1,
+                            "icon": "fa-users",
+                            "color": "amethyst",
+                        },
+                        {
+                            "type": "button",
+                            "name": {default: 80},
+                            "width": 1,
+                            "icon": "fa-users",
+                            "color": "amethyst",
+                        },
+                        {
+                            "type": "buttonGroup",
+                            "buttons": [
+                                {
+                                    "type": "button",
+                                    "name": {default: 90},
+                                    "width": 3,
+                                    "icon": "fa-users",
+                                    "color": "amethyst",
+                                },
+                                {
+                                    "type": "button",
+                                    "name": {default: 91},
+                                    "width": 1,
+                                    "icon": "fa-users",
+                                    "color": "silver",
+                                },
+                                {
+                                    "type": "button",
+                                    "name": {default: 92},
+                                    "width": 1,
+                                    "icon": "fa-users",
+                                    "color": "amethyst",
+                                },
+                            ]
+                        },
+                        {
+                            "type": "buttonGroup",
+                            "buttons": [
+                                {
+                                    "type": "button",
+                                    "name": {default: 100},
+                                    "width": 2,
+                                    "icon": "fa-users",
+                                    "color": "amethyst",
+                                },
+                                {
+                                    "type": "button",
+                                    "name": {default: 101},
+                                    "width": 1,
+                                    "icon": "fa-users",
+                                    "color": "silver",
+                                },
+                                {
+                                    "type": "button",
+                                    "name": {default: 102},
+                                    "width": 2,
+                                    "icon": "fa-users",
+                                    "color": "amethyst",
+                                },
+                            ]
                         },
                     ]
                 },
