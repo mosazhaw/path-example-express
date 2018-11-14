@@ -48,7 +48,7 @@ export class PersonRestService extends AbstractRestService {
             action.color = "silver";
             action.icon = "fa-pencil";
             action.width = 1;
-            action.setForm("PersonForm")
+            action.setForm("PersonForm");
             additionalButtons.push(action);
             this._database.createPathGroupList(rows, additionalButtons, res);
         });
