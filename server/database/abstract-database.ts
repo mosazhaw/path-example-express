@@ -1,5 +1,6 @@
-import {PathListEntry} from "../data/path-list-entry";
-import {PathListKey} from "../data/path-list-key";
+import {PathGroup} from "../data/path-group";
+import {PathButton} from "../data/path-button";
+import {PathKey} from "../data/path-key";
 import {KeyValueDatabase} from "./key-value-database";
 
 export abstract class AbstractDatabase {
@@ -19,7 +20,7 @@ export abstract class AbstractDatabase {
     public list(): Promise<any> {
         const service = this;
         return AbstractDatabase._database.allDocs(service.getEntityName()).then((rows) => {
-            const result: PathListEntry[] = [];
+            const result: PathButton[] = [];
 
             // sort
             const compare = (a, b) => {
@@ -58,16 +59,13 @@ export abstract class AbstractDatabase {
         return AbstractDatabase._database.delete(key);
     }
 
-    public createPathList(rows, res) {
+    public createPathButtonList(rows, res) {
         const service = this;
         const promises = [];
         for (const item of rows) {
-            const entry: PathListEntry = new PathListEntry();
-            const key: PathListKey = new PathListKey();
-            key.key = item._id;
-            key.name = service.getEntityName() + "Key";
-            entry.key = key;
-            promises.push(service.createPathListEntry(entry, item));
+            const entry: PathButton = new PathButton();
+            entry.key = this.createPathKey(item, service);
+            promises.push(service.createPathButton(entry, item));
         }
         return Promise.all(promises).then((result) => {
                 res.json(result);
@@ -77,7 +75,47 @@ export abstract class AbstractDatabase {
         });
     }
 
-    public createPathListEntry(entry: PathListEntry, entity: any): Promise<PathListEntry> {
+    public createPathGroupList(rows, additionalButtons: PathButton[], res) {
+        const service = this;
+        const result: PathGroup[] = [];
+        const promises = [];
+        for (const item of rows) {
+            // group
+            const group: PathGroup = new PathGroup();
+            group.key = this.createPathKey(item, service);
+            // first button
+            const entry: PathButton = new PathButton();
+            entry.key = this.createPathKey(item, service);
+            // additional buttons
+            for (const additionalButton of additionalButtons) {
+                const newAdditionalButton = additionalButton.clone();
+                newAdditionalButton.key = entry.key;
+                group.buttons.push(newAdditionalButton);
+            }
+            promises.push(service.createPathButton(entry, item));
+            result.push(group);
+        }
+        Promise.all(promises).then((buttons) => {
+                let counter = 0;
+                for (const button of buttons) {
+                    result[counter].buttons.unshift(button);
+                    counter++;
+                }
+                res.json(result);
+            }
+        ).catch((err) => {
+            console.log(err);
+        });
+    }
+
+    private createPathKey(item, service) {
+        const key: PathKey = new PathKey();
+        key.key = item._id;
+        key.name = service.getEntityName() + "Key";
+        return key;
+    }
+
+    public createPathButton(entry: PathButton, entity: any): Promise<PathButton> {
         return new Promise((resolve, reject) => {
             resolve(entry);
         });

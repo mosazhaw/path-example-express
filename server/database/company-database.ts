@@ -1,5 +1,5 @@
 import {AbstractDatabase} from "./abstract-database";
-import {PathListEntry} from "../data/path-list-entry";
+import {PathButton} from "../data/path-button";
 
 export class CompanyDatabase extends AbstractDatabase {
 
@@ -15,10 +15,10 @@ export class CompanyDatabase extends AbstractDatabase {
         return ["name"];
     }
 
-    public createPathListEntry(entry: PathListEntry, entity: any): Promise<PathListEntry> {
+    public createPathButton(entry: PathButton, entity: any): Promise<PathButton> {
         entry.name = entity.name;
         entry.details.push(entity.city);
-        return super.createPathListEntry(entry, entity);
+        return super.createPathButton(entry, entity);
     }
 
 }

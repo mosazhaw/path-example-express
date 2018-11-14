@@ -1,6 +1,6 @@
 import {AbstractRestService} from "./abstract-rest-service";
-import {PathListEntry} from "../data/path-list-entry";
-import {PathListKey} from "../data/path-list-key";
+import {PathButton} from "../data/path-button";
+import {PathKey} from "../data/path-key";
 import {TaskDatabase} from "../database/task-database";
 
 export class TaskRestService extends AbstractRestService {
@@ -25,13 +25,13 @@ export class TaskRestService extends AbstractRestService {
             const entries: any[] = [];
             promises = [];
             for (const task of result) {
-                const entry = new PathListEntry();
-                const key: PathListKey = new PathListKey();
+                const entry = new PathButton();
+                const key: PathKey = new PathKey();
                 key.key = task._id;
                 key.name = service.database.getEntityName() + "Key";
                 entry.key = key;
                 entries.push(entry);
-                promises.push(service.database.createPathListEntry(entry, task));
+                promises.push(service.database.createPathButton(entry, task));
             }
             result = await Promise.all(promises);
             res.json(result);

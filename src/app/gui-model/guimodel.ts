@@ -1203,7 +1203,7 @@ export class GuiModel {
                             "icon": "fa-user",
                             "color": "blue",
                             "search": true,
-                            "url": "/person",
+                            "url": "/person/group",
                             "page": "personpage",
                         },
                         {

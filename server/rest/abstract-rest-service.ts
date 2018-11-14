@@ -20,7 +20,7 @@ export abstract class AbstractRestService {
             if (req.query.search) {
                 rows = this.filter(rows, req.query.search, service._database.getSearchAttributes());
             }
-            this._database.createPathList(rows, res);
+            this._database.createPathButtonList(rows, res).catch((error: any) => console.log(error));
         });
     }
 

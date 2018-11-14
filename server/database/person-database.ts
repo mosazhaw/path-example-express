@@ -1,5 +1,5 @@
 import {AbstractDatabase} from "./abstract-database";
-import {PathListEntry} from "../data/path-list-entry";
+import {PathButton} from "../data/path-button";
 
 export class PersonDatabase extends AbstractDatabase {
 
@@ -15,7 +15,7 @@ export class PersonDatabase extends AbstractDatabase {
         return ["familyName", "firstName"];
     }
 
-    public createPathListEntry(entry: PathListEntry, entity: any): Promise<PathListEntry> {
+    public createPathButton(entry: PathButton, entity: any): Promise<PathButton> {
         entry.name = entity.firstName + " " + entity.familyName;
         if (entity.company != null) {
             return this.read(entity.company).then((doc) => {
@@ -25,7 +25,7 @@ export class PersonDatabase extends AbstractDatabase {
                 return entry;
             });
         } else {
-            return super.createPathListEntry(entry, entity);
+            return super.createPathButton(entry, entity);
         }
     }
 
