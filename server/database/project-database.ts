@@ -30,8 +30,8 @@ export class ProjectDatabase extends AbstractDatabase {
     }
 
     public prepareCreate() {
-        let newProject: any = {};
-        let now = new Date();
+        const newProject: any = {};
+        const now = new Date();
         newProject.evtStart = now;
         newProject.projectPriority = 1;
         return Promise.resolve(newProject);
