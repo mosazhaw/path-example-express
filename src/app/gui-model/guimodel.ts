@@ -546,7 +546,7 @@ export class GuiModel {
                             "type": "backbutton",
                         },
                         {
-                            "type": "button",
+                            "type": "newButton",
                             "name": "AddTask",
                             "icon": "fa-tasks",
                             "color": "green",

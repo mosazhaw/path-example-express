@@ -16,10 +16,11 @@ export class TaskRestService extends AbstractRestService {
         this._app.get("/services/person/:personKey/task", async (req, res) => {
             const rows = await service.database.getTasks(req.params.personKey);
             let promises = [];
-            console.log(rows);
             for (const task of rows) {
                 // TODO fetch in one shot
-                promises.push(service.database.read(task.taskKey));
+                if (task.taskKey) {
+                    promises.push(service.database.read(task.taskKey));
+                }
             }
             let result = await Promise.all(promises);
             const entries: any[] = [];
@@ -42,12 +43,22 @@ export class TaskRestService extends AbstractRestService {
         });
     }
 
+    protected initCreate() {
+        super.initCreate();
+
+        const service = this;
+        this._app.post("/services/person/:personKey/task", async (req, res) => {
+            const result = await service.database.addPerson(req.body.personKey, req.body.taskKey);
+            res.json(result);
+        });
+    }
+
     protected initUpdate() {
         super.initUpdate();
 
         const service = this;
-        this._app.put("/services/person/:personKey/task", async (req, res) => {
-            const result = await service.database.addPerson(req.params.personKey, req.body.taskKey);
+        this._app.put("/services/person/:personKey/task/:taskKey", async (req, res) => {
+            const result = await service.database.addPerson(req.body.personKey, req.body.taskKey);
             res.json(result);
         });
     }
