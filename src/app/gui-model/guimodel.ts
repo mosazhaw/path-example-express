@@ -174,6 +174,7 @@ export class GuiModel {
                     "id": "ProjectForm",
                     "title": "Project",
                     "url": "/project",
+                    "urlDefaults": true,
                     "formFieldList": [
                         {
                             "id": "name",
@@ -837,6 +838,14 @@ export class GuiModel {
                             "color": "blue",
                             "page": "buttonGroupsPage",
                         },
+                        {
+                            "type": "button",
+                            "name": "Breadcrumb",
+                            "width": 1,
+                            "icon": "fa-coffee",
+                            "color": { "background-color": "#8B4513" },
+                            "page": "breadcrumbsPage",
+                        },
                     ]
                 },
                 {
@@ -1376,6 +1385,48 @@ export class GuiModel {
                                     "color": "amethyst",
                                 },
                             ]
+                        },
+                    ]
+                },
+                {
+                    "id": "breadcrumbsPage",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "pageLabel",
+                            "value": "<h3>Repeat breadcrumb if required:</h3>",
+                        },
+                        {
+                            "type": "button",
+                            "name": "Breadcrumb",
+                            "width": 1,
+                            "icon": "fa-coffee",
+                            "color": { "background-color": "#8B4513" },
+                        },
+                        {
+                            "type": "breadcrumb"
+                        },
+                        {
+                            "type": "button",
+                            "name": "Breadcrumb",
+                            "width": 1,
+                            "icon": "fa-coffee",
+                            "color": { "background-color": "#8B4513" },
+                        },
+                        {
+                            "type": "breadcrumb"
+                        },
+                        {
+                            "type": "button",
+                            "name": "Breadcrumb",
+                            "width": 1,
+                            "icon": "fa-coffee",
+                            "color": { "background-color": "#8B4513" },
+                        },
+                        {
+                            "type": "breadcrumb"
                         },
                     ]
                 },

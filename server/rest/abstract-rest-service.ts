@@ -50,8 +50,13 @@ export abstract class AbstractRestService {
     protected initRead() {
         this._app.get("/services/" + this._database.getEntityName() + "/:key", async (req, res) => {
             const key: string = req.params.key;
-            const doc = await this._database.read(key);
-            res.json(doc);
+            if (key !== "null") {
+                const doc = await this._database.read(key);
+                res.json(doc);
+            } else {
+                const doc = await this._database.prepareCreate();
+                res.json(doc);
+            }
         });
     }
 

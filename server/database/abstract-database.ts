@@ -38,6 +38,10 @@ export abstract class AbstractDatabase {
         });
     }
 
+    public prepareCreate(): Promise<any> {
+        return Promise.resolve("{}");
+    }
+
     public create(data: any): Promise<any> {
         const service = this;
         return AbstractDatabase._database.create(service.getEntityName(), data).then((doc) => {
