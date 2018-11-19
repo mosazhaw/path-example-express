@@ -1,5 +1,5 @@
 import {AbstractDatabase} from "./abstract-database";
-import {PathListEntry} from "../data/path-list-entry";
+import {PathButton} from "../data/path-button";
 
 export class HobbyDatabase extends AbstractDatabase {
 
@@ -15,7 +15,7 @@ export class HobbyDatabase extends AbstractDatabase {
         return ["name"];
     }
 
-    public createPathListEntry(entry: PathListEntry, entity: any) {
+    public createPathButton(entry: PathButton, entity: any) {
         for (const item of entity.name) {
             if (item[0]["key"] === "en") {
                 entry.name = item[1];
@@ -23,7 +23,7 @@ export class HobbyDatabase extends AbstractDatabase {
                 break;
             }
         }
-        return super.createPathListEntry(entry, entity);
+        return super.createPathButton(entry, entity);
     }
 
     public async addHobby(personKey, hobbyKey): Promise<any> {

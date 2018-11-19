@@ -1,6 +1,6 @@
 import {AbstractRestService} from "./abstract-rest-service";
-import {PathListKey} from "../data/path-list-key";
-import {PathListEntry} from "../data/path-list-entry";
+import {PathKey} from "../data/path-key";
+import {PathButton} from "../data/path-button";
 import {HobbyDatabase} from "../database/hobby-database";
 
 export class HobbyRestService extends AbstractRestService {
@@ -18,8 +18,8 @@ export class HobbyRestService extends AbstractRestService {
             const promises = [];
             for (const hobby of rows) {
                 // TODO create generic method
-                const entry = new PathListEntry();
-                const key: PathListKey = new PathListKey();
+                const entry = new PathButton();
+                const key: PathKey = new PathKey();
                 key.key = hobby._id;
                 key.name = service.database.getEntityName() + "Key";
                 const hobbyExists = await service.database.hobbyExists(req.params.personKey, hobby._id);
@@ -30,7 +30,7 @@ export class HobbyRestService extends AbstractRestService {
                 }
                 entry.key = key;
                 entry.url = "/person/:personKey/hobby/:hobbyKey";
-                promises.push(service.database.createPathListEntry(entry, hobby));
+                promises.push(service.database.createPathButton(entry, hobby));
             }
             const result = await Promise.all(promises);
             res.json(result);

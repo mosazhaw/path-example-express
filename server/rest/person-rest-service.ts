@@ -1,3 +1,4 @@
+import {PathButton} from "../data/path-button";
 import {AbstractRestService} from "./abstract-rest-service";
 import {PersonDatabase} from "../database/person-database";
 import {TaskDatabase} from "../database/task-database";
@@ -21,7 +22,7 @@ export class PersonRestService extends AbstractRestService {
                         filteredRows.push(row);
                     }
                 }
-                service._database.createPathList(filteredRows, res);
+                service._database.createPathButtonList(filteredRows, res).catch((error: any) => console.log(error));
             }).catch((err) => {
                 console.log(err);
             });
@@ -30,10 +31,26 @@ export class PersonRestService extends AbstractRestService {
         this._app.get("/services/task/:taskKey/person", (req, res) => {
             const taskKey = req.params.taskKey;
             service.database.getPersons(taskKey).then((rows) => {
-                service._database.createPathList(rows, res);
+                service._database.createPathButtonList(rows, res).catch((error: any) => console.log(error));
             }).catch((err) => {
                 console.log(err);
             });
+        });
+
+        this._app.get("/services/person/group", async (req, res) => {
+            let rows = await service._database.list();
+            if (req.query.search) {
+                rows = this.filter(rows, req.query.search, service._database.getSearchAttributes());
+            }
+            const additionalButtons: PathButton[] = [];
+            const action = new PathButton();
+            action.name = "Edit";
+            action.color = "silver";
+            action.icon = "fa-pencil";
+            action.width = 1;
+            action.setForm("PersonForm");
+            additionalButtons.push(action);
+            this._database.createPathGroupList(rows, additionalButtons, res);
         });
     }
 

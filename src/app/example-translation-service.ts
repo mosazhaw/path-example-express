@@ -22,7 +22,9 @@ export class ExampleTranslationService extends TranslationService {
             return {
                 "AddTask": "Task hinzufügen",
                 "Birthday": "Geburtstag",
+                "Breadcrumb": "Breadcrumb",
                 "ButtonWidth": "Button Breite",
+                "ButtonGroups": "Button-Gruppen",
                 "City": "Ort",
                 "Color": "Farbe",
                 "Contacts": "Freunde",
@@ -71,7 +73,9 @@ export class ExampleTranslationService extends TranslationService {
             return {
                 "AddTask": "Add Task",
                 "Birthday": "Birthday",
+                "Breadcrumb": "Breadcrumb",
                 "ButtonWidth": "Button Width",
+                "ButtonGroups": "Button Groups",
                 "City": "City",
                 "Color": "Color",
                 "Contacts": "Contacts",

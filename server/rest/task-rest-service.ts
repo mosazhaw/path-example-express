@@ -1,6 +1,6 @@
 import {AbstractRestService} from "./abstract-rest-service";
-import {PathListEntry} from "../data/path-list-entry";
-import {PathListKey} from "../data/path-list-key";
+import {PathButton} from "../data/path-button";
+import {PathKey} from "../data/path-key";
 import {TaskDatabase} from "../database/task-database";
 
 export class TaskRestService extends AbstractRestService {
@@ -16,22 +16,23 @@ export class TaskRestService extends AbstractRestService {
         this._app.get("/services/person/:personKey/task", async (req, res) => {
             const rows = await service.database.getTasks(req.params.personKey);
             let promises = [];
-            console.log(rows);
             for (const task of rows) {
                 // TODO fetch in one shot
-                promises.push(service.database.read(task.taskKey));
+                if (task.taskKey) {
+                    promises.push(service.database.read(task.taskKey));
+                }
             }
             let result = await Promise.all(promises);
             const entries: any[] = [];
             promises = [];
             for (const task of result) {
-                const entry = new PathListEntry();
-                const key: PathListKey = new PathListKey();
+                const entry = new PathButton();
+                const key: PathKey = new PathKey();
                 key.key = task._id;
                 key.name = service.database.getEntityName() + "Key";
                 entry.key = key;
                 entries.push(entry);
-                promises.push(service.database.createPathListEntry(entry, task));
+                promises.push(service.database.createPathButton(entry, task));
             }
             result = await Promise.all(promises);
             res.json(result);
@@ -42,12 +43,22 @@ export class TaskRestService extends AbstractRestService {
         });
     }
 
+    protected initCreate() {
+        super.initCreate();
+
+        const service = this;
+        this._app.post("/services/person/:personKey/task", async (req, res) => {
+            const result = await service.database.addPerson(req.body.personKey, req.body.taskKey);
+            res.json(result);
+        });
+    }
+
     protected initUpdate() {
         super.initUpdate();
 
         const service = this;
-        this._app.put("/services/person/:personKey/task", async (req, res) => {
-            const result = await service.database.addPerson(req.params.personKey, req.body.taskKey);
+        this._app.put("/services/person/:personKey/task/:taskKey", async (req, res) => {
+            const result = await service.database.addPerson(req.body.personKey, req.body.taskKey);
             res.json(result);
         });
     }

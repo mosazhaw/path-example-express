@@ -1,5 +1,5 @@
 import {AbstractDatabase} from "./abstract-database";
-import {PathListEntry} from "../data/path-list-entry";
+import {PathButton} from "../data/path-button";
 
 export class ProjectDatabase extends AbstractDatabase {
 
@@ -15,7 +15,7 @@ export class ProjectDatabase extends AbstractDatabase {
         return ["name"];
     }
 
-    public createPathListEntry(entry: PathListEntry, entity: any) {
+    public createPathButton(entry: PathButton, entity: any) {
         entry.name = entity.name;
         if (entity.company != null) {
             return this.read(entity.company).then((doc) => {
@@ -25,8 +25,16 @@ export class ProjectDatabase extends AbstractDatabase {
                 return entry;
             });
         } else {
-            return super.createPathListEntry(entry, entity);
+            return super.createPathButton(entry, entity);
         }
+    }
+
+    public prepareCreate() {
+        const newProject: any = {};
+        const now = new Date();
+        newProject.evtStart = now;
+        newProject.projectPriority = 1;
+        return Promise.resolve(newProject);
     }
 
 }
