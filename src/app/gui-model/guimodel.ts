@@ -1397,6 +1397,7 @@ export class GuiModel {
                         {
                             "type": "pageLabel",
                             "value": "<h3>Repeat breadcrumb if required:</h3>",
+                            "newRow": true
                         },
                         {
                             "type": "button",
@@ -1406,7 +1407,8 @@ export class GuiModel {
                             "color": { "background-color": "#8B4513" },
                         },
                         {
-                            "type": "breadcrumb"
+                            "type": "breadcrumb",
+                            "newRow": true
                         },
                         {
                             "type": "button",
@@ -1416,7 +1418,8 @@ export class GuiModel {
                             "color": { "background-color": "#8B4513" },
                         },
                         {
-                            "type": "breadcrumb"
+                            "type": "breadcrumb",
+                            "newRow": true
                         },
                         {
                             "type": "button",
@@ -1426,7 +1429,8 @@ export class GuiModel {
                             "color": { "background-color": "#8B4513" },
                         },
                         {
-                            "type": "breadcrumb"
+                            "type": "breadcrumb",
+                            "newRow": true
                         },
                     ]
                 },
