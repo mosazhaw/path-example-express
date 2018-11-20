@@ -45,10 +45,15 @@ export class ExampleAppComponent extends PathAppComponent {
     }
 
     public getBackendUrl() {
-        if (window.location.hostname.indexOf("herokuapp") !== -1) {
-            return location.protocol + "//path-example.herokuapp.com/services";
+        if (window.location.hostname.indexOf("localhost") !== -1) {
+            return "http://localhost:8080/services";
         }
-        return "http://localhost:8080/services";
+        let url: string = window.location.href;
+        url = url.replace("/#", "");
+        if (url.endsWith("/")) {
+            return url + "services";
+        }
+        return url + "/services";
     }
 
     protected getBeans() {
