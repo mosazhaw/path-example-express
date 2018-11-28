@@ -41,6 +41,12 @@ export class GuiModel {
                             "width": 2
                         },
                         {
+                            "id": "attachments",
+                            "type": "fileUpload",
+                            "url": "/file",
+                            "width": 2
+                        },
+                        {
                             "id": "comment",
                             "type": "text",
                             "name": "Comments",
