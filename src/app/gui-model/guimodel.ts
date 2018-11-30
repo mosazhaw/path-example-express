@@ -44,6 +44,7 @@ export class GuiModel {
                             "id": "attachments",
                             "type": "fileUpload",
                             "url": "/file",
+                            "multiple": true,
                             "width": 2
                         },
                         {

@@ -12,6 +12,8 @@ import {ProjectDatabase} from "./database/project-database";
 import {ProjectRestService} from "./rest/project-rest-service";
 import express = require("express");
 import {DynamicComponentsRestService} from "./rest/dynamic-components-rest-service";
+import {FileDatabase} from "./database/file-database";
+import {FileRestService} from "./rest/file-rest-service";
 
 const bodyParser = require("body-parser");
 const app = express();
@@ -65,12 +67,14 @@ const projectDatabase = new ProjectDatabase();
 const companyDatabase = new CompanyDatabase();
 const hobbyDatabase = new HobbyDatabase();
 const taskDatabase = new TaskDatabase();
+const fileDatabase = new FileDatabase();
 new PersonRestService(app, personDatabase).init();
 new CompanyRestService(app, companyDatabase).init();
 new HobbyRestService(app, hobbyDatabase).init();
 new TaskRestService(app, taskDatabase).init();
 new ProjectRestService(app, projectDatabase).init();
 new DynamicComponentsRestService(app).init();
+new FileRestService(app, fileDatabase).init();
 TestData.init();
 
 // set the home page route
