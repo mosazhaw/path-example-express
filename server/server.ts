@@ -55,7 +55,7 @@ app.get("/*", function (req, res, next) {
 
 // Path ping request
 app.get("/services/ping", function (req, res) {
-    res.json({status: "ok", userId: "demo", version: "0.5.1"});
+    res.json({status: "ok", userId: "demo", version: "0.5.3"});
 });
 
 // Path example entities
