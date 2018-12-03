@@ -22,7 +22,7 @@ export class FileRestService extends AbstractRestService {
 
             const newDoc = await this._database.create(file);
             res.json(newDoc);
-        }).catch((error: any) => console.log(error));
+        });
 
     }
 
