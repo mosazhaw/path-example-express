@@ -42,9 +42,11 @@ export class GuiModel {
                         },
                         {
                             "id": "attachments",
+                            "name": "Files",
                             "type": "fileUpload",
                             "url": "/upload",
                             "multiple": true,
+                            "acceptedFileTypes": [".pdf", ".doc", ".docx", ".txt", ".jpg", ".jpeg", ".png", ".zip", ".exe"],
                             "width": 2
                         },
                         {
