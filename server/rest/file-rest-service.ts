@@ -1,6 +1,7 @@
 import {AbstractRestService} from "./abstract-rest-service";
-import {ProjectDatabase} from "../database/project-database";
 import {FileDatabase} from "../database/file-database";
+import * as multer from "multer";
+const upload = multer({ dest: "uploads/" });
 
 export class FileRestService extends AbstractRestService {
 
@@ -8,4 +9,32 @@ export class FileRestService extends AbstractRestService {
         super(app, database);
     }
 
+    protected initCreate(): void {
+        super.initCreate();
+        const service = this;
+
+        this._app.post("/services/upload", upload.single("upload"), async (req, res, next) => {
+            console.log("*** file uploaded ***");
+            console.log(req.file);
+            const file: any = {};
+            file.mimetype = req.file.mimetype;
+            file.name = req.file.originalname;
+            file.size = req.file.size;
+            file.path = req.file.path;
+
+            const newDoc = await this._database.create(file);
+            res.json(newDoc);
+        });
+
+    }
+
+    protected initRead(): void {
+        super.initRead();
+        const service = this;
+
+        this._app.get("/services/upload/:fileKey", async (req, res) => {
+            const file = await service.database.read(req.params.fileKey);
+            res.download(file.path, file.name);
+        });
+    }
 }

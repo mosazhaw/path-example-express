@@ -33,6 +33,7 @@ server/**/*.js.map
 npm-debug.log
 testem.log
 /typings
+/uploads
 
 # e2e
 /e2e/*.js
