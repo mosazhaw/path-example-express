@@ -14,8 +14,6 @@ export class FileRestService extends AbstractRestService {
         const service = this;
 
         this._app.post("/services/upload", upload.single("upload"), async (req, res, next) => {
-            console.log("*** file uploaded ***");
-            console.log(req.file);
             const file: any = {};
             file.mimetype = req.file.mimetype;
             file.name = req.file.originalname;
@@ -24,7 +22,7 @@ export class FileRestService extends AbstractRestService {
 
             const newDoc = await this._database.create(file);
             res.json(newDoc);
-        });
+        }).catch((error: any) => console.log(error));
 
     }
 
