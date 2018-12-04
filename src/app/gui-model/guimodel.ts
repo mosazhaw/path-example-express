@@ -418,6 +418,41 @@ export class GuiModel {
                         }
                     ]
                 },
+                {
+                    "id": "FileUploadForm",
+                    "title": "Person",
+                    "formFieldList": [
+                        {
+                            "id": "id1",
+                            "name": { default: "Full Width, pdf/txt only" },
+                            "type": "fileUpload",
+                            "url": "/upload",
+                            "multiple": true,
+                            "acceptedFileTypes": [".pdf, .txt"],
+                            "width": 2
+                        },
+                        {
+                            "id": "id1",
+                            "name": { default: "Readonly, Width=1" },
+                            "type": "fileUpload",
+                            "url": "/upload",
+                            "readonly": true,
+                            "newRow": true,
+                            "width": 1
+                        },
+                        {
+                            "id": "id1",
+                            "name": { default: "Any File Type" },
+                            "type": "fileUpload",
+                            "url": "/upload",
+                            "width": 2
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        }
+                    ]
+                },
             ],
             "pageList": [
                 {
@@ -854,6 +889,16 @@ export class GuiModel {
                             "icon": "fa-coffee",
                             "color": { "background-color": "#8B4513" },
                             "page": "breadcrumbsPage",
+                        },
+                        {
+                            "type": "button",
+                            "name": { default: "File Upload" },
+                            "width": 1,
+                            "icon": "fa-file",
+                            "color": { "background-color": "#cccc00" },
+                            "form": {
+                                "form": "FileUploadForm",
+                            },
                         },
                     ]
                 },
