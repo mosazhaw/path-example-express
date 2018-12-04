@@ -432,7 +432,7 @@ export class GuiModel {
                             "width": 2
                         },
                         {
-                            "id": "id1",
+                            "id": "id2",
                             "name": { default: "Readonly, Width=1" },
                             "type": "fileUpload",
                             "url": "/upload",
@@ -441,10 +441,17 @@ export class GuiModel {
                             "width": 1
                         },
                         {
-                            "id": "id1",
+                            "id": "id3",
                             "name": { default: "Any File Type" },
                             "type": "fileUpload",
                             "url": "/upload",
+                            "width": 2
+                        },
+                        {
+                            "id": "id4",
+                            "name": { default: "Upload Error" },
+                            "type": "fileUpload",
+                            "url": "/upload-error",
                             "width": 2
                         },
                         {

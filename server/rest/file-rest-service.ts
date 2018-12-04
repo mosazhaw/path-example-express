@@ -24,6 +24,11 @@ export class FileRestService extends AbstractRestService {
             res.json(newDoc);
         });
 
+        this._app.post("/services/upload-error", upload.single("upload"), async (req, res, next) => {
+            res.status(500);
+            res.json({});
+        });
+
     }
 
     protected initRead(): void {
