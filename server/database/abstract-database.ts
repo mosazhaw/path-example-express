@@ -45,9 +45,9 @@ export abstract class AbstractDatabase {
     public create(data: any): Promise<any> {
         const service = this;
         return AbstractDatabase._database.create(service.getEntityName(), data).then((doc) => {
-            doc.key = doc.id;
-            delete doc.id;
-            return doc;
+            const button = new PathButton();
+            button.key = this.createPathKey(doc, this);
+            return button;
         });
     }
 
@@ -112,9 +112,12 @@ export abstract class AbstractDatabase {
         });
     }
 
-    private createPathKey(item, service) {
+    private createPathKey(item, service): PathKey {
         const key: PathKey = new PathKey();
         key.key = item._id;
+        if (item.id) {
+            key.key = item.id;
+        }
         key.name = service.getEntityName() + "Key";
         return key;
     }

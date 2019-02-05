@@ -41,6 +41,15 @@ export class GuiModel {
                             "width": 2
                         },
                         {
+                            "id": "attachments",
+                            "name": "Files",
+                            "type": "fileUpload",
+                            "url": "/upload",
+                            "multiple": true,
+                            "acceptedFileTypes": [".pdf", ".doc", ".docx", ".txt", ".jpg", ".jpeg", ".png", ".zip", ".exe"],
+                            "width": 2
+                        },
+                        {
                             "id": "comment",
                             "type": "text",
                             "name": "Comments",
@@ -409,6 +418,48 @@ export class GuiModel {
                         }
                     ]
                 },
+                {
+                    "id": "FileUploadForm",
+                    "title": "Person",
+                    "formFieldList": [
+                        {
+                            "id": "id1",
+                            "name": { default: "Full Width, pdf/txt only" },
+                            "type": "fileUpload",
+                            "url": "/upload",
+                            "multiple": true,
+                            "acceptedFileTypes": [".pdf, .txt"],
+                            "width": 2
+                        },
+                        {
+                            "id": "id2",
+                            "name": { default: "Readonly, Width=1" },
+                            "type": "fileUpload",
+                            "url": "/upload",
+                            "readonly": true,
+                            "newRow": true,
+                            "width": 1
+                        },
+                        {
+                            "id": "id3",
+                            "name": { default: "Any File Type" },
+                            "type": "fileUpload",
+                            "url": "/upload",
+                            "width": 2
+                        },
+                        {
+                            "id": "id4",
+                            "name": { default: "Upload Error" },
+                            "type": "fileUpload",
+                            "url": "/upload-error",
+                            "width": 2
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        }
+                    ]
+                },
             ],
             "pageList": [
                 {
@@ -591,6 +642,7 @@ export class GuiModel {
                             "color": "lime",
                             "search": true,
                             "width": 3,
+                            "searchWidth": 2,
                             "url": "/company",
                             "page": "companypage"
                         },
@@ -845,6 +897,16 @@ export class GuiModel {
                             "icon": "fa-coffee",
                             "color": { "background-color": "#8B4513" },
                             "page": "breadcrumbsPage",
+                        },
+                        {
+                            "type": "button",
+                            "name": { default: "File Upload" },
+                            "width": 1,
+                            "icon": "fa-file",
+                            "color": { "background-color": "#cccc00" },
+                            "form": {
+                                "form": "FileUploadForm",
+                            },
                         },
                     ]
                 },
@@ -1188,6 +1250,64 @@ export class GuiModel {
                             "search": true,
                             "searchRequired": false,
                             "searchRequest": false,
+                            "limit": 3,
+                            "url": "/company",
+                            "form": {
+                                "form": "CompanyForm"
+                            }
+                        },
+                        {
+                            "type": "pageLabel",
+                            "newRow": true,
+                            "value": "<h3>Search color</h3><small>color: silver</small>",
+                        },
+                        {
+                            "type": "list",
+                            "icon": "fa-industry",
+                            "color": "lime",
+                            "search": true,
+                            "searchRequired": false,
+                            "searchRequest": false,
+                            "searchColor": "silver",
+                            "limit": 3,
+                            "url": "/company",
+                            "form": {
+                                "form": "CompanyForm"
+                            }
+                        },
+                        {
+                            "type": "pageLabel",
+                            "newRow": true,
+                            "value": "<h3>Search color</h3><small>color: { \"background-color\": \"#8B4513\" }</small>",
+                        },
+                        {
+                            "type": "list",
+                            "icon": "fa-industry",
+                            "color": "lime",
+                            "search": true,
+                            "searchRequired": false,
+                            "searchRequest": false,
+                            "searchColor": { "background-color": "#8B4513" },
+                            "limit": 3,
+                            "url": "/company",
+                            "form": {
+                                "form": "CompanyForm"
+                            }
+                        },
+                        {
+                            "type": "pageLabel",
+                            "newRow": true,
+                            "value": "<h3>Search width</h3><small>searchWidth: 1, width: 4</small>",
+                        },
+                        {
+                            "type": "list",
+                            "icon": "fa-industry",
+                            "color": "lime",
+                            "search": true,
+                            "searchRequired": false,
+                            "searchRequest": false,
+                            "searchWidth": 1,
+                            "width": 4,
                             "limit": 3,
                             "url": "/company",
                             "form": {

@@ -1,6 +1,6 @@
 {
   "name": "path-example",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "description": "Path Application Framework Example",
   "keywords": [
     "GUI",
@@ -36,10 +36,11 @@
   },
   "dependencies": {
     "body-parser": "1.15.2",
-    "path-framework": "0.5.3",
-    "pouchdb-core": "6.3.4",
+    "express": "4.15.0",
+    "multer": "1.4.1",
+    "path-framework": "0.5.4",
     "pouchdb-adapter-memory": "6.3.4",
-    "express": "4.15.0"
+    "pouchdb-core": "6.3.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "0.8.7",
