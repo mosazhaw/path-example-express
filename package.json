@@ -1,6 +1,6 @@
 {
   "name": "path-example",
-  "version": "0.5.4",
+  "version": "0.5.5",
   "description": "Path Application Framework Example",
   "keywords": [
     "GUI",
@@ -38,7 +38,7 @@
     "body-parser": "1.15.2",
     "express": "4.15.0",
     "multer": "1.4.1",
-    "path-framework": "0.5.4",
+    "path-framework": "0.5.5",
     "pouchdb-adapter-memory": "6.3.4",
     "pouchdb-core": "6.3.4"
   },
