@@ -10,7 +10,7 @@ import {HobbyRestService} from "./rest/hobby-rest-service";
 import {CompanyRestService} from "./rest/company-rest-service";
 import {ProjectDatabase} from "./database/project-database";
 import {ProjectRestService} from "./rest/project-rest-service";
-import express = require("express");
+import * as express from "express";
 import {DynamicComponentsRestService} from "./rest/dynamic-components-rest-service";
 import {FileDatabase} from "./database/file-database";
 import {FileRestService} from "./rest/file-rest-service";

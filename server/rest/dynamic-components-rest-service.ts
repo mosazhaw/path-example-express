@@ -11,14 +11,14 @@ export class DynamicComponentsRestService {
             const result = [];
             const pageLabel = {};
             pageLabel["type"] = "pageLabel";
-            pageLabel["value"] = "<h3>These button models are generated dynamically on the server:</h3>";
+            pageLabel["value"] = "<h4>These button models are generated dynamically on the server:</h4>";
             pageLabel["newRow"] = true;
             result.push(pageLabel);
 
             for (let k = 1; k <= 10; k++) {
                 const pageLabel2 = {};
                 pageLabel2["type"] = "pageLabel";
-                pageLabel2["value"] = "<h3>Button " + k + "</h3>";
+                pageLabel2["value"] = "<h4>Button " + k + "</h4>";
                 pageLabel2["newRow"] = true;
                 result.push(pageLabel2);
 
@@ -41,7 +41,7 @@ export class DynamicComponentsRestService {
             const result = [];
             const pageLabel = {};
             pageLabel["type"] = "pageLabel";
-            pageLabel["value"] = "<h3>These button models are generated dynamically on the server:</h3>";
+            pageLabel["value"] = "<h4>These button models are generated dynamically on the server:</h4>";
             pageLabel["newRow"] = true;
             result.push(pageLabel);
 

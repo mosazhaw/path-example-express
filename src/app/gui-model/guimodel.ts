@@ -1134,7 +1134,7 @@ export class GuiModel {
                     "elementList": [
                         {
                             "type": "pageLabel",
-                            "value": "<h3>Single Link Button</h3>",
+                            "value": "<h4>Single Link Button</h4>",
                         },
                         {
                             "type": "backbutton",
@@ -1149,7 +1149,7 @@ export class GuiModel {
                         },
                         {
                             "type": "pageLabel",
-                            "value": "<h3>Link Button List loaded from Server</h3>",
+                            "value": "<h4>Link Button List loaded from Server</h4>",
                         },
                         {
                             "type": "list",
@@ -1166,7 +1166,7 @@ export class GuiModel {
                     "elementList": [
                         {
                             "type": "pageLabel",
-                            "value": "<h3>Initial search required</h3><small>search: true, searchRequired: true, searchRequest: true</small>",
+                            "value": "<h4>Initial search required</h4><small>search: true, searchRequired: true, searchRequest: true</small>",
                         },
                         {
                             "type": "backbutton",
@@ -1187,7 +1187,7 @@ export class GuiModel {
                         {
                             "type": "pageLabel",
                             "newRow": true,
-                            "value": "<h3>Initial search not required</h3><small>search: true, searchRequired: false, searchRequest: false</small>",
+                            "value": "<h4>Initial search not required</h4><small>search: true, searchRequired: false, searchRequest: false</small>",
                         },
                         {
                             "type": "list",
@@ -1205,7 +1205,7 @@ export class GuiModel {
                         {
                             "type": "pageLabel",
                             "newRow": true,
-                            "value": "<h3>Search not visible</h3><small>search: false, searchRequired: false, searchRequest: false</small>",
+                            "value": "<h4>Search not visible</h4><small>search: false, searchRequired: false, searchRequest: false</small>",
                         },
                         {
                             "type": "list",
@@ -1223,7 +1223,7 @@ export class GuiModel {
                         {
                             "type": "pageLabel",
                             "newRow": true,
-                            "value": "<h3>Search always with request</h3><small>search: true, searchRequired: false, searchRequest: true</small>",
+                            "value": "<h4>Search always with request</h4><small>search: true, searchRequired: false, searchRequest: true</small>",
                         },
                         {
                             "type": "list",
@@ -1241,7 +1241,7 @@ export class GuiModel {
                         {
                             "type": "pageLabel",
                             "newRow": true,
-                            "value": "<h3>Search on client only</h3><small>search: true, searchRequired: false, searchRequest: false</small>",
+                            "value": "<h4>Search on client only</h4><small>search: true, searchRequired: false, searchRequest: false</small>",
                         },
                         {
                             "type": "list",
@@ -1259,7 +1259,7 @@ export class GuiModel {
                         {
                             "type": "pageLabel",
                             "newRow": true,
-                            "value": "<h3>Search color</h3><small>color: silver</small>",
+                            "value": "<h4>Search color</h4><small>color: silver</small>",
                         },
                         {
                             "type": "list",
@@ -1278,7 +1278,7 @@ export class GuiModel {
                         {
                             "type": "pageLabel",
                             "newRow": true,
-                            "value": "<h3>Search color</h3><small>color: { \"background-color\": \"#8B4513\" }</small>",
+                            "value": "<h4>Search color</h4><small>color: { \"background-color\": \"#8B4513\" }</small>",
                         },
                         {
                             "type": "list",
@@ -1297,7 +1297,7 @@ export class GuiModel {
                         {
                             "type": "pageLabel",
                             "newRow": true,
-                            "value": "<h3>Search width</h3><small>searchWidth: 1, width: 4</small>",
+                            "value": "<h4>Search width</h4><small>searchWidth: 1, width: 4</small>",
                         },
                         {
                             "type": "list",
@@ -1321,7 +1321,7 @@ export class GuiModel {
                     "elementList": [
                         {
                             "type": "pageLabel",
-                            "value": "<h3>Lists</h3>",
+                            "value": "<h4>Lists</h4>",
                         },
                         {
                             "type": "backbutton",
@@ -1337,7 +1337,7 @@ export class GuiModel {
                         },
                         {
                             "type": "pageLabel",
-                            "value": "<h3>Tile Placement</h3>",
+                            "value": "<h4>Tile Placement</h4>",
                             "newRow": true
                         },
                         {
@@ -1516,7 +1516,7 @@ export class GuiModel {
                         },
                         {
                             "type": "pageLabel",
-                            "value": "<h3>Repeat breadcrumb if required:</h3>",
+                            "value": "<h4>Repeat breadcrumb if required:</h4>",
                             "newRow": true
                         },
                         {
