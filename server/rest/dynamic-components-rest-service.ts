@@ -63,20 +63,36 @@ export class DynamicComponentsRestService {
 
         this._app.get("/services/dynamicComponentsForm/field", async (req, res) => {
             const result = [];
-            const types = ["text", "number", "date", "label"];
+            const types = ["text", "number", "date", "label", "label"];
             let k = 0;
 
+            // width 2
             for (const type of types) {
                 k++;
-                const field = {};
-                field["type"] = type;
-                field["name"] = "Name" + k + " (" + type + ")";
-                field["width"] = 2;
-                result.push(field);
+                result.push(this.createField(k, type, 2));
             }
+
+            // width 1
+            for (const type of types) {
+                k++;
+                result.push(this.createField(k, type, 1));
+            }
+
+            // set a value for first label
+            result[3]["value"] = "VALUE";
+            result[8]["value"] = "VALUE";
+
             res.json(result);
         });
 
+    }
+
+    private createField(count: number, type: string, width: number): any {
+        const field = {};
+        field["type"] = type;
+        field["name"] = "Name" + count + " (" + type + ")";
+        field["width"] = width;
+        return field;
     }
 
 }

@@ -216,6 +216,14 @@ export class GuiModel {
                             "width": 1
                         },
                         {
+                            "id": "budget",
+                            "type": "number",
+                            "name": { default: "Budget" },
+                            "min": 0,
+                            "max": 999999999,
+                            "width": 2
+                        },
+                        {
                             "id": "projectPriority",
                             "type": "RadioGroupField",
                             "name": "Priority",
