@@ -17,8 +17,21 @@
             "tsConfig": "src/tsconfig.app.json",
             "polyfills": "src/polyfills.ts",
             "assets": [
-              "src/assets",
-              "src/favicon.ico"
+              {
+                "glob": "**/*",
+                "input": "src/assets/",
+                "output": "/assets/",
+                "ignore": [
+                  "base/*",
+                  "css/*",
+                  "js/*"
+                ]
+              },
+              {
+                "glob": "**/*",
+                "input": "src/assets/base",
+                "output": "/"
+              }
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
@@ -83,8 +96,21 @@
               "src/path-example.css"
             ],
             "assets": [
-              "src/assets",
-              "src/favicon.ico"
+              {
+                "glob": "**/*",
+                "input": "src/assets/",
+                "output": "/assets/",
+                "ignore": [
+                  "base/*",
+                  "css/*",
+                  "js/*"
+                ]
+              },
+              {
+                "glob": "**/*",
+                "input": "src/assets/base",
+                "output": "/"
+              }
             ]
           }
         },
