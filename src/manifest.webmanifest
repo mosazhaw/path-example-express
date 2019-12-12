@@ -1,0 +1,9 @@
+{
+  "name": "Path Example App",
+  "short_name": "Path Example",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+  ]
+}
