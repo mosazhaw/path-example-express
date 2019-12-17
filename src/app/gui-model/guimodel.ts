@@ -293,6 +293,15 @@ export class GuiModel {
                             "required": true
                         },
                         {
+                            "id": "difficulty",
+                            "type": "SliderField",
+                            "name": "Difficulty",
+                            "width": 2,
+                            "min": 0,
+                            "max": 10,
+                            "required": false
+                        },
+                        {
                             "type": "deleteButton",
                             "name": "Delete"
                         },

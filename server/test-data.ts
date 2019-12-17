@@ -53,11 +53,11 @@ export class TestData {
             }
         );
 
-        hobbyDatabase.create({name: [[{key: "de"}, "Golf"], [{key: "en"}, "Golf"]]});
-        hobbyDatabase.create({name: [[{key: "de"}, "Orientierungslauf"], [{key: "en"}, "Orienteering"]]});
-        hobbyDatabase.create({name: [[{key: "de"}, "Laufen"], [{key: "en"}, "Running"]]});
-        hobbyDatabase.create({name: [[{key: "de"}, "Ski"], [{key: "en"}, "Ski"]]});
-        hobbyDatabase.create({name: [[{key: "de"}, "Snowboard"], [{key: "en"}, "Snowboard"]]});
+        hobbyDatabase.create({name: [[{key: "de"}, "Golf"], [{key: "en"}, "Golf"]], difficulty: 6});
+        hobbyDatabase.create({name: [[{key: "de"}, "Orientierungslauf"], [{key: "en"}, "Orienteering"]], difficulty: 5});
+        hobbyDatabase.create({name: [[{key: "de"}, "Laufen"], [{key: "en"}, "Running"]], difficulty: 3});
+        hobbyDatabase.create({name: [[{key: "de"}, "Ski"], [{key: "en"}, "Ski"]], difficulty: 8});
+        hobbyDatabase.create({name: [[{key: "de"}, "Snowboard"], [{key: "en"}, "Snowboard"]], difficulty: 9});
     }
 
 }
