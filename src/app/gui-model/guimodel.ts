@@ -321,6 +321,15 @@ export class GuiModel {
                     "url": "/task",
                     "formFieldList": [
                         {
+                            "id": "number",
+                            "type": "number",
+                            "name": "Number",
+                            "width": 2,
+                            "min": 1,
+                            "max": 999999,
+                            "required": false
+                        },
+                        {
                             "id": "name",
                             "type": "text",
                             "name": "TaskName",
