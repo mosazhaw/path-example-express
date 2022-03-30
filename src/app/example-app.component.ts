@@ -37,7 +37,7 @@ export class ExampleAppComponent extends PathAppComponent {
         return "UserForm";
     }
 
-    protected getGuiModel() {
+    public getGuiModel() {
         if (this._appConfig != null) {
             return this._appConfig.guiModel;
         }
