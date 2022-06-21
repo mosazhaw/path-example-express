@@ -460,6 +460,130 @@ export class GuiModel {
                         }
                     ]
                 },
+                {
+                    "id": "FocusTextareaForm",
+                    "title": { "default": "Textarea Test" },
+                    "formFieldList": [
+                        {
+                            "id": "name",
+                            "type": "text",
+                            "name": "User",
+                            "width": 2,
+                            "height": 10,
+                            "required": true,
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
+                    "id": "FocusTextForm",
+                    "title": { "default": "Text Test" },
+                    "formFieldList": [
+                        {
+                            "id": "name",
+                            "type": "text",
+                            "name": "User",
+                            "width": 2,
+                            "required": true,
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
+                    "id": "FocusReadonlyForm",
+                    "title": { "default": "Readonly Test" },
+                    "formFieldList": [
+                        {
+                            "id": "name",
+                            "type": "text",
+                            "name": "User",
+                            "width": 2,
+                            "required": true,
+                            "readonly": true,
+                        },
+                        {
+                            "id": "name",
+                            "type": "text",
+                            "name": "User",
+                            "width": 2,
+                            "required": true,
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
+                    "id": "FocusTranslationForm",
+                    "title": { "default": "Text Test" },
+                    "formFieldList": [
+                        {
+                            "id": "name",
+                            "type": "translation",
+                            "name": "User",
+                            "width": 2,
+                            "required": true,
+                        },
+                        {
+                            "id": "name",
+                            "type": "text",
+                            "name": "User",
+                            "width": 2,
+                            "required": true,
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
+                    "id": "FocusAutoCompleteForm",
+                    "title": { "default": "Autocomplete Test" },
+                    "formFieldList": [
+                        {
+                            "id":   "company",
+                            "type": "autocomplete",
+                            "name": "Company",
+                            "wordSearchEnabled": true,
+                            "defaultKey": "companyKey",
+                            "form": "CompanyForm",
+                            "url": "/company",
+                            "width": 2
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                }
             ],
             "pageList": [
                 {
@@ -907,6 +1031,14 @@ export class GuiModel {
                             "form": {
                                 "form": "FileUploadForm",
                             },
+                        },
+                        {
+                            "type": "button",
+                            "name": { default: "Focus" },
+                            "width": 1,
+                            "icon": "fa-info",
+                            "color": { "background-color": "#aa00ff" },
+                            "page": "focusPage"
                         },
                     ]
                 },
@@ -1554,6 +1686,69 @@ export class GuiModel {
                         },
                     ]
                 },
+                {
+                    "id": "focusPage",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "pageLabel",
+                            "value": "<h3>Test focus for different types of form elements:</h3>",
+                            "newRow": true
+                        },
+                        {
+                            "type": "newButton",
+                            "name": { "default": "Textarea" },
+                            "width": 1,
+                            "icon": "fa-info",
+                            "color": { "background-color": "#1B4513" },
+                            "form": {
+                                "form": "FocusTextareaForm"
+                            }
+                        },
+                        {
+                            "type": "newButton",
+                            "name": { "default": "Text" },
+                            "width": 1,
+                            "icon": "fa-info",
+                            "color": { "background-color": "#5B4513" },
+                            "form": {
+                                "form": "FocusTextForm"
+                            }
+                        },
+                        {
+                            "type": "newButton",
+                            "name": { "default": "Readonly" },
+                            "width": 1,
+                            "icon": "fa-pen",
+                            "color": { "background-color": "#8B4513" },
+                            "form": {
+                                "form": "FocusReadonlyForm"
+                            }
+                        },
+                        {
+                            "type": "newButton",
+                            "name": { "default": "Translation" },
+                            "width": 1,
+                            "icon": "fa-pen",
+                            "color": { "background-color": "#EE4513" },
+                            "form": {
+                                "form": "FocusTranslationForm"
+                            }
+                        },
+                        {
+                            "type": "newButton",
+                            "name": { "default": "AutoComplete" },
+                            "width": 1,
+                            "icon": "fa-pen",
+                            "color": { "background-color": "#004513" },
+                            "form": {
+                                "form": "FocusAutoCompleteForm"
+                            }
+                        }
+                    ]
+                }
             ]
         }
     };
