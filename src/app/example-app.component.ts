@@ -46,7 +46,7 @@ export class ExampleAppComponent extends PathAppComponent {
 
     public getBackendUrl() {
         if (window.location.hostname.indexOf("localhost") !== -1) {
-            return "http://localhost:8080/services";
+            return "http://localhost:8082/services";
         }
         let url: string = window.location.href;
         url = url.replace("/#", "");
