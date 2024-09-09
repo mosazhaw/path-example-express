@@ -31,10 +31,7 @@ process.on("unhandledRejection", (reason, p) => {
 
 // serve Frontend
 app.use("/", [express.static(__dirname + "./../../app")]);
-var pathPath = path.join(__dirname,"./../../node_modules/path-framework");
-app.use("/path", [express.static(pathPath)]);
-console.log("hello");
-console.log(pathPath);
+app.use("/path", [express.static(path.join(__dirname,"./../../node_modules/path-framework"))]);
 
 // setup CORS
 app.all("/*", function (req, res, next) {
