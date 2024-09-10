@@ -4,3 +4,4 @@ COPY . /app
 RUN npm install
 RUN npm build
 CMD ["node","dist/server/server.js"]
+EXPOSE 10000
