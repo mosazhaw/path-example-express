@@ -23,7 +23,8 @@
     "url": "https://github.com/mosazhaw/path-example.git"
   },
   "scripts": {
-    "start": "tsc --project server/tsconfig.json && nodemon dist/server/server.js"
+    "start": "npm run build && nodemon dist/server/server.js",
+    "build": "tsc --project server/tsconfig.json"
   },
   "dependencies": {
     "express": "4.19.2",
