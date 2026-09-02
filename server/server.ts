@@ -16,6 +16,7 @@ import {FileDatabase} from "./database/file-database";
 import {FileRestService} from "./rest/file-rest-service";
 
 const bodyParser = require("body-parser");
+const path = require('path');
 const app = express();
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
@@ -29,7 +30,10 @@ process.on("unhandledRejection", (reason, p) => {
 });
 
 // serve Frontend
-app.use("/", [express.static(__dirname + "./../dist")]);
+app.use("/", [express.static(__dirname + "./../../app")]);
+const frameworkPath = process.env.PATH_FRAMEWORK_DIR ?? path.join(__dirname, "./../../node_modules/path-framework");
+console.log("Serving Path Framework from:", frameworkPath);
+app.use("/path", [express.static(frameworkPath)]);
 
 // setup CORS
 app.all("/*", function (req, res, next) {
@@ -57,7 +61,7 @@ app.get("/*", function (req, res, next) {
 
 // Path ping request
 app.get("/services/ping", function (req, res) {
-    res.json({status: "ok", userId: "demo", version: "0.6.1"});
+    res.json({status: "ok", userId: "demo", version: "0.8.0"});
 });
 
 // Path example entities

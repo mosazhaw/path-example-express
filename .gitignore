@@ -36,6 +36,14 @@ testem.log
 /typings
 /uploads
 
+# Locally copied Path Framework bundle
+/app/path/
+
+# Playwright output
+/playwright-report/
+/test-results/
+/blob-report/
+
 # e2e
 /e2e/*.js
 /e2e/*.map

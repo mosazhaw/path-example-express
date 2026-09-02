@@ -1,0 +1,57 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      path_ref:
+        description: 'Branch, tag, or commit SHA of mosazhaw/path to test'
+        required: false
+        default: main
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  end-to-end:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out example application
+        uses: actions/checkout@v6
+
+      - name: Check out Path Framework
+        uses: actions/checkout@v6
+        with:
+          repository: mosazhaw/path
+          ref: ${{ inputs.path_ref || (github.ref_name == 'web_component' && 'web_component') || 'main' }}
+          path: framework
+
+      - name: Use Node.js 24.11.1
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24.11.1
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            framework/package-lock.json
+
+      - name: Install and build Path Framework
+        working-directory: framework
+        run: |
+          npm ci
+          npm run release
+
+      - name: Install example application dependencies
+        run: npm ci
+
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Run end-to-end tests
+        run: npm run test:e2e
+        env:
+          CI: true
+          PATH_FRAMEWORK_DIR: ${{ github.workspace }}/framework/dist/release
