@@ -31,7 +31,9 @@ process.on("unhandledRejection", (reason, p) => {
 
 // serve Frontend
 app.use("/", [express.static(__dirname + "./../../app")]);
-app.use("/path", [express.static(path.join(__dirname,"./../../node_modules/path-framework"))]);
+const frameworkPath = process.env.PATH_FRAMEWORK_DIR ?? path.join(__dirname, "./../../node_modules/path-framework");
+console.log("Serving Path Framework from:", frameworkPath);
+app.use("/path", [express.static(frameworkPath)]);
 
 // setup CORS
 app.all("/*", function (req, res, next) {
