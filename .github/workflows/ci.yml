@@ -1,5 +1,4 @@
 name: CI
-run-name: ${{ github.event_name == 'repository_dispatch' && format('Path Framework E2E · {0}', github.event.client_payload.path_short_sha) || github.event.head_commit.message }}
 
 on:
   push:
@@ -11,8 +10,6 @@ on:
         required: false
         default: main
         type: string
-  repository_dispatch:
-    types: [path-framework-e2e]
 
 permissions:
   contents: read
@@ -29,7 +26,7 @@ jobs:
         uses: actions/checkout@v6
         with:
           repository: mosazhaw/path
-          ref: ${{ github.event.client_payload.path_sha || inputs.path_ref || (github.ref_name == 'web_component' && 'web_component') || 'main' }}
+          ref: ${{ inputs.path_ref || 'main' }}
           path: framework
 
       - name: Use Node.js 24.11.1
