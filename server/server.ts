@@ -15,11 +15,10 @@ import {DynamicComponentsRestService} from "./rest/dynamic-components-rest-servi
 import {FileDatabase} from "./database/file-database";
 import {FileRestService} from "./rest/file-rest-service";
 
-const bodyParser = require("body-parser");
 const path = require('path');
 const app = express();
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json());
+app.use(express.urlencoded({extended: true}));
+app.use(express.json());
 
 // set the port of our application
 // process.env.PORT lets the port be set by Heroku
